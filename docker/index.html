@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Docker簡介</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName('head')[0].appendChild(link);
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Docker</h1>
+					<img src="./img/docker.png">
+					<h3 class="fragment fade-up">容器技術萬歲</h3>
+				</section>
+
+				<section>
+					<section>
+						<h2>容器 vs. 虛擬機</h2>
+					</section>
+
+					<section>
+						<img width="60%" src="./img/VM.png">
+					</section>
+
+					<section>
+						<img width="60%" src="./img/Container.png">
+					</section>
+					<section>
+						<h4>比較</h4>
+						<table style="font-size:35px;">
+							<tr>
+								<th></th>
+								<th>VM</th>
+								<th>Container</th>
+							</tr>
+							<tr>
+								<td>虛擬化方式</td>
+								<td>OS層級</td>
+								<td>APP層級</td>
+							</tr>
+							<tr>
+								<td>支援OS</td>
+								<td>所有OS</td>
+								<td>僅支援 image 對應的 OS</td>
+							</tr>
+							<tr>
+								<td>啟動速度</td>
+								<td>以分鐘計</td>
+								<td>以秒計</td>
+							</tr>
+							<tr>
+								<td>占用資源</td>
+								<td>多(10-100 vm)</td>
+								<td>少(100-1000 container)</td>
+							</tr>
+							<tr>
+								<td>代表作</td>
+								<td>VMware,Hyper-V</td>
+								<td>docker</td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<h4>容器優點</h4>
+						<ol>
+							<li class="fragment fade-up">輕量</li>
+							<li class="fragment fade-up">快速</li>
+							<li class="fragment fade-up">容易移植</li>
+							<li class="fragment fade-up">彈性管理</li>
+						</ol>
+					</section>
+					<section>
+						<h2 class="fragment shrink">輕量</h2>
+						<p class="fragment grow">只打包了必要的Bins/Lib，不像VM裝載的整個OS</p>
+					</section>
+					<section>
+						<h2 class="fragment shrink">快速</h2>
+						<p class="fragment grow">根據 image 的不同，容器的部署大概在 ms~s 之間</p>
+					</section>
+					<section>
+						<h2 class="fragment shrink">容易移植</h2>
+						<p class="fragment grow">只要容器成功執行過，基本上就能保證裝的了docker的地方就執行容器且不會出錯</p>
+					</section>
+					<section>
+						<h2 class="fragment shrink">彈性管理</h2>
+						<p class="fragment grow">Kubernetes好像很神(???</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>docker三兩事</h2>
+					</section>
+					<section>
+						<p>關於剛剛提到的 image</p>
+						<h4 class="fragment fade-up">我猜你們應該不太想聽我"巴拉巴拉"</h4>
+						<p class="fragment fade-up">所以我就長話短說了</p>
+					</section>
+					<section>
+						<p>image 就像灌作業系統用的 iso 檔</p>
+						<p class="fragment fade-up">VM 用 iso 建立作業系統</p>
+						<p class="fragment fade-up">Docker 則是用 image 建立 container</p>
+					</section>
+					<section>
+						<p>那 image 又是怎麼來的呢?</p>
+						<p class="fragment fade-up"><a href="https://hub.docker.com/">docker hup</a></p>
+						<p class="fragment">或是</p>
+						<p class="fragment fade-up">自己寫 Dockerfile</p>
+					</section>
+					<section>
+						<p>docker hup</p>
+						<p class="fragment fade-up">docker pull &lt;image&gt;</p>
+						<p class="fragment fade-up">然後你就有你需要的 image 了</p>
+					</section>
+					<section>
+						<p>Dockerfile 大概長這樣</p>
+						<pre><code class="hljs" data-trim >
+						FROM centos:7
+						MAINTAINER jack
+						
+						RUN yum install -y wget
+						
+						RUN cd /
+						
+						ADD jdk-8u152-linux-x64.tar.gz /
+						
+						RUN wget http://apache.stu.edu.tw/tomcat/tomcat-7/v7.0.82/bin/apache-tomcat-7.0.82.tar.gz
+						RUN tar zxvf apache-tomcat-7.0.82.tar.gz
+						
+						ENV JAVA_HOME=/jdk1.8.0_152
+						ENV PATH=$PATH:/jdk1.8.0_152/bin
+						CMD ["/apache-tomcat-7.0.82/bin/catalina.sh", "run"]
+						</code></pre>
+					</section>
+					<section>
+						<p>Dockerfile 寫好後在 build 就能建立 image 了</p>
+						<p class="fragment fade-up">或是也可以把你正在運行的容器 build 成 image</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<p>以上就是 Docker 的介紹了</p>
+						<p class="fragment fade-up">關於 Docker 的安裝也很簡單</p>
+						<p class="fragment fade-up">只要上 <a href="https://www.docker.com/">Docker 官網</a>註冊完就能下載</p>
+					</section>
+					<section>
+						<p>然後提醒下</p>
+						<h2 class="fragment fade-up">Linux 的 Docker 才是真正的 Docker (究極體)</h2>
+						<p class="fragment fade-up">不是跑在虛擬機上</p>
+						<p class="fragment fade-up">能調用gpu</p>
+					</section>
+				</section>
+				<section>
+					<h5>參考文獻</h5>
+					<ol>
+						<li><a href="https://blog.yowko.com/container/">初探容器技術(Container) - Yowko's Notes</a></li>
+						<li><a href="https://zhuanlan.zhihu.com/p/39155341">十分钟明白什么是容器技术- 知乎</a></li>
+						<li><a href="https://www.inwinstack.com/2017/10/13/vm-container-difference/">淺談虛擬機(VM)與容器(Container)之差異
+								- inwinSTACK</a></li>
+					</ol>
+				</section>
+
+				<section id="transitions">
+					<h2>Transition Styles</h2>
+					<p>
+						You can select from different transitions, like: <br>
+						<a href="?transition=none#/transitions">None</a> -
+						<a href="?transition=fade#/transitions">Fade</a> -
+						<a href="?transition=slide#/transitions">Slide</a> -
+						<a href="?transition=convex#/transitions">Convex</a> -
+						<a href="?transition=concave#/transitions">Concave</a> -
+						<a href="?transition=zoom#/transitions">Zoom</a>
+					</p>
+				</section>
+
+				<section id="themes">
+					<h2>Themes</h2>
+					<p>
+						reveal.js comes with a few themes built in: <br>
+						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
+							(default)</a> -
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
+						<br>
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+					</p>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+					{ src: 'plugin/highlight/highlight.js', async: true },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+
+</html>
