@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Enhancing Open Source Software in Alignment with CMMI-DEV報告</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName('head')[0].appendChild(link);
+		</script>
+		<style>
+			@font-face {
+				font-family: custom-serif;
+				src: local(Microsoft JhengHei), local("DFKai-sb");
+				unicode-range: U+4E00-9FFF;
+			}
+
+			@font-face {
+				font-family: custom-serif;
+				src: local(Source Code Pro), local(Arial);
+				unicode-range: U+00-024F;
+			}
+
+			section {
+				font-family: custom-serif;
+			}
+		</style>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<p style="font-size: 120%;">
+						<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=4786954"> Enhancing Open
+							Source Software in Alignment with
+							CMMI-DEV</a></p>
+					<br>
+					<p style="font-size: 80%;text-align:left;position: relative;left:20%;">
+						Christiane Gresse von Wangenheim,
+						<br>
+						Jean Carlo Rossa
+						<br>
+						Hauck, Aldo von Wangenheim</p>
+				</section>
+
+				<section>
+					<h3>目錄</h3>
+					<br>
+					<ol>
+						<li>
+							<nobr>摘要</nobr>
+						</li>
+						<br>
+						<li>
+							<nobr>專案管理工具</nobr>
+						</li>
+						<br>
+						<li>
+							<nobr>增強dotProject</nobr>
+						</li>
+						<br>
+						<li>
+							<nobr>以CMMI-DEV為基準的輔助工具</nobr>
+						</li>
+						<br>
+						<li>
+							<nobr>它有用嗎?</nobr>
+						</li>
+					</ol>
+
+				</section>
+
+				<section>
+					<section>
+						<h3>摘要</h3>
+					</section>
+
+					<section>
+						<p style="text-align:left;">
+							雖然項目監控(PMC)存在各種模型、方法和技術，但許多小型組織仍然難以有系統地將專案監控流程變成制度。
+						</p>
+					</section>
+
+					<section>
+						<p style="text-align:left;">
+							2001年時，在巴西進行的一項調查顯示：
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							只有<strong style="color: #ff5555;">不到50％</strong>的小公司採用了文件化的管理流程。
+						</p>
+					</section>
+
+					<section>
+						<p>
+							然而
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							<nobr> 2007年時，小公司已佔據CMMI評估總數的<strong style="color: #ff5555;">約27％</strong>。</nobr>
+						</p>
+					</section>
+
+					<section>
+						<p>
+							大多數小公司的特點是成熟度較低
+						</p>
+						<p class="fragment fade-up">
+							因此改善PMC具有其重要性。
+						</p>
+					</section>
+
+					<section>
+						<p>
+							而透過專案管理工具的輔助
+						</p>
+						<p class="fragment fade-up">
+							便可以幫助小公司方便的建立流程
+							<br>
+							以提高專案的效率和質量。
+						</p>
+					</section>
+
+					<section>
+						<p>
+							本篇論文分析了一些開源的線上專案管理工具
+						</p>
+						<p class="fragment fade-up">
+							以了解它們是怎麼提供符合
+							<br>
+							CMMI for Development(CMMI-DEV)
+							<br>
+							的輔助功能
+						</p>
+					</section>
+
+					<section>
+						<p>
+							並且利用分析結果為dotProject進行功能補強
+						</p>
+						<p class="fragment fade-up">
+							以改善其對PMC的支持
+						</p>
+					</section>
+
+					<section>
+						<p>
+							關於dotProject
+						</p>
+						<p class="fragment fade-up">
+							基於PHP的線上專案管理程式
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>專案管理工具</h3>
+					</section>
+					<section>
+						<p>
+							並且利用分析結果為dotProject進行功能補強
+						</p>
+						<p class="fragment fade-up">
+							以改善其對PMC的支持
+						</p>
+					</section>
+					<section>
+						<p>
+							Today, we can find tons of project management tools ranging from comprehensive solutions to
+							simple task trackers.
+							Thus, the question for project managers is which tool to choose.
+							Many tools focus primarily on project planning,13 but most of these aren’t aligned with
+							well-known reference models.
+							Tools that claim to be compliant with CMMI-DEV, such as in-Step (www.microtool.de/instep),
+							processMax (www.pragmasystems.com), or Polarion (www.polarion.com), are typically intended
+							to provide full maturity-level compliance, covering not only project management but also
+							requirements management, quality assurance, configuration management, and so on.
+							Yet many organizations have already adopted tools to (partially) support their processes and
+							thus might not want an integrated solution.
+							A less-risky approach would be to adopt a tool that focuses specifically on project
+							management (including PMC), with integration interfaces to other common tools.
+							In this context, free or open source project management tools could represent an
+							alternative.
+							Even if those tools aren’t completely compliant with CMMI, users can easily enhance them to
+							fulfill these requirements.
+							We compare the most popular open source project management tools in Table 1.
+							(We determined this via numbers of downloads based on a search at http://sourceforge.net on
+							9 November 2007.
+							We used the exact phrase “project management,” and didn’t use the words “desktop” or
+							“groupware.”
+							The project category was “project management.” In total, our search returned 104 tools.)
+							Here, we focus on tools that provide collaborative Web-based support for managing multiple
+							projects with multiple users.
+							We evaluated the support each tool provides for specific project planning and PMC goals
+							required by CMMI-DEV v1.2 and examined other important characteristics with respect to open
+							source software.
+							From our evaluation, we can conclude that none of these tool provides full support for PMC
+							in compliance with CMMI-DEV.
+							For example, none provides support for monitoring all relevant project parameters, such as
+							stakeholder involvement.
+							Despite EVM’s popularity, none of these tools cover it.
+							They also don’t support managing corrective actions, although you could meet this
+							requirement by integrating other tools.
+							When we analyzed the support these tools provide for project planning(PP), a prerequisite
+							for PMC, we observed that the tools provide only partial support when compared to the PP
+							process area’s goals.
+							Principal shortcomings include the lack of the concept of baselines and, again, that the
+							tools consider only a subset of important project parameters.
+							Still, dotProject and ]open-project[ appear to provide more extensive support for PP and PMC
+							and offer extensibility through available integration interfaces.
+							They also provide implementation frameworks that help facilitate their evolution.
+							Both tools benefit from large, active communities that use and continue to evolve them.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>增強dotProject</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>以CMMI-DEV為基準的輔助工具</h3>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>它有用嗎?</h3>
+					</section>
+				</section>
+
+				<section id="transitions">
+					<h2>Transition Styles</h2>
+					<p>
+						You can select from different transitions, like: <br>
+						<a href="?transition=none#/transitions">None</a> -
+						<a href="?transition=fade#/transitions">Fade</a> -
+						<a href="?transition=slide#/transitions">Slide</a> -
+						<a href="?transition=convex#/transitions">Convex</a> -
+						<a href="?transition=concave#/transitions">Concave</a> -
+						<a href="?transition=zoom#/transitions">Zoom</a>
+					</p>
+				</section>
+
+				<section id="themes">
+					<h2>Themes</h2>
+					<p>
+						reveal.js comes with a few themes built in: <br>
+						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
+							(default)</a> -
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
+						<br>
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>
+						-
+						<a href="#"
+							onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+					</p>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+					{ src: 'plugin/highlight/highlight.js', async: true },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+
+</html>
