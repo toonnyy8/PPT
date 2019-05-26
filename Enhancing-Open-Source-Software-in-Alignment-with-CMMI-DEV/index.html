@@ -324,11 +324,23 @@
 					</section>
 					<section>
 						<p>經過分析後，作者團隊選擇使用dotProject</p>
-						<p class="fragment fade-up">然後為了與CMMI-DEV保持一致性，對dotProject進行了功能補強。</p>
+						<p class="fragment fade-up">
+							然後為了與CMMI-DEV保持一致性
+							<br>
+							對dotProject進行了功能補強。
+						</p>
 					</section>
 					<section>
 						<p>dotProject版本是V2.0.4的標準版本</p>
-						<p class="fragment fade-up">為了保持現有模塊的完整性，團隊盡可能地減少修改，並將大多數補強功能作為新模塊實作。</p>
+						<p class="fragment fade-up">
+							為保持現有模塊的完整性，團隊盡可能地減少修改
+							<br>
+							並將大多數補強功能作為新模塊實作。
+						</p>
+					</section>
+					<section>
+						系統架構
+						<img src="./img/Figure 1.png">
 					</section>
 					<section>
 						<h4>要補強的功能</h4>
@@ -369,6 +381,90 @@
 								Additional Integration Interfaces
 							</li>
 						</ol>
+					</section>
+					<section>
+						<h4>Project Plan Baseline</h4>
+						<p class="fragment fade-up">
+							專案經理可以將專案計劃的各項參數
+							<br>
+							(包括計劃，預期工作量，成本和資源分配)
+							<br>
+							設為基準
+						</p>
+						<p class="fragment fade-up">
+							該模塊還會保存Baseline的歷史記錄
+							<br>
+							以便讓專案經理監控Baseline變更的數量。
+						</p>
+					</section>
+					<section>
+						<h4>Data Collection</h4>
+						<p class="fragment fade-up">
+							藉由Task模塊和TaskTracker增強數據收集功能
+							<br>
+							讓團員能夠設定任務的完成度
+						</p>
+						<p class="fragment fade-up">
+							專案經理還可通過會議記錄收集有關的參數數據
+						</p>
+					</section>
+					<section>
+						<h4>EVM</h4>
+						<p class="fragment fade-up">
+							改進要點：使用EVM分析項目績效
+						</p>
+						<p class="fragment fade-up">
+							包括
+						</p>
+						<ul class="fragment fade-up">
+							<li>
+								計劃執行績效指數(SPI)
+							</li>
+							<li>
+								成本績效指數(CPI)
+							</li>
+							<li>
+								完工時間估算(EAC)
+							</li>
+						</ul>
+					</section>
+					<section>
+						<p>
+							然而，因為是通過百分比分配資源
+						</p>
+						<p class="fragment fade-up">
+							<nobr>而不是依據專案經理指定每個任務/資源計劃的工時數</nobr>
+						</p>
+						<p class="fragment fade-up">
+							<nobr>使其阻礙了使用者在估計值和實際值之間的準確比較</nobr>
+						</p>
+					</section>
+					<section>
+						<p>
+							<nobr>為此，研究團隊調整了dotProject核心的規劃模塊</nobr>
+						</p>
+						<p class="fragment fade-up">
+							<nobr>將資源分配的方式改成用工時數表現</nobr>
+						</p>
+					</section>
+					<section>
+						<p>
+							另外還增加了
+						</p>
+						<ul>
+							<li class="fragment fade-up">
+								成員工時上限
+							</li>
+							<li class="fragment fade-up">
+								任務進度百分比的歷史記錄
+							</li>
+							<li class="fragment fade-up">
+								記錄每個團隊成員每天可用的工時數
+							</li>
+						</ul>
+						<p class="fragment fade-up">
+							等等功能
+						</p>
 					</section>
 				</section>
 
