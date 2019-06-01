@@ -29,7 +29,23 @@
 			link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName('head')[0].appendChild(link);
 		</script>
+		<style>
+			@font-face {
+				font-family: custom-serif;
+				src: local(Microsoft JhengHei), local("DFKai-sb");
+				unicode-range: U+4E00-9FFF;
+			}
 
+			@font-face {
+				font-family: custom-serif;
+				src: local(Source Code Pro), local(Arial);
+				unicode-range: U+00-024F;
+			}
+
+			section {
+				font-family: custom-serif;
+			}
+		</style>
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -65,6 +81,10 @@
 						<br>
 						<li>
 							<nobr>demo</nobr>
+						</li>
+						<br>
+						<li>
+							<nobr>檢討與未來</nobr>
 						</li>
 					</ol>
 
@@ -191,7 +211,8 @@
 						<h3>demo</h3>
 					</section>
 					<section>
-						<p><a href="./example/MET.json">範例檔</a></p>
+						<p><a href="./example/MET.json">範例檔a</a></p>
+						<p><a href="./example/METtest.json">範例檔b</a></p>
 					</section>
 					<section>
 						<h4>插件的注意事項</h4>
@@ -280,6 +301,26 @@
 								<br>
 							</li>
 						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>檢討與未來</h3>
+					</section>
+					<section>
+						<p>目前缺少依照音階調整分貝的功能</p>
+						<p class="fragment fade-up">這會導致低音與高音的音量差距太大</p>
+						<p class="fragment fade-up">雖然可以用不同插件區隔出不同的音階</p>
+						<p class="fragment fade-up">但終究不是很方便</p>
+					</section>
+					<section>
+						<p>還有聲音聽起來都蠻僵硬的</p>
+						<p class="fragment fade-up">未來可能會選擇增加預設音色</p>
+						<p class="fragment fade-up">像是原本就配好的鋼琴、鼓聲等等</p>
+					</section>
+					<section>
+						<p>操作介面也要改成節點式</p>
+						<p class="fragment fade-up">比較直觀</p>
 					</section>
 				</section>
 
