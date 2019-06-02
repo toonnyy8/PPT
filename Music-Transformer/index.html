@@ -150,7 +150,7 @@
 						<p style="text-align:left;" class="fragment fade-up">
 							由注意力機制構成的
 							<br>
-							<strong style="color: #77bbff;">Transformer</strong>(由Vaswani等人在2017年提出)
+							<a href="https://arxiv.org/abs/1706.03762">Transformer</a>(由Vaswani等人在2017年提出)
 							<br>
 							就具有良好的表現
 						</p>
@@ -160,7 +160,45 @@
 						<p style="text-align:left;">
 							Transformer在較長的時間尺度依然能保留前後文的關係
 						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							這表示Transformer可能也適合用於音樂生成上
+						</p>
+					</section>
 
+					<section>
+						<p>
+							但是
+						</p>
+						<p class="fragment fade-up">
+							在音樂創作和表演中，時間的<strong style="color: #ff5555;">相對關係</strong>非常重要
+						</p>
+					</section>
+					<section>
+						<p style="text-align:left;">
+							Shaw等人在2018年曾發表過一篇
+							<br>
+							<a href="https://arxiv.org/abs/1803.02155">處理Transformer中相對位置關係</a>的論文
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							<nobr>但這方法並不適合用在像音樂這樣序列較長的問題上</nobr>
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							因為這方法的記憶體複雜度是<strong style="color: #ff5555;">序列的平方</strong>
+						</p>
+					</section>
+					<section>
+						<p style="text-align:left;">
+							因此，本論文提出了一種算法
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							讓記憶體複雜度變成序列的線性
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							<nobr>
+								這使本論文能夠生成數分鐘長音樂結構<br>
+								(數千拍，這是<a href="https://arxiv.org/abs/1808.03715">Oore等人在2018年提出的算法</a>的4倍長)
+							</nobr>
+						</p>
 					</section>
 				</section>
 
