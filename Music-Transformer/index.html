@@ -200,6 +200,52 @@
 							</nobr>
 						</p>
 					</section>
+					<section>
+						<p style="text-align:left;">
+							用此模型能生成具有連續性並契合樂想的音樂
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							使用的資料集是
+							<br>
+							<nobr>JSB Chorales和Piano-e-Competition</nobr>
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>介紹</h3>
+					</section>
+
+					<section>
+						<p style="text-align:left;">
+							跟Transformer相比
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							rnn要學習如何主動儲存在固定大小的記憶體中<br>被引用的元素
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							這讓訓練變得更困難
+						</p>
+					</section>
+
+					<section>
+						<p style="text-align:left;">
+							作者認為在Transformer decoder中多個連續的注意力機制可以捕捉音樂中重複區段的多個層次
+						</p>
+					</section>
+					<section>
+						<p style="text-align:left;">
+							在原始Transformer中<br>
+							<nobr class="fragment fade-up">前後文的關係是用絕對位置表示</nobr>
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							rnn則是用輸入所在的位置表示
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							cnn是通過kernel覆蓋於輸入的相對位置<br>決定要使用的參數
+						</p>
+					</section>
 				</section>
 
 				<section id="transitions">
