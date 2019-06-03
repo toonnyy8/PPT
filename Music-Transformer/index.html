@@ -1,335 +1,376 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+	<meta charset="utf-8">
 
-		<title>Music Transformer報告</title>
+	<title>Music Transformer報告</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
 
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css" id="theme">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement('link');
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName('head')[0].appendChild(link);
-		</script>
-		<style>
-			@font-face {
-				font-family: custom-serif;
-				src: local(Microsoft JhengHei), local("DFKai-sb");
-				unicode-range: U+4E00-9FFF;
-			}
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<style>
+		@font-face {
+			font-family: custom-serif;
+			src: local(Microsoft JhengHei), local("DFKai-sb");
+			unicode-range: U+4E00-9FFF;
+		}
 
-			@font-face {
-				font-family: custom-serif;
-				src: local(Source Code Pro), local(Arial);
-				unicode-range: U+00-024F;
-			}
+		@font-face {
+			font-family: custom-serif;
+			src: local(Source Code Pro), local(Arial);
+			unicode-range: U+00-024F;
+		}
 
-			section {
-				font-family: custom-serif;
-			}
-		</style>
+		section {
+			font-family: custom-serif;
+		}
+	</style>
 
-		<!--[if lt IE 9]>
+	<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
-	</head>
+</head>
 
-	<body>
+<body>
 
-		<div class="reveal">
+	<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<p style="font-size: 120%;">
-						<a href="https://arxiv.org/abs/1809.04281">Music Transformer</a>
-					</p>
-					<br>
-					<p style="font-size: 70%;text-align:left;position: relative;left:10%;">
-						<nobr>Cheng-Zhi Anna Huang∗</nobr>,
-						<nobr>Ashish Vaswani</nobr>,
-						<nobr>Jakob Uszkoreit</nobr>,
-						<nobr>Noam Shazeer</nobr>,
-						<nobr>Ian Simon</nobr>,
-						<nobr>Curtis Hawthorne</nobr>,
-						<nobr>Andrew M. Dai</nobr>,
-						<nobr>Matthew D. Hoffman</nobr>,
-						<nobr>Monica Dinculescu</nobr>,
-						<nobr>Douglas Eck</nobr>
-					</p>
-					<p style="font-size: 70%;text-align:left;position: relative;left:10%;">
-						<nobr>Google Brain</nobr>
-					</p>
-				</section>
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section>
+				<p style="font-size: 120%;">
+					<a href="https://arxiv.org/abs/1809.04281">Music Transformer</a>
+				</p>
+				<br>
+				<p style="font-size: 70%;text-align:left;position: relative;left:10%;">
+					<nobr>Cheng-Zhi Anna Huang∗</nobr>,
+					<nobr>Ashish Vaswani</nobr>,
+					<nobr>Jakob Uszkoreit</nobr>,
+					<nobr>Noam Shazeer</nobr>,
+					<nobr>Ian Simon</nobr>,
+					<nobr>Curtis Hawthorne</nobr>,
+					<nobr>Andrew M. Dai</nobr>,
+					<nobr>Matthew D. Hoffman</nobr>,
+					<nobr>Monica Dinculescu</nobr>,
+					<nobr>Douglas Eck</nobr>
+				</p>
+				<p style="font-size: 70%;text-align:left;position: relative;left:10%;">
+					<nobr>Google Brain</nobr>
+				</p>
+			</section>
 
-				<section>
-					<h3>目錄</h3>
-					<ol>
-						<li>
-							<p>
-								<nobr>摘要</nobr>
-							</p>
-						</li>
-						<li>
-							<p>
-								<nobr>介紹</nobr>
-							</p>
-						</li>
-						<li>
-							<p>
-								<nobr>相關研究</nobr>
-							</p>
-						</li>
-						<li>
-							<p>
-								<nobr>模型架構</nobr>
-							</p>
-						</li>
-						<li>
-							<p>
-								<nobr>實驗結果</nobr>
-							</p>
-						</li>
-						<li>
-							<p>
-								<nobr>結論</nobr>
-							</p>
-						</li>
-						<li>
-							<p>
-								<nobr>心得</nobr>
-							</p>
-						</li>
-					</ol>
-
-				</section>
-
-				<section>
-					<section>
-						<h3>摘要</h3>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							在一段樂曲中
-							<br>
-							大部份音樂都是由同樣的結構組合而成
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							音樂會在多個時間點重複
-							<br>
-							重複的部分可能會是<strong style="color: #ff5555;">樂想(音樂動機，motifs)</strong>、
-							<br>
-							<strong style="color: #ff5555;">樂句(phrase)</strong>或是<strong
-								style="color: #ff5555;">某段音樂</strong>
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							而在處理這種前後相關的序列問題上
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							由注意力機制構成的
-							<br>
-							<a href="https://arxiv.org/abs/1706.03762">Transformer</a>(由Vaswani等人在2017年提出)
-							<br>
-							就具有良好的表現
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							Transformer在較長的時間尺度依然能保留前後文的關係
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							這表示Transformer可能也適合用於音樂生成上
-						</p>
-					</section>
-
-					<section>
+			<section>
+				<h3>目錄</h3>
+				<ol>
+					<li>
 						<p>
-							但是
+							<nobr>摘要</nobr>
 						</p>
-						<p class="fragment fade-up">
-							在音樂創作和表演中，時間的<strong style="color: #ff5555;">相對關係</strong>非常重要
+					</li>
+					<li>
+						<p>
+							<nobr>介紹</nobr>
 						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							Shaw等人在2018年曾發表過一篇
-							<br>
-							<a href="https://arxiv.org/abs/1803.02155">處理Transformer中相對位置關係</a>的論文
+					</li>
+					<li>
+						<p>
+							<nobr>相關研究</nobr>
 						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							<nobr>但這方法並不適合用在像音樂這樣序列較長的問題上</nobr>
+					</li>
+					<li>
+						<p>
+							<nobr>模型架構</nobr>
 						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							因為這方法的記憶體複雜度是<strong style="color: #ff5555;">序列的平方</strong>
+					</li>
+					<li>
+						<p>
+							<nobr>實驗結果</nobr>
 						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							因此，本論文提出了一種算法
+					</li>
+					<li>
+						<p>
+							<nobr>結論</nobr>
 						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							讓記憶體複雜度變成序列的線性
+					</li>
+					<li>
+						<p>
+							<nobr>心得</nobr>
 						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							<nobr>
-								這使本論文能夠生成數分鐘長音樂結構<br>
-								(數千拍，這是<a href="https://arxiv.org/abs/1808.03715">Oore等人在2018年提出的算法</a>的4倍長)
-							</nobr>
-						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							用此模型能生成具有連續性並契合樂想的音樂
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							使用的資料集是
-							<br>
-							<nobr>JSB Chorales和Piano-e-Competition</nobr>
-						</p>
-					</section>
+					</li>
+				</ol>
+
+			</section>
+
+			<section>
+				<section>
+					<h3>摘要</h3>
 				</section>
 
 				<section>
-					<section>
-						<h3>介紹</h3>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							跟Transformer相比
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							rnn要學習如何主動儲存在固定大小的記憶體中<br>被引用的元素
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							這讓訓練變得更困難
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							作者認為在Transformer decoder中多個連續的注意力機制可以捕捉音樂中重複區段的多個層次
-						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							在原始Transformer中<br>
-							<nobr class="fragment fade-up">前後文的關係是用絕對位置表示</nobr>
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							rnn則是用輸入所在的位置表示
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							cnn是通過kernel覆蓋於輸入的相對位置<br>決定要使用的參數
-						</p>
-					</section>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
-							(default)</a> -
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
+					<p style="text-align:left;">
+						在一段樂曲中
 						<br>
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+						大部份音樂都是由同樣的結構組合而成
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						音樂會在多個時間點重複
+						<br>
+						重複的部分可能會是<strong style="color: #ff5555;">樂想(音樂動機，motifs)</strong>、
+						<br>
+						<strong style="color: #ff5555;">樂句(phrase)</strong>或是<strong
+							style="color: #ff5555;">某段音樂</strong>
 					</p>
 				</section>
-			</div>
 
+				<section>
+					<p style="text-align:left;">
+						而在處理這種前後相關的序列問題上
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						由注意力機制構成的
+						<br>
+						<a href="https://arxiv.org/abs/1706.03762">Transformer</a>(由Vaswani等人在2017年提出)
+						<br>
+						就具有良好的表現
+					</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						Transformer在較長的時間尺度依然能保留前後文的關係
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						這表示Transformer可能也適合用於音樂生成上
+					</p>
+				</section>
+
+				<section>
+					<p>
+						但是
+					</p>
+					<p class="fragment fade-up">
+						在音樂創作和表演中，時間的<strong style="color: #ff5555;">相對關係</strong>非常重要
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						Shaw等人在2018年曾發表過一篇
+						<br>
+						<a href="https://arxiv.org/abs/1803.02155">處理Transformer中相對位置關係</a>的論文
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						<nobr>但這方法並不適合用在像音樂這樣序列較長的問題上</nobr>
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						因為這方法的記憶體複雜度是<strong style="color: #ff5555;">序列的平方</strong>
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						因此，本論文提出了一種算法
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						讓記憶體複雜度變成序列的線性
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						<nobr>
+							這使本論文能夠生成數分鐘長音樂結構<br>
+							(數千拍，這是<a href="https://arxiv.org/abs/1808.03715">Oore等人在2018年提出的算法</a>的4倍長)
+						</nobr>
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						用此模型能生成具有連續性並契合樂想的音樂
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						使用的資料集是
+						<br>
+						<nobr>JSB Chorales和Piano-e-Competition</nobr>
+					</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h3>介紹</h3>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						跟Transformer相比
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						rnn要學習如何主動儲存在固定大小的記憶體中<br>被引用的元素
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						這讓訓練變得更困難
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						作者認為，音樂中的各種特徵都具有其"語法"
+						<br>
+						<nobr class="fragment fade-up">而且還會週期性的出現</nobr>
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						因此知道這些特徵的相對位置後就能生成音樂
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						且在Transformer decoder中多個連續的注意力機制有可能捕捉音樂中重複區段的多個層次
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						但是，在原始Transformer中<br>
+						<nobr class="fragment fade-up">前後文的關係是用絕對位置表示</nobr>
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						rnn則是用輸入所在的位置表示
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						cnn是通過kernel覆蓋於輸入的相對位置<br>決定要使用的參數
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						而在音樂中<br>
+						<nobr class="fragment fade-up">相對關係比絕對關係來的重要</nobr>
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						使用相對注意力機制的Transformer可以捕捉到相對時間還有音高
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						因此更加適合用於音樂生成上
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						相對注意力機制的原始公式需要O(L<sup>2</sup>D)的記憶體
+						<br>
+						<nobr class="fragment fade-up">L是序列長度，D是模型隱藏狀態的維度</nobr>
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						本研究會展示如何將記憶體複雜度降至O(LD)
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						關於Piano-e-Competition資料集
+						<br>
+						<nobr class="fragment fade-up">L是序列長度，D是模型隱藏狀態的維度</nobr>
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						本研究會展示如何將記憶體複雜度降至O(LD)
+					</p>
+				</section>
+			</section>
+
+			<section id="transitions">
+				<h2>Transition Styles</h2>
+				<p>
+					You can select from different transitions, like: <br>
+					<a href="?transition=none#/transitions">None</a> -
+					<a href="?transition=fade#/transitions">Fade</a> -
+					<a href="?transition=slide#/transitions">Slide</a> -
+					<a href="?transition=convex#/transitions">Convex</a> -
+					<a href="?transition=concave#/transitions">Concave</a> -
+					<a href="?transition=zoom#/transitions">Zoom</a>
+				</p>
+			</section>
+
+			<section id="themes">
+				<h2>Themes</h2>
+				<p>
+					reveal.js comes with a few themes built in: <br>
+					<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
+						(default)</a> -
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
+					<br>
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+				</p>
+			</section>
 		</div>
 
-		<script src="js/reveal.js"></script>
+	</div>
 
-		<script>
+	<script src="js/reveal.js"></script>
 
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				center: true,
-				hash: true,
+	<script>
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			center: true,
+			hash: true,
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-					{ src: 'plugin/highlight/highlight.js', async: true },
-					{ src: 'plugin/search/search.js', async: true },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-		</script>
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'plugin/highlight/highlight.js', async: true },
+				{ src: 'plugin/search/search.js', async: true },
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+				{ src: 'plugin/notes/notes.js', async: true }
+			]
+		});
 
-	</body>
+	</script>
+
+</body>
 
 </html>
