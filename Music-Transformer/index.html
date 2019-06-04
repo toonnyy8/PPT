@@ -124,17 +124,17 @@
 
 			<section>
 				<section>
-					<h3>摘要</h3>
+					<h3>介紹</h3>
 				</section>
 
 				<section>
 					<p style="text-align:left;">
 						在一段樂曲中
 						<br>
-						大部份音樂都是由同樣的結構組合而成
+						音樂大多都是由同樣的結構、特徵組合而成
 					</p>
 					<p style="text-align:left;" class="fragment fade-up">
-						音樂會在多個時間點重複
+						這些特徵會在多個時間點重複
 						<br>
 						重複的部分可能會是<strong style="color: #ff5555;">樂想(音樂動機，motifs)</strong>、
 						<br>
@@ -167,10 +167,12 @@
 
 				<section>
 					<p>
-						但是
+						在音樂創作和表演中，前後的<strong style="color: #ff5555;">相對關係</strong>非常重要
 					</p>
 					<p class="fragment fade-up">
-						在音樂創作和表演中，時間的<strong style="color: #ff5555;">相對關係</strong>非常重要
+						但是
+						<br>
+						<nobr style="text-align:left;">在原始的Transformer中前後文是以絕對位置紀錄關係</nobr>
 					</p>
 				</section>
 				<section>
@@ -180,10 +182,12 @@
 						<a href="https://arxiv.org/abs/1803.02155">處理Transformer中相對位置關係</a>的論文
 					</p>
 					<p style="text-align:left;" class="fragment fade-up">
-						<nobr>但這方法並不適合用在像音樂這樣序列較長的問題上</nobr>
+						<nobr>但並不適合用在像音樂生成這樣序列較長的問題上</nobr>
 					</p>
 					<p style="text-align:left;" class="fragment fade-up">
-						因為這方法的記憶體複雜度是<strong style="color: #ff5555;">序列的平方</strong>
+						因為這方法的記憶體複雜度是<strong style="color: #ff5555;">O(L<sup>2</sup>D)</strong>
+						<br>
+						<nobr class="fragment fade-up">L是序列長度，D是模型隱藏狀態的維度</nobr>
 					</p>
 				</section>
 				<section>
@@ -191,7 +195,7 @@
 						因此，本論文提出了一種算法
 					</p>
 					<p style="text-align:left;" class="fragment fade-up">
-						讓記憶體複雜度變成序列的線性
+						讓記憶體複雜度變成<strong style="color: #ff5555;">O(LD)</strong>
 					</p>
 					<p style="text-align:left;" class="fragment fade-up">
 						<nobr>
