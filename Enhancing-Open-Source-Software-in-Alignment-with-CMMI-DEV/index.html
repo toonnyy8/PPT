@@ -1,870 +1,870 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+	<meta charset="utf-8">
 
-		<title>Enhancing Open Source Software in Alignment with CMMI-DEV報告</title>
+	<title>Enhancing Open Source Software in Alignment with CMMI-DEV報告</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
 
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css" id="theme">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement('link');
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName('head')[0].appendChild(link);
-		</script>
-		<style>
-			@font-face {
-				font-family: custom-serif;
-				src: local(Microsoft JhengHei), local("DFKai-sb");
-				unicode-range: U+4E00-9FFF;
-			}
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<style>
+		@font-face {
+			font-family: custom-serif;
+			src: local(Microsoft JhengHei), local("DFKai-sb");
+			unicode-range: U+4E00-9FFF;
+		}
 
-			@font-face {
-				font-family: custom-serif;
-				src: local(Source Code Pro), local(Arial);
-				unicode-range: U+00-024F;
-			}
+		@font-face {
+			font-family: custom-serif;
+			src: local(Source Code Pro), local(Arial);
+			unicode-range: U+00-024F;
+		}
 
-			section {
-				font-family: custom-serif;
-			}
-		</style>
+		section {
+			font-family: custom-serif;
+		}
+	</style>
 
-		<!--[if lt IE 9]>
+	<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
-	</head>
+</head>
 
-	<body>
+<body>
 
-		<div class="reveal">
+	<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<p style="font-size: 120%;">
-						<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=4786954"> Enhancing Open
-							Source Software in Alignment with
-							CMMI-DEV</a></p>
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section>
+				<p style="font-size: 120%;">
+					<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=4786954"> Enhancing Open
+						Source Software in Alignment with
+						CMMI-DEV</a></p>
+				<br>
+				<p style="font-size: 80%;text-align:left;position: relative;left:20%;">
+					Christiane Gresse von Wangenheim,
 					<br>
-					<p style="font-size: 80%;text-align:left;position: relative;left:20%;">
-						Christiane Gresse von Wangenheim,
-						<br>
-						Jean Carlo Rossa
-						<br>
-						Hauck, Aldo von Wangenheim</p>
+					Jean Carlo Rossa
+					<br>
+					Hauck, Aldo von Wangenheim</p>
+			</section>
+
+			<section>
+				<h3>目錄</h3>
+				<br>
+				<ol>
+					<li>
+						<nobr>摘要</nobr>
+					</li>
+					<br>
+					<li>
+						<nobr>專案管理工具</nobr>
+					</li>
+					<br>
+					<li>
+						<nobr>補強dotProject</nobr>
+					</li>
+					<br>
+					<li>
+						<nobr>以CMMI-DEV為基準的輔助工具</nobr>
+					</li>
+					<br>
+					<li>
+						<nobr>它有用嗎?</nobr>
+					</li>
+				</ol>
+
+			</section>
+
+			<section>
+				<section>
+					<h3>摘要</h3>
 				</section>
 
 				<section>
-					<h3>目錄</h3>
-					<br>
-					<ol>
-						<li>
-							<nobr>摘要</nobr>
-						</li>
+					<p style="text-align:left;">
+						雖然項目監控(PMC)存在各種模型、方法和技術，但許多小型組織仍然難以有系統地將專案監控流程變成制度。
+					</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						2001年時，在巴西進行的一項調查顯示：
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						只有<strong style="color: #ff5555;">不到50％</strong>的小公司採用了文件化的管理流程。
+					</p>
+				</section>
+
+				<section>
+					<p>
+						然而
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						<nobr> 2007年時，小公司已佔據CMMI評估總數的<strong style="color: #ff5555;">約27％</strong>。</nobr>
+					</p>
+				</section>
+
+				<section>
+					<p>
+						大多數小公司的特點是成熟度較低
+					</p>
+					<p class="fragment fade-up">
+						因此改善PMC具有其重要性。
+					</p>
+				</section>
+
+				<section>
+					<p>
+						而透過專案管理工具的輔助
+					</p>
+					<p class="fragment fade-up">
+						便可以幫助小公司方便的建立流程
 						<br>
-						<li>
-							<nobr>專案管理工具</nobr>
-						</li>
+						以提高專案的效率和質量。
+					</p>
+				</section>
+
+				<section>
+					<p>
+						本篇論文分析了一些開源的線上專案管理工具
+					</p>
+					<p class="fragment fade-up">
+						以了解它們是怎麼提供符合
 						<br>
-						<li>
-							<nobr>補強dotProject</nobr>
-						</li>
+						CMMI for Development(CMMI-DEV)
 						<br>
-						<li>
-							<nobr>以CMMI-DEV為基準的輔助工具</nobr>
-						</li>
+						的輔助功能
+					</p>
+				</section>
+
+				<section>
+					<p>
+						並且利用分析結果為dotProject進行功能補強
+					</p>
+					<p class="fragment fade-up">
+						以改善其對PMC的支持
+					</p>
+				</section>
+
+				<section>
+					<p>
+						關於dotProject
+					</p>
+					<p class="fragment fade-up">
+						基於PHP的線上專案管理程式
+					</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h3>專案管理工具</h3>
+				</section>
+				<section>
+					<p>
+						現今已有許多專案管理工具
+					</p>
+					<p class="fragment fade-up">
+						但有許多工具與眾所周知的參考模型並<strong style="color: #48adff;">不一致</strong>
+					</p>
+				</section>
+				<section>
+					<p>
+						而標榜符合CMMI-DEV的管理工具，像是：
+					</p>
+					<p style="text-align:left;position: relative;left:40%;" class="fragment fade-up">
+						<a href="https://www.microtool.de/produkte/in-step-blue/">in-Step</a>
 						<br>
+						<a class="fragment fade-up" href="http://www.pragmasystems.com/">processMax</a>
+						<br>
+						<a class="fragment fade-up" href="https://polarion.plm.automation.siemens.com/">Polarion</a>
+						<br>
+					</p>
+				</section>
+				<section>
+					<p>
+						通常都不只提供專案管理功能
+					</p>
+					<p class="fragment fade-up">
+						還會包含需求管理、質量保證與配置管理等等
+						<br>
+						全面性的CMMI-DEV輔助功能。
+					</p>
+				</section>
+				<section>
+					<p>
+						但許多公司都有自己的開發流程工具
+					</p>
+					<p class="fragment fade-up">
+						反而不需要上述的集成工具
+					</p>
+				</section>
+				<section>
+					<p>
+						在這種情況下
+					</p>
+					<p class="fragment fade-up">
+						<strong style="color: #ffd904;">免費或開源的專案管理工具</strong>成了良好的替代方案
+					</p>
+					<p class="fragment fade-up">
+						即使這些工具不完全符合CMMI
+						<br>
+						使用者也可以輕鬆地修改它們以滿足自己的需求。
+					</p>
+				</section>
+				<section>
+					<span style="font-size: 80%;">當時(2007年11月)最流行的開源的專案管理工具</span>
+					<img width=" 90%" src="img/Table 1.png">
+				</section>
+				<section>
+					<p>表1.數據來源</p>
+					<p class="fragment fade-up" style="font-size: 80%;text-align:left;position: relative;">
+						依據2007年11月9日在<a href="http://sourceforge.net">http://sourceforge.net</a>上搜索的下載次數得知。
+						<br>
+						<br>
+						使用的搜尋關鍵字是"project management"，而且並沒有使用"desktop"或"groupware"。
+						<br>
+						<br>
+						項目類別是"project management"。
+						<br>
+						<br>
+						搜索結果返回了104個工具。
+					</p>
+				</section>
+				<section>
+					<p>本論文將專注在</p>
+					<p class="fragment fade-up">
+						能讓<strong style="color: #ffd904;">多個使用者</strong>
+					</p>
+					<p>
+						共同協作管理
+					</p>
+					<p class="fragment fade-up">
+						<strong style="color: #ffd904;">多個專案</strong>
+					</p>
+					<p>
+						的輔助工具
+					</p>
+				</section>
+				<section>
+					<p>經過評估後，發現表1.所列出的工具</p>
+					<p class="fragment fade-up">
+						都<strong style="color: #ff5555;">不完全支持</strong>符合CMMI-DEV的PMC
+					</p>
+					<p class="fragment fade-up">
+						像是
+						<br>
+						<p class="fragment fade-up" style="font-size:80%">
+							沒有工具能監控所有有關的專案參數
+						</p>
+						<p class="fragment fade-up" style="font-size:80%">
+							這些工具也都沒有涵蓋到實獲值管理
+							<br>
+							(Earned Value Management,EVM)
+						</p>
+					</p>
+				</section>
+				<section>
+					<p>而他們對專案規劃(PP)的支持度也不甚理想</p>
+					<p class="fragment fade-up">
+						主要缺點包括缺乏<strong title="績效評估的基準" style="color: #ffd904;">baselines</strong>的概念
+					</p>
+					<p class="fragment fade-up">
+						且工具僅考慮到重要專案參數的一部分。
+					</p>
+				</section>
+				<section>
+					<p>儘管如此</p>
+					<p class="fragment fade-up">
+						<strong style="color: #ffd904;">dotProject</strong>
+						和
+						<strong style="color: #ffd904;">open-project</strong>
+						<br>
+						為PP與PMC提供的管理功能已經算是較為完善了
+					</p>
+					<p class="fragment fade-up">
+						並藉由集成接口提供可擴展性
+					</p>
+					<p class="fragment fade-up">
+						此外，還提供能幫助使用者發展的框架
+					</p>
+				</section>
+				<section>
+					<p>因此，這兩個工具都具有活躍的大型社群</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h3>補強dotProject</h3>
+				</section>
+				<section>
+					<p>經過分析後，作者團隊選擇使用dotProject</p>
+					<p class="fragment fade-up">
+						然後為了與CMMI-DEV保持一致性
+						<br>
+						對dotProject進行了功能補強。
+					</p>
+				</section>
+				<section>
+					<p>dotProject版本是V2.0.4的標準版本</p>
+					<p class="fragment fade-up">
+						為保持現有模塊的完整性，團隊盡可能地減少修改
+						<br>
+						並將大多數補強功能作為新模塊實作。
+					</p>
+				</section>
+				<section>
+					系統架構
+					<img src="./img/Figure 1.png">
+				</section>
+				<section>
+					<h4>要補強的功能</h4>
+					<ol class="fragment fade-up">
 						<li>
-							<nobr>它有用嗎?</nobr>
+							Project Plan Baseline
+						</li>
+						<li>
+							Data Collection
+						</li>
+						<li>
+							EVM
+						</li>
+						<li>
+							Status Reporting
+						</li>
+						<li>
+							Status Meeting Support
 						</li>
 					</ol>
-
-				</section>
-
-				<section>
-					<section>
-						<h3>摘要</h3>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							雖然項目監控(PMC)存在各種模型、方法和技術，但許多小型組織仍然難以有系統地將專案監控流程變成制度。
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							2001年時，在巴西進行的一項調查顯示：
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							只有<strong style="color: #ff5555;">不到50％</strong>的小公司採用了文件化的管理流程。
-						</p>
-					</section>
-
-					<section>
-						<p>
-							然而
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							<nobr> 2007年時，小公司已佔據CMMI評估總數的<strong style="color: #ff5555;">約27％</strong>。</nobr>
-						</p>
-					</section>
-
-					<section>
-						<p>
-							大多數小公司的特點是成熟度較低
-						</p>
-						<p class="fragment fade-up">
-							因此改善PMC具有其重要性。
-						</p>
-					</section>
-
-					<section>
-						<p>
-							而透過專案管理工具的輔助
-						</p>
-						<p class="fragment fade-up">
-							便可以幫助小公司方便的建立流程
-							<br>
-							以提高專案的效率和質量。
-						</p>
-					</section>
-
-					<section>
-						<p>
-							本篇論文分析了一些開源的線上專案管理工具
-						</p>
-						<p class="fragment fade-up">
-							以了解它們是怎麼提供符合
-							<br>
-							CMMI for Development(CMMI-DEV)
-							<br>
-							的輔助功能
-						</p>
-					</section>
-
-					<section>
-						<p>
-							並且利用分析結果為dotProject進行功能補強
-						</p>
-						<p class="fragment fade-up">
-							以改善其對PMC的支持
-						</p>
-					</section>
-
-					<section>
-						<p>
-							關於dotProject
-						</p>
-						<p class="fragment fade-up">
-							基於PHP的線上專案管理程式
-						</p>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>專案管理工具</h3>
-					</section>
-					<section>
-						<p>
-							現今已有許多專案管理工具
-						</p>
-						<p class="fragment fade-up">
-							但有許多工具與眾所周知的參考模型並<strong style="color: #48adff;">不一致</strong>
-						</p>
-					</section>
-					<section>
-						<p>
-							而標榜符合CMMI-DEV的管理工具，像是：
-						</p>
-						<p style="text-align:left;position: relative;left:40%;" class="fragment fade-up">
-							<a href="https://www.microtool.de/produkte/in-step-blue/">in-Step</a>
-							<br>
-							<a class="fragment fade-up" href="http://www.pragmasystems.com/">processMax</a>
-							<br>
-							<a class="fragment fade-up" href="https://polarion.plm.automation.siemens.com/">Polarion</a>
-							<br>
-						</p>
-					</section>
-					<section>
-						<p>
-							通常都不只提供專案管理功能
-						</p>
-						<p class="fragment fade-up">
-							還會包含需求管理、質量保證與配置管理等等
-							<br>
-							全面性的CMMI-DEV輔助功能。
-						</p>
-					</section>
-					<section>
-						<p>
-							但許多公司都有自己的開發流程工具
-						</p>
-						<p class="fragment fade-up">
-							反而不需要上述的集成工具
-						</p>
-					</section>
-					<section>
-						<p>
-							在這種情況下
-						</p>
-						<p class="fragment fade-up">
-							<strong style="color: #ffd904;">免費或開源的專案管理工具</strong>成了良好的替代方案
-						</p>
-						<p class="fragment fade-up">
-							即使這些工具不完全符合CMMI
-							<br>
-							使用者也可以輕鬆地修改它們以滿足自己的需求。
-						</p>
-					</section>
-					<section>
-						<span style="font-size: 80%;">當時(2007年11月)最流行的開源的專案管理工具</span>
-						<img width=" 90%" src="img/Table 1.png">
-					</section>
-					<section>
-						<p>表1.數據來源</p>
-						<p class="fragment fade-up" style="font-size: 80%;text-align:left;position: relative;">
-							依據2007年11月9日在<a href="http://sourceforge.net">http://sourceforge.net</a>上搜索的下載次數得知。
-							<br>
-							<br>
-							使用的搜尋關鍵字是"project management"，而且並沒有使用"desktop"或"groupware"。
-							<br>
-							<br>
-							項目類別是"project management"。
-							<br>
-							<br>
-							搜索結果返回了104個工具。
-						</p>
-					</section>
-					<section>
-						<p>本論文將專注在</p>
-						<p class="fragment fade-up">
-							能讓<strong style="color: #ffd904;">多個使用者</strong>
-						</p>
-						<p>
-							共同協作管理
-						</p>
-						<p class="fragment fade-up">
-							<strong style="color: #ffd904;">多個專案</strong>
-						</p>
-						<p>
-							的輔助工具
-						</p>
-					</section>
-					<section>
-						<p>經過評估後，發現表1.所列出的工具</p>
-						<p class="fragment fade-up">
-							都<strong style="color: #ff5555;">不完全支持</strong>符合CMMI-DEV的PMC
-						</p>
-						<p class="fragment fade-up">
-							像是
-							<br>
-							<p class="fragment fade-up" style="font-size:80%">
-								沒有工具能監控所有有關的專案參數
-							</p>
-							<p class="fragment fade-up" style="font-size:80%">
-								這些工具也都沒有涵蓋到實獲值管理
-								<br>
-								(Earned Value Management,EVM)
-							</p>
-						</p>
-					</section>
-					<section>
-						<p>而他們對專案規劃(PP)的支持度也不甚理想</p>
-						<p class="fragment fade-up">
-							主要缺點包括缺乏<strong title="績效評估的基準" style="color: #ffd904;">baselines</strong>的概念
-						</p>
-						<p class="fragment fade-up">
-							且工具僅考慮到重要專案參數的一部分。
-						</p>
-					</section>
-					<section>
-						<p>儘管如此</p>
-						<p class="fragment fade-up">
-							<strong style="color: #ffd904;">dotProject</strong>
-							和
-							<strong style="color: #ffd904;">open-project</strong>
-							<br>
-							為PP與PMC提供的管理功能已經算是較為完善了
-						</p>
-						<p class="fragment fade-up">
-							並藉由集成接口提供可擴展性
-						</p>
-						<p class="fragment fade-up">
-							此外，還提供能幫助使用者發展的框架
-						</p>
-					</section>
-					<section>
-						<p>因此，這兩個工具都具有活躍的大型社群</p>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>補強dotProject</h3>
-					</section>
-					<section>
-						<p>經過分析後，作者團隊選擇使用dotProject</p>
-						<p class="fragment fade-up">
-							然後為了與CMMI-DEV保持一致性
-							<br>
-							對dotProject進行了功能補強。
-						</p>
-					</section>
-					<section>
-						<p>dotProject版本是V2.0.4的標準版本</p>
-						<p class="fragment fade-up">
-							為保持現有模塊的完整性，團隊盡可能地減少修改
-							<br>
-							並將大多數補強功能作為新模塊實作。
-						</p>
-					</section>
-					<section>
-						系統架構
-						<img src="./img/Figure 1.png">
-					</section>
-					<section>
-						<h4>要補強的功能</h4>
-						<ol class="fragment fade-up">
-							<li>
-								Project Plan Baseline
-							</li>
-							<li>
-								Data Collection
-							</li>
-							<li>
-								EVM
-							</li>
-							<li>
-								Status Reporting
-							</li>
-							<li>
-								Status Meeting Support
-							</li>
-						</ol>
-					</section>
-					<section>
-						<h4>要補強的功能</h4>
-						<ol class="fragment fade-up" start="7">
-							<li>
-								Risk Management
-							</li>
-							<li>
-								Data Management
-							</li>
-							<li>
-								Project Control
-							</li>
-							<li>
-								Senior Management Support
-							</li>
-						</ol>
-					</section>
-					<section>
-						<h4>Project Plan Baseline</h4>
-						<p class="fragment fade-up">
-							專案經理可以將專案計劃的各項參數
-							<br>
-							(包括計劃，預期工作量，成本和資源分配)
-							<br>
-							設為基準
-						</p>
-						<p class="fragment fade-up">
-							該模塊還會保存Baseline的歷史記錄
-							<br>
-							以便讓專案經理監控Baseline變更的數量。
-						</p>
-					</section>
-					<section>
-						<h4>Data Collection</h4>
-						<p class="fragment fade-up">
-							藉由Task模塊和TaskTracker增強數據收集功能
-							<br>
-							讓團員能夠設定任務的完成度
-						</p>
-						<p class="fragment fade-up">
-							專案經理還可通過會議記錄收集有關的參數數據
-						</p>
-					</section>
-					<section>
-						<h4>EVM</h4>
-						<p class="fragment fade-up">
-							改進要點：使用EVM分析項目績效
-						</p>
-						<p class="fragment fade-up">
-							包括
-						</p>
-						<ul class="fragment fade-up">
-							<li>
-								計劃執行績效指數(SPI)
-							</li>
-							<li>
-								成本績效指數(CPI)
-							</li>
-							<li>
-								完工時間估算(EAC)
-							</li>
-						</ul>
-					</section>
-					<section>
-						<p>
-							然而，因為是通過百分比分配資源
-						</p>
-						<p class="fragment fade-up">
-							<nobr>而不是依據專案經理指定每個任務/資源計劃的工時數</nobr>
-						</p>
-						<p class="fragment fade-up">
-							<nobr>使其阻礙了使用者在估計值和實際值之間的準確比較</nobr>
-						</p>
-					</section>
-					<section>
-						<p>
-							<nobr>為此，研究團隊調整了dotProject核心的規劃模塊</nobr>
-						</p>
-						<p class="fragment fade-up">
-							<nobr>將資源分配的方式改成用工時數表現</nobr>
-						</p>
-					</section>
-					<section>
-						<p>
-							另外還增加了
-						</p>
-						<ul>
-							<li class="fragment fade-up">
-								成員工時上限
-							</li>
-							<li class="fragment fade-up">
-								任務進度百分比的歷史記錄
-							</li>
-							<li class="fragment fade-up">
-								記錄每個團隊成員每天可用的工時數
-							</li>
-						</ul>
-						<p class="fragment fade-up">
-							等等功能
-						</p>
-					</section>
-					<section>
-						<h4>Status Reporting</h4>
-						<p class="fragment fade-up">
-							增加狀態報告可顯示的內容
-						</p>
-					</section>
-					<section>
-						<img src="./img/Figure 2.png" width="70%">
-					</section>
-					<section>
-						<h4>Status Meeting Support</h4>
-						<p class="fragment fade-up">
-							用於記錄會議記錄
-							<br>
-							並自動將會議記錄鏈接到相應的專案狀態報告
-						</p>
-						<p class="fragment fade-up">
-							此功能還會讓dotProject通過電子郵件
-							<br>
-							自動將會議記錄分發給與會者
-						</p>
-					</section>
-					<section>
-						<h4>Risk Management</h4>
-						<p class="fragment fade-up">
-							除了原本註冊風險的基本功能
-						</p>
-						<p class="fragment fade-up">
-							另外增加了<strong style="color: #ff5555">定義風險暴露和優先級</strong>的功能
-							<br>
-							並將糾正措施與風險聯繫起來
-							<br>
-							增強了對風險構成的描述。
-						</p>
-					</section>
-					<section>
-						<h4>Data Management</h4>
-						<p class="fragment fade-up">
-							為讓團隊方便管理專案數據
-							<br>
-							在dotProject上傳文件的基礎功能上增加了
-						</p>
-						<p class="fragment fade-up">
-							在修改工作產品時<strong style="color: #55ff55">自動通知</strong>所有註冊的接收者
-							<br>
-							&
-							<br>
-							專案經理可提前規劃工作產品
-							<br>
-							這兩項功能
-						</p>
-					</section>
-					<section>
-						<h4>Project Control</h4>
-						<p class="fragment fade-up">
-							實作對定義議題和管理矯正行動的支持
-						</p>
-						<p class="fragment fade-up">
-							1.確定問題後<br>專案經理可以編寫指定專案和任務的問題<br>、原因和計劃的矯正行動
-						</p>
-						<p class="fragment fade-up">
-							2.對於每個矯正行動<br>程式都會記錄負責計劃的結束日期<br>並估算解決問題所需的相應工作量
-						</p>
-					</section>
-					<section>
-						<h4>Senior Management Support</h4>
-						<p class="fragment fade-up">
-							添加了一個模塊來支持
-							<br>
-							執行和記錄與高級管理層的狀態會議
-						</p>
-					</section>
-					<section>
-						Senior Management Support
-						<img width="80%" src="./img/Figure 3.png">
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>以CMMI-DEV為基準的輔助工具</h3>
-					</section>
-
-					<section>
-						<img width="100%" src="./img/Table 2.png">
-						<nobr style="font-size: 80%;"> N-不支援, P-部分支援, L-大部分支援, F-完全支援</nobr>
-					</section>
-					<section>
-						<p>
-							研究團隊認為即使完全支援所有功能
-						</p>
-						<p class="fragment fade-up">
-							也無法確保使用者會完全按照規範走
-						</p>
-					</section>
-					<section>
-						<p>
-							因此
-						</p>
-						<p class="fragment fade-up">
-							只做到在使用者想完全按照規範時
-						</p>
-						<p class="fragment fade-up">
-							dotProject+能給予最低限度的支援
-						</p>
-					</section>
-					<section>
-						<p>
-							也就是說
-						</p>
-						<p class="fragment fade-up">
-							可能要拐些彎路
-						</p>
-						<p class="fragment fade-up">
-							但要現有功能都還是能達到使用者的需求
-						</p>
-					</section>
-					<section>
-						<h4>缺失</h4>
-						<p class="fragment fade-up">
-							雖然dotProject+已經支援大部分的功能了
-						</p>
-						<p class="fragment fade-up">
-							但還是有以下幾點沒有做到
-						</p>
-					</section>
-					<section>
-						<h4>缺失</h4>
-						<ol>
-							<li class="fragment fade-up">
-								無法直接或通過其他工具收集有關工作產品屬性的數據
-							</li>
-							<li class="fragment fade-up">
-								雖然專案經理可以使用支持進度審核，但目前沒有為里程碑審核提供具體支持
-							</li>
-						</ol>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>它有用嗎?</h3>
-					</section>
-					<section>
-						<p>研究團隊將dotProject+應用於<br>Universidade Federal de Santa Catarina<br>軟體研發團隊Cyclops的產品開發部門</p>
-					</section>
-					<section>
-						<p>為了證明dotProject+的實用性</p>
-						<p class="fragment fade-up">
-							<nobr>在此分析了推動專案管理中組織績效的三個關鍵維度</nobr>
-						</p>
-					</section>
-					<section>
-						<h4>1.Process Effectiveness</h4>
-						<p class="fragment fade-up">
-							雖然流程改進不僅需要工具，但研究團隊發現
-						</p>
-						<p class="fragment fade-up">
-							工具的支持對於PMC流程運行非常重要。
-						</p>
-					</section>
-					<section>
-						<p>
-							在使用dotProject V2.0.4的時候
-						</p>
-						<p class="fragment fade-up">
-							手動計算EVM參數之類的小問題會阻礙流程的建立
-						</p>
-					</section>
-					<section>
-						<p>
-							然而當改成使用dotProject+
-						</p>
-						<p class="fragment fade-up">
-							就能有效地建立流程
-						</p>
-					</section>
-					<section>
-						<p>
-							並於七個月後
-						</p>
-						<p class="fragment fade-up">
-							系統性的監控其大部分專案。
-						</p>
-					</section>
-					<section>
-						<p>
-							專案經理主要了解專案狀態可見性和發展的好處
-						</p>
-						<p class="fragment fade-up">
-							管理階層則認為在運營層面和戰略決策方面能帶來好的幫助
-						</p>
-					</section>
-					<section>
-						<p>
-							此外
-						</p>
-						<p class="fragment fade-up">
-							部分自動化任務和協作整合來自<br>各利益關係人的數據有助於提高流程效率
-						</p>
-					</section>
-					<section>
-						<p>
-							根據組織流程定制的工具還能<br>幫助整個組織的流程製度化
-						</p>
-					</section>
-					<section>
-						<h4>2.Process Capability</h4>
-						<p class="fragment fade-up">
-							最開始
-							<br>
-							由於專案成員缺乏關於流程和工具的知識和動機
-							<br>
-							因此出現許多不符合的流程的行為
-						</p>
-					</section>
-					<section>
-						<p>
-							為此
-						</p>
-						<p class="fragment fade-up">
-							研究團隊為組織進行了額外的培訓
-							<br>
-							並每月進行內部審核
-						</p>
-						<p class="fragment fade-up">
-							這減少了<strong style="color: #ff5555">20％</strong>的不合格
-						</p>
-					</section>
-					<section>
-						<h4>3.Project Effectiveness</h4>
-						<p class="fragment fade-up">
-							建立PMC流程有助於組織在<br>
-							計劃成本和工作方面提高項目績效
-						</p>
-					</section>
-					<section>
-						<p>
-							專案經理更快地察覺並處理了專案計劃的偏差
-						</p>
-						<p class="fragment fade-up">
-							組織中止了之前未被識別的不成功項目
-						</p>
-					</section>
-					<section>
-						<h4>改進</h4>
-						<p class="fragment fade-up">
-							實施對專案啟動和結束階段的支持
-							<br>
-							與對PP的進一步改進
-						</p>
-					</section>
-					<section>
-						<h4>總結</h4>
-						<p class="fragment fade-up">
-							開源軟體雖然可以作為低成本的替代方案
-						</p>
-						<p class="fragment fade-up">
-							然而大多都會面臨文檔不完整
-							<br>
-							或是功能缺失的問題
-						</p>
-					</section>
-					<section>
-						<p>
-							這會增加理解現其基本概念與功能所需的時間
-						</p>
-						<p class="fragment fade-up">
-							像是開發團隊就耗費了700人工時長來強化dotProject+
-						</p>
-					</section>
-					<section>
-						<p>
-							但像這次強化dotProject一樣
-						</p>
-						<p class="fragment fade-up">
-							通過一次性的努力就能大幅減少使用者的困擾
-						</p>
-					</section>
 				</section>
 				<section>
-					<section>
-						<h3>心得</h3>
-					</section>
-					<section>
-						<p>
-							開源軟體是個大坑
-						</p>
-						<p class="fragment fade-up">
-							常常會有文檔不明確、功能缺失、不明bug等等問題
-						</p>
-					</section>
-					<section>
-						<p>
-							但只要有夠多人的貢獻
-						</p>
-						<p class="fragment fade-up">
-							這些缺點也都能填補
-						</p>
-					</section>
-					<section>
-						<p>
-							開源軟體依舊是人們一個低成本的選擇
-						</p>
-						<p class="fragment fade-up">
-							而且易於擴充
-						</p>
-					</section>
-					<section>
-						<p>
-							希望能為開源社群貢獻一份心力
-						</p>
-					</section>
-					<section>
-						<h2>
-							完
-						</h2>
-					</section>
+					<h4>要補強的功能</h4>
+					<ol class="fragment fade-up" start="7">
+						<li>
+							Risk Management
+						</li>
+						<li>
+							Data Management
+						</li>
+						<li>
+							Project Control
+						</li>
+						<li>
+							Senior Management Support
+						</li>
+					</ol>
 				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
-							(default)</a> -
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
+				<section>
+					<h4>Project Plan Baseline</h4>
+					<p class="fragment fade-up">
+						專案經理可以將專案計劃的各項參數
 						<br>
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+						(包括計劃，預期工作量，成本和資源分配)
+						<br>
+						設為基準
+					</p>
+					<p class="fragment fade-up">
+						該模塊還會保存Baseline的歷史記錄
+						<br>
+						以便讓專案經理監控Baseline變更的數量。
 					</p>
 				</section>
-			</div>
+				<section>
+					<h4>Data Collection</h4>
+					<p class="fragment fade-up">
+						藉由Task模塊和TaskTracker增強數據收集功能
+						<br>
+						讓團員能夠設定任務的完成度
+					</p>
+					<p class="fragment fade-up">
+						專案經理還可通過會議記錄收集有關的參數數據
+					</p>
+				</section>
+				<section>
+					<h4>EVM</h4>
+					<p class="fragment fade-up">
+						改進要點：使用EVM分析項目績效
+					</p>
+					<p class="fragment fade-up">
+						包括
+					</p>
+					<ul class="fragment fade-up">
+						<li>
+							計劃執行績效指數(SPI)
+						</li>
+						<li>
+							成本績效指數(CPI)
+						</li>
+						<li>
+							完工時間估算(EAC)
+						</li>
+					</ul>
+				</section>
+				<section>
+					<p>
+						然而，因為是通過百分比分配資源
+					</p>
+					<p class="fragment fade-up">
+						<nobr>而不是依據專案經理指定每個任務/資源計劃的工時數</nobr>
+					</p>
+					<p class="fragment fade-up">
+						<nobr>使其阻礙了使用者在估計值和實際值之間的準確比較</nobr>
+					</p>
+				</section>
+				<section>
+					<p>
+						<nobr>為此，研究團隊調整了dotProject核心的規劃模塊</nobr>
+					</p>
+					<p class="fragment fade-up">
+						<nobr>將資源分配的方式改成用工時數表現</nobr>
+					</p>
+				</section>
+				<section>
+					<p>
+						另外還增加了
+					</p>
+					<ul>
+						<li class="fragment fade-up">
+							成員工時上限
+						</li>
+						<li class="fragment fade-up">
+							任務進度百分比的歷史記錄
+						</li>
+						<li class="fragment fade-up">
+							記錄每個團隊成員每天可用的工時數
+						</li>
+					</ul>
+					<p class="fragment fade-up">
+						等等功能
+					</p>
+				</section>
+				<section>
+					<h4>Status Reporting</h4>
+					<p class="fragment fade-up">
+						增加狀態報告可顯示的內容
+					</p>
+				</section>
+				<section>
+					<img src="./img/Figure 2.png" width="70%">
+				</section>
+				<section>
+					<h4>Status Meeting Support</h4>
+					<p class="fragment fade-up">
+						用於記錄會議記錄
+						<br>
+						並自動將會議記錄鏈接到相應的專案狀態報告
+					</p>
+					<p class="fragment fade-up">
+						此功能還會讓dotProject通過電子郵件
+						<br>
+						自動將會議記錄分發給與會者
+					</p>
+				</section>
+				<section>
+					<h4>Risk Management</h4>
+					<p class="fragment fade-up">
+						除了原本註冊風險的基本功能
+					</p>
+					<p class="fragment fade-up">
+						另外增加了<strong style="color: #ff5555">定義風險暴露和優先級</strong>的功能
+						<br>
+						並將糾正措施與風險聯繫起來
+						<br>
+						增強了對風險構成的描述。
+					</p>
+				</section>
+				<section>
+					<h4>Data Management</h4>
+					<p class="fragment fade-up">
+						為讓團隊方便管理專案數據
+						<br>
+						在dotProject上傳文件的基礎功能上增加了
+					</p>
+					<p class="fragment fade-up">
+						在修改工作產品時<strong style="color: #55ff55">自動通知</strong>所有註冊的接收者
+						<br>
+						&
+						<br>
+						專案經理可提前規劃工作產品
+						<br>
+						這兩項功能
+					</p>
+				</section>
+				<section>
+					<h4>Project Control</h4>
+					<p class="fragment fade-up">
+						實作對定義議題和管理矯正行動的支持
+					</p>
+					<p class="fragment fade-up">
+						1.確定問題後<br>專案經理可以編寫指定專案和任務的問題<br>、原因和計劃的矯正行動
+					</p>
+					<p class="fragment fade-up">
+						2.對於每個矯正行動<br>程式都會記錄負責計劃的結束日期<br>並估算解決問題所需的相應工作量
+					</p>
+				</section>
+				<section>
+					<h4>Senior Management Support</h4>
+					<p class="fragment fade-up">
+						添加了一個模塊來支持
+						<br>
+						執行和記錄與高級管理層的狀態會議
+					</p>
+				</section>
+				<section>
+					Senior Management Support
+					<img width="80%" src="./img/Figure 3.png">
+				</section>
+			</section>
 
+			<section>
+				<section>
+					<h3>以CMMI-DEV為基準的輔助工具</h3>
+				</section>
+
+				<section>
+					<img width="100%" src="./img/Table 2.png">
+					<nobr style="font-size: 80%;"> N-不支援, P-部分支援, L-大部分支援, F-完全支援</nobr>
+				</section>
+				<section>
+					<p>
+						研究團隊認為即使完全支援所有功能
+					</p>
+					<p class="fragment fade-up">
+						也無法確保使用者會完全按照規範走
+					</p>
+				</section>
+				<section>
+					<p>
+						因此
+					</p>
+					<p class="fragment fade-up">
+						只做到在使用者想完全按照規範時
+					</p>
+					<p class="fragment fade-up">
+						dotProject+能給予最低限度的支援
+					</p>
+				</section>
+				<section>
+					<p>
+						也就是說
+					</p>
+					<p class="fragment fade-up">
+						可能要拐些彎路
+					</p>
+					<p class="fragment fade-up">
+						但要現有功能都還是能達到使用者的需求
+					</p>
+				</section>
+				<section>
+					<h4>缺失</h4>
+					<p class="fragment fade-up">
+						雖然dotProject+已經支援大部分的功能了
+					</p>
+					<p class="fragment fade-up">
+						但還是有以下幾點沒有做到
+					</p>
+				</section>
+				<section>
+					<h4>缺失</h4>
+					<ol>
+						<li class="fragment fade-up">
+							無法直接或通過其他工具收集有關工作產品屬性的數據
+						</li>
+						<li class="fragment fade-up">
+							雖然專案經理可以使用支持進度審核，但目前沒有為里程碑審核提供具體支持
+						</li>
+					</ol>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h3>它有用嗎?</h3>
+				</section>
+				<section>
+					<p>研究團隊將dotProject+應用於<br>Universidade Federal de Santa Catarina<br>軟體研發團隊Cyclops的產品開發部門</p>
+				</section>
+				<section>
+					<p>為了證明dotProject+的實用性</p>
+					<p class="fragment fade-up">
+						<nobr>在此分析了推動專案管理中組織績效的三個關鍵維度</nobr>
+					</p>
+				</section>
+				<section>
+					<h4>1.Process Effectiveness</h4>
+					<p class="fragment fade-up">
+						雖然流程改進不僅需要工具，但研究團隊發現
+					</p>
+					<p class="fragment fade-up">
+						工具的支持對於PMC流程運行非常重要。
+					</p>
+				</section>
+				<section>
+					<p>
+						在使用dotProject V2.0.4的時候
+					</p>
+					<p class="fragment fade-up">
+						手動計算EVM參數之類的小問題會阻礙流程的建立
+					</p>
+				</section>
+				<section>
+					<p>
+						然而當改成使用dotProject+
+					</p>
+					<p class="fragment fade-up">
+						就能有效地建立流程
+					</p>
+				</section>
+				<section>
+					<p>
+						並於七個月後
+					</p>
+					<p class="fragment fade-up">
+						系統性的監控其大部分專案。
+					</p>
+				</section>
+				<section>
+					<p>
+						專案經理主要了解專案狀態可見性和發展的好處
+					</p>
+					<p class="fragment fade-up">
+						管理階層則認為在運營層面和戰略決策方面能帶來好的幫助
+					</p>
+				</section>
+				<section>
+					<p>
+						此外
+					</p>
+					<p class="fragment fade-up">
+						部分自動化任務和協作整合來自<br>各利益關係人的數據有助於提高流程效率
+					</p>
+				</section>
+				<section>
+					<p>
+						根據組織流程定制的工具還能<br>幫助整個組織的流程制度化
+					</p>
+				</section>
+				<section>
+					<h4>2.Process Capability</h4>
+					<p class="fragment fade-up">
+						最開始
+						<br>
+						由於專案成員缺乏關於流程和工具的知識和動機
+						<br>
+						因此出現許多不符合的流程的行為
+					</p>
+				</section>
+				<section>
+					<p>
+						為此
+					</p>
+					<p class="fragment fade-up">
+						研究團隊為組織進行了額外的培訓
+						<br>
+						並每月進行內部審核
+					</p>
+					<p class="fragment fade-up">
+						這減少了<strong style="color: #ff5555">20％</strong>的不合格
+					</p>
+				</section>
+				<section>
+					<h4>3.Project Effectiveness</h4>
+					<p class="fragment fade-up">
+						建立PMC流程有助於組織在<br>
+						計劃成本和工作方面提高項目績效
+					</p>
+				</section>
+				<section>
+					<p>
+						專案經理更快地察覺並處理了專案計劃的偏差
+					</p>
+					<p class="fragment fade-up">
+						組織中止了之前未被識別的不成功項目
+					</p>
+				</section>
+				<section>
+					<h4>改進</h4>
+					<p class="fragment fade-up">
+						實施對專案啟動和結束階段的支持
+						<br>
+						與對PP的進一步改進
+					</p>
+				</section>
+				<section>
+					<h4>總結</h4>
+					<p class="fragment fade-up">
+						開源軟體雖然可以作為低成本的替代方案
+					</p>
+					<p class="fragment fade-up">
+						然而大多都會面臨文檔不完整
+						<br>
+						或是功能缺失的問題
+					</p>
+				</section>
+				<section>
+					<p>
+						這會增加理解現其基本概念與功能所需的時間
+					</p>
+					<p class="fragment fade-up">
+						像是開發團隊就耗費了700人工時長來強化dotProject+
+					</p>
+				</section>
+				<section>
+					<p>
+						但像這次強化dotProject一樣
+					</p>
+					<p class="fragment fade-up">
+						通過一次性的努力就能大幅減少使用者的困擾
+					</p>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>心得</h3>
+				</section>
+				<section>
+					<p>
+						開源軟體是個大坑
+					</p>
+					<p class="fragment fade-up">
+						常常會有文檔不明確、功能缺失、不明bug等等問題
+					</p>
+				</section>
+				<section>
+					<p>
+						但只要有夠多人的貢獻
+					</p>
+					<p class="fragment fade-up">
+						這些缺點也都能填補
+					</p>
+				</section>
+				<section>
+					<p>
+						開源軟體依舊是人們一個低成本的選擇
+					</p>
+					<p class="fragment fade-up">
+						而且易於擴充
+					</p>
+				</section>
+				<section>
+					<p>
+						希望能為開源社群貢獻一份心力
+					</p>
+				</section>
+				<section>
+					<h2>
+						完
+					</h2>
+				</section>
+			</section>
+
+			<section id="transitions">
+				<h2>Transition Styles</h2>
+				<p>
+					You can select from different transitions, like: <br>
+					<a href="?transition=none#/transitions">None</a> -
+					<a href="?transition=fade#/transitions">Fade</a> -
+					<a href="?transition=slide#/transitions">Slide</a> -
+					<a href="?transition=convex#/transitions">Convex</a> -
+					<a href="?transition=concave#/transitions">Concave</a> -
+					<a href="?transition=zoom#/transitions">Zoom</a>
+				</p>
+			</section>
+
+			<section id="themes">
+				<h2>Themes</h2>
+				<p>
+					reveal.js comes with a few themes built in: <br>
+					<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
+						(default)</a> -
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
+					<br>
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+				</p>
+			</section>
 		</div>
 
-		<script src="js/reveal.js"></script>
+	</div>
 
-		<script>
+	<script src="js/reveal.js"></script>
 
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				center: true,
-				hash: true,
+	<script>
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			center: true,
+			hash: true,
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-					{ src: 'plugin/highlight/highlight.js', async: true },
-					{ src: 'plugin/search/search.js', async: true },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-		</script>
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'plugin/highlight/highlight.js', async: true },
+				{ src: 'plugin/search/search.js', async: true },
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+				{ src: 'plugin/notes/notes.js', async: true }
+			]
+		});
 
-	</body>
+	</script>
+
+</body>
 
 </html>
