@@ -29,6 +29,10 @@
 			link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName('head')[0].appendChild(link);
 		</script>
+		<script type="text/javascript"
+			src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			</script>
+
 		<style>
 			@font-face {
 				font-family: custom-serif;
@@ -234,6 +238,7 @@
 						</p>
 					</section>
 				</section>
+
 				<section>
 					<section>
 						<h3>貢獻</h3>
@@ -280,6 +285,98 @@
 						</p>
 						<p style="text-align:left;" class="fragment fade-up">
 							像是對L = 2048、D = 512的序列，每層的記憶體使用量就從8.5GB減少到4.2MB
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>模型架構</h3>
+					</section>
+
+					<section>
+						<h4>資料格式</h4>
+					</section>
+
+					<section>
+						<p style="text-align:left;">
+							為了採用語言建模的方式來訓練音樂生成模型
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							因此將音樂轉成離散序列表示
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							其中，「詞彙」是由資料集決定的
+						</p>
+					</section>
+
+					<section>
+						<p style="text-align:left;">
+							不同的數據集用不同方法將和絃音樂轉成單一串流的離散音樂序列
+						</p>
+					</section>
+
+					<section>
+						<p style="text-align:left;">
+							例如，JSB Chorale是由四部合唱組成的
+							<br>
+							音樂資料集
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							他的資料就是以矩陣表示
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							矩陣的<strong style="color: aqua">行</strong>對應<strong style="color: aqua">聲音</strong>，而<strong
+								style="color: aqua">列</strong>則對應<strong style="color: aqua">離散化為16分音符的時間</strong>
+						</p>
+					</section>
+
+					<section>
+						<p style="text-align:left;">
+							JSB Chorale矩陣中的元素則表示演奏的<strong style="color: #ff5555">音高</strong>
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							而要如何將矩陣序列化呢?
+						</p>
+					</section>
+
+					<section>
+						<p style="text-align:left;">
+							JSB Chorale矩陣中的元素則表示演奏的<strong style="color: #ff5555">音高</strong>
+
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							而要如何將矩陣序列化呢?
+						</p>
+					</section>
+
+					<section>
+						<img src="./img/Figure 1.png" width="70%" />
+						<div class="fragment fade-up">
+							等同矩陣
+						</div>
+						<p style="font-size: 70%" class="fragment fade-up">\begin{bmatrix}
+							S_1:67 & S_2:67 & S_3:67 & S_4:67 \\[0.3em]
+							A_1:62 & A_2:62 & A_3:62 & A_4:62 \\[0.3em]
+							T_1:59 & T_2:59 & T_3:57 & T_4:57 \\[0.3em]
+							B_1:43 & B_2:43 & B_3:45 & B_4:45
+							\end{bmatrix}</p>
+					</section>
+
+					<section>
+						<p style="text-align:left;">
+							序列化的方式是由上而下，由左至右掃描矩陣
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							因此前面的矩陣在序列化後會變成
+						</p>
+						<p class="fragment fade-up">
+							$$
+							S_1,A_1,T_1,B_1,...,S_4,A_4,T_4,B_4
+							$$
+						</p>
+						<p style="font-size: 70%" style="text-align:left;" class="fragment fade-up">
+							註:女高音(S)，中音(A)，男高音(T)，低音(B)
 						</p>
 					</section>
 				</section>
