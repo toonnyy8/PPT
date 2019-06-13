@@ -602,13 +602,17 @@
 					</section>
 					<section>
 						<p style="text-align:left;">
-							至於\({Q}^h、{K}^h\)與\({V}^h\)則如下面說明
+							接著，將每個\(Z_h\)串接起來
+							$$
+							Z=Concat(Z_1,Z_2,...,Z_h)
+							$$
 						</p>
 
-						<p class="fragment fade-up">
-							\(X=(x_1,x_2,...,x_{L-1},x_L)\)
-							<br>
-							\(x_n\)是D維詞彙向量，因此\(X\)是大小為LD的矩陣
+						<p style="text-align:left;" class="fragment fade-up">
+							就可以將\(Z\)送至FFN了
+							$$
+							FFN(Z)=max(0,ZX_1+b_1)W_2+b_2
+							$$
 						</p>
 					</section>
 				</section>
