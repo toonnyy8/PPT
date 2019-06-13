@@ -561,7 +561,7 @@
 							Attention({Q}^h,{K}^h,{V}^h)=Softmax(\frac{{Q}^h{{K}^h}^T}{\sqrt{D_h}}){V}^h
 							$$
 							$$
-							{Z}^h=Attention({Q}^h,{K}^h,{V}^h)
+							{head}^h=Attention({Q}^h,{K}^h,{V}^h)
 							$$
 						</p>
 					</section>
@@ -602,16 +602,16 @@
 					</section>
 					<section>
 						<p style="text-align:left;">
-							接著，將每個\(Z_h\)串接起來
+							接著，將每個\(head_h\)串接起來
 							$$
-							Z=Concat(Z_1,Z_2,...,Z_h)
+							Head=Concat(head_1,head_2,...,head_h)
 							$$
 						</p>
 
 						<p style="text-align:left;" class="fragment fade-up">
-							就可以將\(Z\)送至FFN了
+							就可以將\(Head\)送至FFN了
 							$$
-							FFN(Z)=max(0,ZX_1+b_1)W_2+b_2
+							FFN(Head)=max(0,Head*W_1+b_1)W_2+b_2
 							$$
 						</p>
 					</section>
@@ -630,13 +630,30 @@
 						</p>
 						<p style="text-align:left;" class="fragment fade-up">
 							後來Shaw等人於2018年推出相對位置標定方法
-							<br>
-							公式如下
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							但其\(O({L}^2D)\)的記憶體複雜度實在不適合用在長序列的問題上
+						</p>
+					</section>
+					<section>
+						<p style="text-align:left;">
+							Shaw推出的公式大致如下
 						</p>
 						<p class="fragment fade-up">
 							$$
 							RelativeAttention=Softmax(\frac{Q{K}^T+{S}^{rel}}{\sqrt{D_h}})V
 							$$
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							其中的\({S}^{rel}\)是\({L}^2\)的矩陣
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							並且對每個\(head\)都會進行上述運算
+						</p>
+					</section>
+					<section>
+						<p style="text-align:left;">
+							因此，本篇論文在這提出了新的計算方式
 						</p>
 					</section>
 				</section>
