@@ -615,6 +615,30 @@
 							$$
 						</p>
 					</section>
+
+					<section>
+						<h4>
+							相對位置的self-attention
+						</h4>
+					</section>
+
+					<section>
+						<p style="text-align:left;">
+							原版的Transformer是利用sin函數
+							<br>
+							來進行時序標定
+						</p>
+						<p style="text-align:left;" class="fragment fade-up">
+							後來Shaw等人於2018年推出相對位置標定方法
+							<br>
+							公式如下
+						</p>
+						<p class="fragment fade-up">
+							$$
+							RelativeAttention=Softmax(\frac{Q{K}^T+{S}^{rel}}{\sqrt{D_h}})V
+							$$
+						</p>
+					</section>
 				</section>
 
 				<section id="transitions">
