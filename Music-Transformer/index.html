@@ -668,11 +668,36 @@
 					</p>
 				</section>
 				<section>
-					相對區域Attention
-					<img src="img/Figure 5.png">
+					<ol>
+						<li>
+							在\(Q{{E}^r}^T\)最左邊連接一個長度為\(L\)的虛擬陣列
+						</li>
+						<li class="fragment fade-up">
+							將其重塑成\((L+1,L)\)的矩陣
+							<ol style=" list-style-type:lower-alpha">
+								<li class="fragment fade-up">
+									先將其展平
+								</li>
+								<li class="fragment fade-up">
+									每\(L\)個元素分成一份後疊合在一起
+								</li>
+							</ol>
+						</li>
+						<li class="fragment fade-up">
+							替除掉第一行，即可得到\({S}^{rel}\)
+						</li>
+					</ol>
 				</section>
 				<section>
-					1.將長度為\(N\)的陣列填充至最右邊的列
+					相對區域Attention
+					<img src="img/Figure 5.png">
+					<p style="text-align:left;font-size:70%">
+						註:有些論文中有使用Local Attention(ex:<a href="https://arxiv.org/abs/1802.05751">Image Transformer</a>、<a href="https://arxiv.org/abs/1801.10198">Generating Wikipedia by Summarizing Long Sequences</a>)，
+						因此本論文在這也有提出用於Local Attention的相對關係標定方式
+					</p>
+				</section>
+				<section>
+					1.將長度為\(N\)的陣列填充至\(Q{{E}^r}^T\)最右邊的列
 					<img src="img/Figure 6.png" width="60%">
 				</section>
 				<section>
