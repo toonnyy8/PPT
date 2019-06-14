@@ -1,745 +1,756 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+	<meta charset="utf-8">
 
-		<title>Music Transformer報告</title>
+	<title>Music Transformer報告</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
 
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css" id="theme">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement('link');
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName('head')[0].appendChild(link);
-		</script>
-		<script type="text/javascript"
-			src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-			</script>
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
 
-		<style>
-			@font-face {
-				font-family: custom-serif;
-				src: local(Microsoft JhengHei), local("DFKai-sb");
-				unicode-range: U+4E00-9FFF;
-			}
+	<style>
+		@font-face {
+			font-family: custom-serif;
+			src: local(Microsoft JhengHei), local("DFKai-sb");
+			unicode-range: U+4E00-9FFF;
+		}
 
-			@font-face {
-				font-family: custom-serif;
-				src: local(Source Code Pro), local(Arial);
-				unicode-range: U+00-024F;
-			}
+		@font-face {
+			font-family: custom-serif;
+			src: local(Source Code Pro), local(Arial);
+			unicode-range: U+00-024F;
+		}
 
-			section {
-				font-family: custom-serif;
-			}
-		</style>
+		section {
+			font-family: custom-serif;
+		}
+	</style>
 
-		<!--[if lt IE 9]>
+	<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
-	</head>
+</head>
 
-	<body>
+<body>
 
-		<div class="reveal">
+	<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section>
+				<p style="font-size: 120%;">
+					<a href="https://arxiv.org/abs/1809.04281">Music Transformer</a>
+				</p>
+				<br>
+				<p style="font-size: 70%;text-align:left;position: relative;left:10%;">
+					<nobr>Cheng-Zhi Anna Huang∗</nobr>,
+					<nobr>Ashish Vaswani</nobr>,
+					<nobr>Jakob Uszkoreit</nobr>,
+					<nobr>Noam Shazeer</nobr>,
+					<nobr>Ian Simon</nobr>,
+					<nobr>Curtis Hawthorne</nobr>,
+					<nobr>Andrew M. Dai</nobr>,
+					<nobr>Matthew D. Hoffman</nobr>,
+					<nobr>Monica Dinculescu</nobr>,
+					<nobr>Douglas Eck</nobr>
+				</p>
+				<p style="font-size: 70%;text-align:left;position: relative;left:10%;">
+					<nobr>Google Brain</nobr>
+				</p>
+			</section>
+
+			<section>
+				<h3>目錄</h3>
+				<ol>
+					<li>
+						<p>
+							<nobr>介紹</nobr>
+						</p>
+					</li>
+					<li>
+						<p>
+							<nobr>貢獻</nobr>
+						</p>
+					</li>
+					<li>
+						<p>
+							<nobr>模型架構</nobr>
+						</p>
+					</li>
+					<li>
+						<p>
+							<nobr>實驗結果</nobr>
+						</p>
+					</li>
+					<li>
+						<p>
+							<nobr>結論</nobr>
+						</p>
+					</li>
+					<li>
+						<p>
+							<nobr>心得</nobr>
+						</p>
+					</li>
+				</ol>
+
+			</section>
+
+			<section>
 				<section>
-					<p style="font-size: 120%;">
-						<a href="https://arxiv.org/abs/1809.04281">Music Transformer</a>
+					<h3>介紹</h3>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						在一段樂曲中
+						<br>
+						音樂大多都是由同樣的結構、特徵組合而成
 					</p>
-					<br>
-					<p style="font-size: 70%;text-align:left;position: relative;left:10%;">
-						<nobr>Cheng-Zhi Anna Huang∗</nobr>,
-						<nobr>Ashish Vaswani</nobr>,
-						<nobr>Jakob Uszkoreit</nobr>,
-						<nobr>Noam Shazeer</nobr>,
-						<nobr>Ian Simon</nobr>,
-						<nobr>Curtis Hawthorne</nobr>,
-						<nobr>Andrew M. Dai</nobr>,
-						<nobr>Matthew D. Hoffman</nobr>,
-						<nobr>Monica Dinculescu</nobr>,
-						<nobr>Douglas Eck</nobr>
-					</p>
-					<p style="font-size: 70%;text-align:left;position: relative;left:10%;">
-						<nobr>Google Brain</nobr>
+					<p style="text-align:left;" class="fragment fade-up">
+						這些特徵會在多個時間點重複
+						<br>
+						重複的部分可能會是<strong style="color: #ff5555;">樂想(音樂動機，motifs)</strong>、
+						<br>
+						<strong style="color: #ff5555;">樂句(phrase)</strong>或是<strong
+							style="color: #ff5555;">某段音樂</strong>
 					</p>
 				</section>
 
 				<section>
-					<h3>目錄</h3>
+					<p style="text-align:left;">
+						而在處理這種前後相關的序列問題上
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						由注意力機制構成的
+						<br>
+						<a href="https://arxiv.org/abs/1706.03762">Transformer</a>(由Vaswani等人在2017年提出)
+						<br>
+						就具有良好的表現
+					</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						Transformer在較長的時間尺度依然能保留前後文的關係
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						這表示Transformer可能也適合用於音樂生成上
+					</p>
+				</section>
+
+				<section>
+					<p>
+						在音樂創作和表演中，前後的<strong style="color: #ff5555;">相對關係</strong>非常重要
+					</p>
+					<p class="fragment fade-up">
+						但是
+						<br>
+						<nobr style="text-align:left;">在原始的Transformer中前後文是以絕對位置紀錄關係</nobr>
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						Shaw等人在2018年曾發表過一篇
+						<br>
+						<a href="https://arxiv.org/abs/1803.02155">處理Transformer中相對位置關係</a>的論文
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						<nobr>但並不適合用在像音樂生成這樣序列較長的問題上</nobr>
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						因為這方法的記憶體複雜度是<strong style="color: #ff5555;">O(L<sup>2</sup>D)</strong>
+						<br>
+						<nobr class="fragment fade-up">L是序列長度，D是模型隱藏狀態的維度</nobr>
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						因此，本論文提出了一種算法
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						讓記憶體複雜度變成<strong style="color: #ff5555;">O(LD)</strong>
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						<nobr>
+							這使本論文能夠生成數分鐘長音樂結構<br>
+							(數千拍，這是<a href="https://arxiv.org/abs/1808.03715">Oore等人在2018年提出的算法</a>的4倍長)
+						</nobr>
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						用此模型能生成具有連續性並契合樂想的音樂
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						使用的資料集是
+						<br>
+						<nobr>JSB Chorales和Piano-e-Competition</nobr>
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						關於Piano-e-Competition的資料集
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						由參賽者表演記錄的MIDI組成
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						幀率小於10毫秒
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						而且為了不必要的空間浪費
+						<br>
+						(不是每個時間點都有聲音事件)
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						本論文使用一種類似MIDI並基於事件的稀疏儲存方式(<a href="https://arxiv.org/abs/1808.03715">Oore等人，2018</a>)
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						使一分鐘長、幀率10毫秒的音樂只需以<strong style="color: #ff5555">2k</strong>左右的序列長度表示，而不需到固定的6k~8k
+					</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h3>貢獻</h3>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						本論文是第一個使用Transformer生成時間長達1分鐘的音樂研究成果
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						在此之前是Oore等人使用LSTMs的音樂生成算法
+						<br>
+						但長度只有到15秒
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						而在音樂品質的部分
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						<nobr>使用相對注意力機制的Music Transformer能產生</nobr>
+						<br>
+						比原始Transform更加連貫的音樂
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						此外
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						在seq2seq設置中<br>
+						Transformer可以生成伴奏用的旋律
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						讓使用者能跟模型互動
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						在演算法方面
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						經過改進的相對注意力機制大幅的減少記憶體消耗
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						像是對L = 2048、D = 512的序列，每層的記憶體使用量就從8.5GB減少到4.2MB
+					</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h3>模型架構</h3>
+				</section>
+
+				<section>
+					<h4>資料格式</h4>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						為了採用語言建模的方式來訓練音樂生成模型
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						因此將音樂轉成離散序列表示
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						其中，「詞彙」是由資料集決定的
+					</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						不同的數據集用不同方法將和絃音樂轉成單一串流的離散音樂序列
+					</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						例如，JSB Chorale是由四部合唱組成的
+						<br>
+						音樂資料集
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						他的資料就是以矩陣表示
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						矩陣的<strong style="color: aqua">行</strong>對應<strong style="color: aqua">聲音</strong>，而<strong
+							style="color: aqua">列</strong>則對應<strong style="color: aqua">離散化為16分音符的時間</strong>
+					</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						JSB Chorale矩陣中的元素則表示演奏的<strong style="color: #ff5555">音高</strong>
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						而要如何將矩陣序列化呢?
+					</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						JSB Chorale矩陣中的元素則表示演奏的<strong style="color: #ff5555">音高</strong>
+
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						而要如何將矩陣序列化呢?
+					</p>
+				</section>
+
+				<section>
+					<img src="./img/Figure 1.png" width="70%" />
+					<div class="fragment fade-up">
+						等同矩陣
+					</div>
+					<p style="font-size: 70%" class="fragment fade-up">\begin{bmatrix}
+						S_1:67 & S_2:67 & S_3:67 & S_4:67 \\[0.3em]
+						A_1:62 & A_2:62 & A_3:62 & A_4:62 \\[0.3em]
+						T_1:59 & T_2:59 & T_3:57 & T_4:57 \\[0.3em]
+						B_1:43 & B_2:43 & B_3:45 & B_4:45
+						\end{bmatrix}</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						序列化的方式是由上而下，由左至右掃描矩陣
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						因此前面的矩陣在序列化後會變成
+					</p>
+					<p class="fragment fade-up">
+						$$
+						S_1,A_1,T_1,B_1,...,S_4,A_4,T_4,B_4
+						$$
+					</p>
+					<p style="font-size: 70%" style="text-align:left;" class="fragment fade-up">
+						註:女高音(S)，中音(A)，男高音(T)，低音(B)
+					</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						而Piano-e-Competition的資料集，則是由多聲部鋼琴曲構成
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						若用跟JSB Chorale相同的矩陣表示法
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						會導致序列過長
+					</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						因此改用Oore等人與2018提出的<a href="https://arxiv.org/abs/1808.03715">用事件表示音樂序列方法</a>
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						如下頁所表示
+					</p>
+				</section>
+
+				<section>
+					<img src="./img/Figure 2.png" width="70%">
+					<p class="fragment fade-up">
+						等同
+					</p>
+					<p style="font-size: 70%;text-align:left;position: relative;left:10%;" class="fragment fade-up">
+						SET_VELOCITY&lt;80&gt;, NOTE_ON&lt;60&gt;,<br>
+						TIME_SHIFT&lt;500&gt;, NOTE_ON&lt;64&gt;,<br>
+						TIME_SHIFT&lt;500&gt;, NOTE_ON&lt;67&gt;,<br>
+						TIME_SHIFT&lt;1000&gt;, NOTE_OFF&lt;60&gt;, NOTE_OFF&lt;64&gt;,<br>
+						NOTE_OFF&lt;67&gt;,<br>
+						TIME_SHIFT&lt;500&gt;, SET_VELOCITY&lt;100&gt;, NOTE_ON&lt;65&gt;,<br>
+						TIME_SHIFT&lt;500&gt;, NOTE_OFF&lt;65&gt;
+					</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						SET_VELOCITY&lt;<strong style="color: #ff55aa">80</strong>&gt;代表將撥放速度設定為<strong
+							style="color: #ff55aa">80</strong><br>
+						NOTE_ON&lt;<strong style="color: #ff55aa">60</strong>&gt;代表<strong style="color: #ff55aa">pitch
+							60</strong>將開始播放<br>
+
+					</p>
+					<p style="font-size: 70%" style="text-align:left;" class="fragment fade-up">
+						註:pitch 60=C大調的C音
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						TIME_SHIFT&lt;<strong style="color: #ff55aa">500</strong>&gt;表示再來的事件將延遲<strong
+							style="color: #ff55aa">500</strong>毫秒才觸發<br>
+						NOTE_OFF&lt;<strong style="color: #ff55aa">60</strong>&gt;則是<strong style="color: #ff55aa">pitch
+							60</strong>結束
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						因此再回來看那一段奇怪的序列
+					</p>
+					<p style="font-size: 70%;text-align:left;" class="fragment fade-up">
+						NOTE_ON&lt;60&gt;,<span style="color: #ff55aa" class="fragment fade-up">開始播放C大調的C音</span><br>
+						TIME_SHIFT&lt;500&gt;, NOTE_ON&lt;64&gt;,<span style="color: #ff55aa"
+							class="fragment fade-up">0.5秒後，開始播放C大調的E音</span><br>
+						TIME_SHIFT&lt;500&gt;, NOTE_ON&lt;67&gt;,<span style="color: #ff55aa"
+							class="fragment fade-up">1秒後，開始播放C大調的G音</span><br><br>
+						TIME_SHIFT&lt;1000&gt;, NOTE_OFF&lt;60&gt;, NOTE_OFF&lt;64&gt;,NOTE_OFF&lt;67&gt;,
+						<span style="color: #ff55aa" class="fragment fade-up">2秒後，結束C、E、G這幾個音</span>
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						就能理解其意義了
+					</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						使用這個方式，<br>
+						讓Piano-e-Competition資料集靠
+					</p>
+					<ul>
+						<li class="fragment fade-up">
+							128個NOTE_ON
+						</li>
+						<li class="fragment fade-up">
+							128個NOTE_OFF
+						</li>
+						<li class="fragment fade-up">
+							100個TIME_SHIFT
+						</li>
+						<li class="fragment fade-up">
+							32個SET_VELOCITY
+						</li>
+					</ul>
+					<br>
+					<p style="text-align:left;" class="fragment fade-up">就能表達整首音樂</p>
+					<p style="text-align:left;" class="fragment fade-up">節省了許多資訊</p>
+				</section>
+
+				<section>
+					<h4>背景知識</h4>
+					<p class="fragment fade-up">
+						Transformer
+					</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						Transformer是由google於2017年所提出
+						<br>
+						基於注意力機制的全新架構
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						那麼，什麼是注意力機制呢?
+					</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						注意力機制就像人類在看東西一樣
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						眼前場景各處所分布的注意力都不一致
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						只關注重要的地方，這樣就能減低多於資訊的干擾
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						增加準確度並減少運算消耗
+					</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						回到Transformer
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						Transformer是由Encoder+Decoder所構成的<br>
+						<strong style="color: #ff5555">自回歸模型</strong>
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						Encoder與Decoder很相似
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						都是N層的sub layer疊合而成
+					</p>
+				</section>
+
+				<section>
+					<p>
+						而sub layer主要是
+					</p>
+					<ul>
+						<li class="fragment fade-up">
+							self-attention
+						</li>
+						<li class="fragment fade-up">
+							feedforward
+						</li>
+					</ul>
+					<p class="fragment fade-up">
+						這兩層
+					</p>
+					<p style="font-size: 70%;" class="fragment fade-up">
+						註:詳細架構將不會在此解釋
+					</p>
+				</section>
+
+				<section>
+					<p style="text-align:left;">
+						而這邊最重要的就是self-attention了
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						self-attention的公式如下
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						$$
+						Attention({Q}^h,{K}^h,{V}^h)=Softmax(\frac{{Q}^h{{K}^h}^T}{\sqrt{D_h}}){V}^h
+						$$
+						$$
+						{head}^h=Attention({Q}^h,{K}^h,{V}^h)
+						$$
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						至於\({Q}^h、{K}^h\)與\({V}^h\)則如下面說明
+					</p>
 					<ol>
-						<li>
-							<p>
-								<nobr>介紹</nobr>
-							</p>
+						<li class="fragment fade-up">
+							\(X=(x_1,x_2,...,x_{L-1},x_L)\)
+							<br>
+							\(x_n\)是D維詞彙向量，因此\(X\)是大小為LD的矩陣
 						</li>
-						<li>
-							<p>
-								<nobr>貢獻</nobr>
-							</p>
-						</li>
-						<li>
-							<p>
-								<nobr>模型架構</nobr>
-							</p>
-						</li>
-						<li>
-							<p>
-								<nobr>實驗結果</nobr>
-							</p>
-						</li>
-						<li>
-							<p>
-								<nobr>結論</nobr>
-							</p>
-						</li>
-						<li>
-							<p>
-								<nobr>心得</nobr>
-							</p>
+						<br>
+						<li class="fragment fade-up">
+							\(X*{W}^{Q|K|V}=Q|K|V\)
+							<br>
+							而\({W}^Q、{W}^K、{W}^V\)是D*D的矩陣
+							<br>
+							因此，\(Q\)(query)、\(K\)(key)、\(V\)(value)跟也\(X\)同樣是LD的矩陣
 						</li>
 					</ol>
-
 				</section>
-
 				<section>
-					<section>
-						<h3>介紹</h3>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							在一段樂曲中
+					<ol start="3">
+						<li>
+							將\(Q、K、V\)切成\(H\)分
 							<br>
-							音樂大多都是由同樣的結構、特徵組合而成
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							這些特徵會在多個時間點重複
+							這樣每分\({Q}^h、{K}^h、{V}^h\)就會變成\(L*D_h\)
 							<br>
-							重複的部分可能會是<strong style="color: #ff5555;">樂想(音樂動機，motifs)</strong>、
-							<br>
-							<strong style="color: #ff5555;">樂句(phrase)</strong>或是<strong
-								style="color: #ff5555;">某段音樂</strong>
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							而在處理這種前後相關的序列問題上
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							由注意力機制構成的
-							<br>
-							<a href="https://arxiv.org/abs/1706.03762">Transformer</a>(由Vaswani等人在2017年提出)
-							<br>
-							就具有良好的表現
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							Transformer在較長的時間尺度依然能保留前後文的關係
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							這表示Transformer可能也適合用於音樂生成上
-						</p>
-					</section>
-
-					<section>
-						<p>
-							在音樂創作和表演中，前後的<strong style="color: #ff5555;">相對關係</strong>非常重要
-						</p>
-						<p class="fragment fade-up">
-							但是
-							<br>
-							<nobr style="text-align:left;">在原始的Transformer中前後文是以絕對位置紀錄關係</nobr>
-						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							Shaw等人在2018年曾發表過一篇
-							<br>
-							<a href="https://arxiv.org/abs/1803.02155">處理Transformer中相對位置關係</a>的論文
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							<nobr>但並不適合用在像音樂生成這樣序列較長的問題上</nobr>
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							因為這方法的記憶體複雜度是<strong style="color: #ff5555;">O(L<sup>2</sup>D)</strong>
-							<br>
-							<nobr class="fragment fade-up">L是序列長度，D是模型隱藏狀態的維度</nobr>
-						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							因此，本論文提出了一種算法
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							讓記憶體複雜度變成<strong style="color: #ff5555;">O(LD)</strong>
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							<nobr>
-								這使本論文能夠生成數分鐘長音樂結構<br>
-								(數千拍，這是<a href="https://arxiv.org/abs/1808.03715">Oore等人在2018年提出的算法</a>的4倍長)
-							</nobr>
-						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							用此模型能生成具有連續性並契合樂想的音樂
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							使用的資料集是
-							<br>
-							<nobr>JSB Chorales和Piano-e-Competition</nobr>
-						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							關於Piano-e-Competition的資料集
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							由參賽者表演記錄的MIDI組成
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							幀率小於10毫秒
-						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							而且為了不必要的空間浪費
-							<br>
-							(不是每個時間點都有聲音事件)
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							本論文使用一種類似MIDI並基於事件的稀疏儲存方式(<a href="https://arxiv.org/abs/1808.03715">Oore等人，2018</a>)
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							使一分鐘長、幀率10毫秒的音樂只需以<strong style="color: #ff5555">2k</strong>左右的序列長度表示，而不需到固定的6k~8k
-						</p>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>貢獻</h3>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							本論文是第一個使用Transformer生成時間長達1分鐘的音樂研究成果
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							在此之前是Oore等人使用LSTMs的音樂生成算法
-							<br>
-							但長度只有到15秒
-						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							而在音樂品質的部分
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							<nobr>使用相對注意力機制的Music Transformer能產生</nobr>
-							<br>
-							比原始Transform更加連貫的音樂
-						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							此外
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							在seq2seq設置中<br>
-							Transformer可以生成伴奏用的旋律
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							讓使用者能跟模型互動
-						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							在演算法方面
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							經過改進的相對注意力機制大幅的減少記憶體消耗
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							像是對L = 2048、D = 512的序列，每層的記憶體使用量就從8.5GB減少到4.2MB
-						</p>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>模型架構</h3>
-					</section>
-
-					<section>
-						<h4>資料格式</h4>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							為了採用語言建模的方式來訓練音樂生成模型
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							因此將音樂轉成離散序列表示
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							其中，「詞彙」是由資料集決定的
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							不同的數據集用不同方法將和絃音樂轉成單一串流的離散音樂序列
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							例如，JSB Chorale是由四部合唱組成的
-							<br>
-							音樂資料集
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							他的資料就是以矩陣表示
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							矩陣的<strong style="color: aqua">行</strong>對應<strong style="color: aqua">聲音</strong>，而<strong
-								style="color: aqua">列</strong>則對應<strong style="color: aqua">離散化為16分音符的時間</strong>
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							JSB Chorale矩陣中的元素則表示演奏的<strong style="color: #ff5555">音高</strong>
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							而要如何將矩陣序列化呢?
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							JSB Chorale矩陣中的元素則表示演奏的<strong style="color: #ff5555">音高</strong>
-
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							而要如何將矩陣序列化呢?
-						</p>
-					</section>
-
-					<section>
-						<img src="./img/Figure 1.png" width="70%" />
-						<div class="fragment fade-up">
-							等同矩陣
-						</div>
-						<p style="font-size: 70%" class="fragment fade-up">\begin{bmatrix}
-							S_1:67 & S_2:67 & S_3:67 & S_4:67 \\[0.3em]
-							A_1:62 & A_2:62 & A_3:62 & A_4:62 \\[0.3em]
-							T_1:59 & T_2:59 & T_3:57 & T_4:57 \\[0.3em]
-							B_1:43 & B_2:43 & B_3:45 & B_4:45
-							\end{bmatrix}</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							序列化的方式是由上而下，由左至右掃描矩陣
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							因此前面的矩陣在序列化後會變成
-						</p>
-						<p class="fragment fade-up">
-							$$
-							S_1,A_1,T_1,B_1,...,S_4,A_4,T_4,B_4
-							$$
-						</p>
-						<p style="font-size: 70%" style="text-align:left;" class="fragment fade-up">
-							註:女高音(S)，中音(A)，男高音(T)，低音(B)
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							而Piano-e-Competition的資料集，則是由多聲部鋼琴曲構成
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							若用跟JSB Chorale相同的矩陣表示法
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							會導致序列過長
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							因此改用Oore等人與2018提出的<a href="https://arxiv.org/abs/1808.03715">用事件表示音樂序列方法</a>
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							如下頁所表示
-						</p>
-					</section>
-
-					<section>
-						<img src="./img/Figure 2.png" width="70%">
-						<p class="fragment fade-up">
-							等同
-						</p>
-						<p style="font-size: 70%;text-align:left;position: relative;left:10%;" class="fragment fade-up">
-							SET_VELOCITY&lt;80&gt;, NOTE_ON&lt;60&gt;,<br>
-							TIME_SHIFT&lt;500&gt;, NOTE_ON&lt;64&gt;,<br>
-							TIME_SHIFT&lt;500&gt;, NOTE_ON&lt;67&gt;,<br>
-							TIME_SHIFT&lt;1000&gt;, NOTE_OFF&lt;60&gt;, NOTE_OFF&lt;64&gt;,<br>
-							NOTE_OFF&lt;67&gt;,<br>
-							TIME_SHIFT&lt;500&gt;, SET_VELOCITY&lt;100&gt;, NOTE_ON&lt;65&gt;,<br>
-							TIME_SHIFT&lt;500&gt;, NOTE_OFF&lt;65&gt;
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							SET_VELOCITY&lt;<strong style="color: #ff55aa">80</strong>&gt;代表將撥放速度設定為<strong
-								style="color: #ff55aa">80</strong><br>
-							NOTE_ON&lt;<strong style="color: #ff55aa">60</strong>&gt;代表<strong
-								style="color: #ff55aa">pitch
-								60</strong>將開始播放<br>
-
-						</p>
-						<p style="font-size: 70%" style="text-align:left;" class="fragment fade-up">
-							註:pitch 60=C大調的C音
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							TIME_SHIFT&lt;<strong style="color: #ff55aa">500</strong>&gt;表示再來的事件將延遲<strong
-								style="color: #ff55aa">500</strong>毫秒才觸發<br>
-							NOTE_OFF&lt;<strong style="color: #ff55aa">60</strong>&gt;則是<strong
-								style="color: #ff55aa">pitch
-								60</strong>結束
-						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							因此再回來看那一段奇怪的序列
-						</p>
-						<p style="font-size: 70%;text-align:left;" class="fragment fade-up">
-							NOTE_ON&lt;60&gt;,<span style="color: #ff55aa"
-								class="fragment fade-up">開始播放C大調的C音</span><br>
-							TIME_SHIFT&lt;500&gt;, NOTE_ON&lt;64&gt;,<span style="color: #ff55aa"
-								class="fragment fade-up">0.5秒後，開始播放C大調的E音</span><br>
-							TIME_SHIFT&lt;500&gt;, NOTE_ON&lt;67&gt;,<span style="color: #ff55aa"
-								class="fragment fade-up">1秒後，開始播放C大調的G音</span><br><br>
-							TIME_SHIFT&lt;1000&gt;, NOTE_OFF&lt;60&gt;, NOTE_OFF&lt;64&gt;,NOTE_OFF&lt;67&gt;,
-							<span style="color: #ff55aa" class="fragment fade-up">2秒後，結束C、E、G這幾個音</span>
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							就能理解其意義了
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							使用這個方式，<br>
-							讓Piano-e-Competition資料集靠
-						</p>
-						<ul>
-							<li class="fragment fade-up">
-								128個NOTE_ON
-							</li>
-							<li class="fragment fade-up">
-								128個NOTE_OFF
-							</li>
-							<li class="fragment fade-up">
-								100個TIME_SHIFT
-							</li>
-							<li class="fragment fade-up">
-								32個SET_VELOCITY
-							</li>
-						</ul>
+							其中的\(D_h=\frac{D}{H}\)
+						</li>
 						<br>
-						<p style="text-align:left;" class="fragment fade-up">就能表達整首音樂</p>
-						<p style="text-align:left;" class="fragment fade-up">節省了許多資訊</p>
-					</section>
+						<li class="fragment fade-up">
+							如此一來，就能讓Tansformer注意詞句的不同區塊
+						</li>
+					</ol>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						接著，將每個\(head_h\)串接起來
+						$$
+						Head=Concat(head_1,head_2,...,head_h)
+						$$
+					</p>
 
-					<section>
-						<h4>背景知識</h4>
-						<p class="fragment fade-up">
-							Transformer
-						</p>
-					</section>
+					<p style="text-align:left;" class="fragment fade-up">
+						就可以將\(Head\)送至FFN了
+						$$
+						FFN(Head)=max(0,Head*W_1+b_1)W_2+b_2
+						$$
+					</p>
+				</section>
 
-					<section>
-						<p style="text-align:left;">
-							Transformer是由google於2017年所提出
-							<br>
-							基於注意力機制的全新架構
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							那麼，什麼是注意力機制呢?
-						</p>
-					</section>
+				<section>
+					<h4>
+						相對位置的self-attention
+					</h4>
+				</section>
 
-					<section>
-						<p style="text-align:left;">
-							注意力機制就像人類在看東西一樣
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							眼前場景各處所分布的注意力都不一致
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							只關注重要的地方，這樣就能減低多於資訊的干擾
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							增加準確度並減少運算消耗
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							回到Transformer
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							Transformer是由Encoder+Decoder所構成的<br>
-							<strong style="color: #ff5555">自回歸模型</strong>
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							Encoder與Decoder很相似
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							都是N層的sub layer疊合而成
-						</p>
-					</section>
-
-					<section>
-						<p>
-							而sub layer主要是
-						</p>
-						<ul>
-							<li class="fragment fade-up">
-								self-attention
-							</li>
-							<li class="fragment fade-up">
-								feedforward
-							</li>
-						</ul>
-						<p class="fragment fade-up">
-							這兩層
-						</p>
-						<p style="font-size: 70%;" class="fragment fade-up">
-							註:詳細架構將不會在此解釋
-						</p>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							而這邊最重要的就是self-attention了
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							self-attention的公式如下
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							$$
-							Attention({Q}^h,{K}^h,{V}^h)=Softmax(\frac{{Q}^h{{K}^h}^T}{\sqrt{D_h}}){V}^h
-							$$
-							$$
-							{head}^h=Attention({Q}^h,{K}^h,{V}^h)
-							$$
-						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							至於\({Q}^h、{K}^h\)與\({V}^h\)則如下面說明
-						</p>
-						<ol>
-							<li class="fragment fade-up">
-								\(X=(x_1,x_2,...,x_{L-1},x_L)\)
-								<br>
-								\(x_n\)是D維詞彙向量，因此\(X\)是大小為LD的矩陣
-							</li>
-							<br>
-							<li class="fragment fade-up">
-								\(X*{W}^{Q|K|V}=Q|K|V\)
-								<br>
-								而\({W}^Q、{W}^K、{W}^V\)是D*D的矩陣
-								<br>
-								因此，\(Q\)(query)、\(K\)(key)、\(V\)(value)跟也\(X\)同樣是LD的矩陣
-							</li>
-						</ol>
-					</section>
-					<section>
-						<ol start="3">
-							<li>
-								將\(Q、K、V\)切成\(H\)分
-								<br>
-								這樣每分\({Q}^h、{K}^h、{V}^h\)就會變成\(L*D_h\)
-								<br>
-								其中的\(D_h=\frac{D}{H}\)
-							</li>
-							<br>
-							<li class="fragment fade-up">
-								如此一來，就能讓Tansformer注意詞句的不同區塊
-							</li>
-						</ol>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							接著，將每個\(head_h\)串接起來
-							$$
-							Head=Concat(head_1,head_2,...,head_h)
-							$$
-						</p>
-
-						<p style="text-align:left;" class="fragment fade-up">
-							就可以將\(Head\)送至FFN了
-							$$
-							FFN(Head)=max(0,Head*W_1+b_1)W_2+b_2
-							$$
-						</p>
-					</section>
-
-					<section>
-						<h4>
-							相對位置的self-attention
-						</h4>
-					</section>
-
-					<section>
-						<p style="text-align:left;">
-							原版的Transformer是利用sin函數
-							<br>
-							來進行時序標定
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							後來Shaw等人於2018年推出相對位置標定方法
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							但其\(O({L}^2D)\)的記憶體複雜度實在不適合用在長序列的問題上
-						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							Shaw推出的公式大致如下
-						</p>
-						<p class="fragment fade-up">
-							$$
-							RelativeAttention=Softmax(\frac{Q{K}^T+{S}^{rel}}{\sqrt{D_h}})V
-							$$
-						</p>
-						<p style="text-align:left;" class="fragment fade-up">
-							其中的\({S}^{rel}\)是\({L}^2\)的矩陣
-						</p>
+				<section>
+					<p style="text-align:left;">
+						原版的Transformer是利用sin函數
+						<br>
+						來進行時序標定
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						後來Shaw等人於2018年推出相對位置標定方法
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						但其\(O({L}^2D)\)的記憶體複雜度實在不適合用在長序列的問題上
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						Shaw推出的公式大致如下
+					</p>
+					<p class="fragment fade-up">
+						$$
+						RelativeAttention=Softmax(\frac{Q{K}^T+{S}^{rel}}{\sqrt{D_h}})V
+						$$
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						其中的\({S}^{rel}=Q{R}^T\)，\(R\)是\((L,L,D_h)\)的張量
 						<p style="text-align:left;" class="fragment fade-up">
 							並且對每個\(head\)都會進行上述運算
 						</p>
-					</section>
-					<section>
-						<p style="text-align:left;">
-							因此，本篇論文在這提出了新的計算方式
-						</p>
-					</section>
 				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
+				<section>
+					<img src="img/Figure 3.png">
 					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
-							(default)</a> -
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
+						因為張量\(R\)使得記憶體複雜度變\(O({L}^2D)\)
 						<br>
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+						<span style="font-size: 70%">註:每個顏色代表不同相對距離，灰色則表示屏蔽或填充位置</span>
 					</p>
 				</section>
-			</div>
+				<section>
+					<p style="text-align:left;">
+						因此，本篇論文在這提出了新的計算方式
+					</p>
+				</section>
+				<section>
+					相對全域Attention
+					<img src="img/Figure 4.png">
+					<p>
+						利用Skew算法就能將記憶體複雜度降低至\(O(LD)\)
+						<br>
+					</p>
+				</section>
+			</section>
 
+			<section id="transitions">
+				<h2>Transition Styles</h2>
+				<p>
+					You can select from different transitions, like: <br>
+					<a href="?transition=none#/transitions">None</a> -
+					<a href="?transition=fade#/transitions">Fade</a> -
+					<a href="?transition=slide#/transitions">Slide</a> -
+					<a href="?transition=convex#/transitions">Convex</a> -
+					<a href="?transition=concave#/transitions">Concave</a> -
+					<a href="?transition=zoom#/transitions">Zoom</a>
+				</p>
+			</section>
+
+			<section id="themes">
+				<h2>Themes</h2>
+				<p>
+					reveal.js comes with a few themes built in: <br>
+					<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
+						(default)</a> -
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
+					<br>
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+				</p>
+			</section>
 		</div>
 
-		<script src="js/reveal.js"></script>
+	</div>
 
-		<script>
+	<script src="js/reveal.js"></script>
 
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				center: true,
-				hash: true,
+	<script>
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			center: true,
+			hash: true,
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-					{ src: 'plugin/highlight/highlight.js', async: true },
-					{ src: 'plugin/search/search.js', async: true },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-		</script>
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'plugin/highlight/highlight.js', async: true },
+				{ src: 'plugin/search/search.js', async: true },
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+				{ src: 'plugin/notes/notes.js', async: true }
+			]
+		});
 
-	</body>
+	</script>
+
+</body>
 
 </html>
