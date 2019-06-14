@@ -667,6 +667,36 @@
 						<br>
 					</p>
 				</section>
+				<section>
+					相對區域Attention
+					<img src="img/Figure 5.png">
+				</section>
+				<section>
+					1.將長度為\(N\)的陣列填充至最右邊的列
+					<img src="img/Figure 6.png" width="60%">
+				</section>
+				<section>
+					<p>
+						2.將矩陣展平，並在尾端補上\(N-1\)個元素
+						<img src="img/Figure 7.png">
+					</p>
+					<p class="fragment fade-up">
+						3.把每\(2N-1\)個元素切成一份，再把每份堆疊起來
+						<img src="img/Figure 8.png">
+					</p>
+				</section>
+				<section>
+					變成\((N+1, 2N−1)\)的矩陣
+					<img src="img/Figure 9.png" width="50%">
+				</section>
+				<section>
+					<p>
+						4.將矩陣切割，取出前\(N\)行、後\(N\)列
+						<br>
+						得到\(N*N\)的矩陣\({S}^{rel}\)
+					</p>
+					<img src="img/Figure 10.png" width="60%">
+				</section>
 			</section>
 
 			<section id="transitions">
