@@ -104,17 +104,17 @@
 						</li>
 						<li>
 							<p>
-								<nobr>實驗結果</nobr>
-							</p>
-						</li>
-						<li>
-							<p>
-								<nobr>結論</nobr>
+								<nobr>實驗結果&結論</nobr>
 							</p>
 						</li>
 						<li>
 							<p>
 								<nobr>心得</nobr>
+							</p>
+						</li>
+						<li>
+							<p>
+								<nobr>參考資料</nobr>
 							</p>
 						</li>
 					</ol>
@@ -726,7 +726,7 @@
 			</section>
 			<section>
 				<section>
-					<h3>實驗結果</h3>
+					<h3>實驗結果&結論</h3>
 					
 				</section>
 				<section>
@@ -913,7 +913,144 @@
 						</tbody>
 					</table>
 				</section>
+				<section>
+					<p style="text-align:left;font-size:75%;color: rgb(255, 157, 37)">
+						Validation conditional
+						NLL given groundtruth melody from
+						Piano-e-Competition.
+					</p>
+					<table style="font-size:60%;">
+						<tbody>
+							<tr>
+								<th>Model variation</th>
+								<th>
+									<nobr>NLL</nobr>
+								</th>
+							</tr>
+							<tr>
+								<td>
+									<nobr>Baseline Transformer</nobr>
+									<br>
+									<br>
+									<nobr>Relative Transformer (ours)</nobr>
+									</td>
+								<td>
+									\(2.066\)
+									<br>
+									<br>
+									\(1.786\)
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section>
+					<img src="./img/Figure 12.png">
+					<p style="text-align:left;font-size: 70%;position: relative;left: 15%;">
+						每種模型產生的音樂經過受測者評分後獲勝的樣品數
+						<br>
+						誤差線代表平均值的標準偏差
+					</p>
+				</section>
+				<section>
+					<h3>生成比較</h3>
+					<img src="./img/Figure 13.png" width="5%">
+					<p style="font-size: 70%">音樂原型</p>
+				</section>
+				<section>
+					<img src="./img/Figure 14.png">
+					<p style="font-size: 70%">Performance RNN, an LSTM生成結果</p>
+				</section>
+				<section>
+					<img src="./img/Figure 15.png">
+					<p style="font-size: 70%">Vanilla Transformer生成結果</p>
+				</section>
+				<section>
+					<img src="./img/Figure 16.png">
+					<p style="font-size: 70%">Music Transformer生成結果</p>
+				</section>
+				<section>
+					<h4>結論</h4>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						本實驗證明了使用相對注意力機制的Transformer能勝任音樂生成這項工作
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						它在原音的基礎上生成音樂的能力
+						<br>
+						也使其有做為音樂創作工具的可能性
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						相對注意力機制也改善了Transformer的缺陷
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						使Transformer獲得了
+						<br>
+						可以捕捉不同週期性特徵的能力
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						且大幅下降的記憶體複雜度使此方法
+						<br>
+						能處理更長的序列
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						大幅增加了其應用範圍
+					</p>
+				</section>
 			</section>
+
+			<section>
+				<section>
+					<h3>心得</h3>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						雖然是在了解Transformer架構的情況下來看這篇論文
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						但還是覺得有些地方蠻難懂的
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						不過在看完之後
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						才知道原來以前我不太注重的記憶體複雜度對解決問題有這麼大的影響
+					</p>
+				</section>
+				<section>
+					<p style="text-align:left;">
+						然後是，有種想在以後實作看看音樂生成器的衝動
+					</p>
+					<p style="text-align:left;" class="fragment fade-up">
+						順便能比較看看<nobr>Music Transformer</nobr>與<nobr><a href="https://arxiv.org/abs/1901.02860">Transformer-XL</a></nobr>的相對注意力機制
+						<br>
+						(兩者方法不同)實際應用上的區別
+					</p>
+				</section>
+			</section>
+
+				<section>
+					<section>
+						<h3>參考資料</h3>
+						<p style="font-size: 70%;text-align:left;">
+							[1]<a href="https://arxiv.org/abs/1809.04281"  style="position: absolute;left: 6%;">[1809.04281] Music Transformer - arXiv</a>
+							<br>
+							<br>
+							[2]<a href="https://magenta.tensorflow.org/music-transformer" style="position: absolute;left: 6%;">Music Transformer: Generating Music with Long-Term Structure</a>
+							<br>
+							<br>
+							<br>
+							[3]<a href="https://www.youtube.com/watch?v=5vcj8kSwBCY&list=LLWZEA5o8OGtqZDWmCWHfWIg&index=2&t=2592s" style="position: absolute;left: 6%;">Stanford CS224N: NLP with Deep Learning | Winter 2019 | Lecture 14 – Transformers and Self-Attention</a>
+						</p>
+					</section>
+				</section>
 
 			<section id="transitions">
 				<h2>Transition Styles</h2>
