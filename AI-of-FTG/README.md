@@ -1,3 +1,3 @@
-# MET簡介
+# AI of FTG報告
 
-https://toonnyy8.github.io/PPT/Music-Editor-of-Tone.js/
+https://toonnyy8.github.io/PPT/AI-of-FTG/
