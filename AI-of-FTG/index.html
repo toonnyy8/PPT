@@ -1,333 +1,387 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+	<meta charset="utf-8">
 
-		<title>AI of Fighting Game</title>
+	<title>AI of Fighting Game</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
 
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css" id="theme">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement('link');
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName('head')[0].appendChild(link);
-		</script>
-		<style>
-			@font-face {
-				font-family: custom-serif;
-				src: local(Microsoft JhengHei), local("DFKai-sb");
-				unicode-range: U+4E00-9FFF;
-			}
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<style>
+		@font-face {
+			font-family: custom-serif;
+			src: local(Microsoft JhengHei), local("DFKai-sb");
+			unicode-range: U+4E00-9FFF;
+		}
 
-			@font-face {
-				font-family: custom-serif;
-				src: local(Source Code Pro), local(Arial);
-				unicode-range: U+00-024F;
-			}
+		@font-face {
+			font-family: custom-serif;
+			src: local(Source Code Pro), local(Arial);
+			unicode-range: U+00-024F;
+		}
 
-			body,
-			button,
-			input,
-			select,
-			textarea,
-			h1,
-			h2,
-			h3,
-			h4,
-			h5,
-			h6,
-			div,
-			section {
-				font-family: custom-serif;
-				src: local(Microsoft JhengHei), local("DFKai-sb");
-				unicode-range: U+4E00-9FFF;
-			}
+		body,
+		button,
+		input,
+		select,
+		textarea,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		div,
+		section {
+			font-family: custom-serif;
+			src: local(Microsoft JhengHei), local("DFKai-sb");
+			unicode-range: U+4E00-9FFF;
+		}
 
-			body,
-			button,
-			input,
-			select,
-			textarea,
-			h1,
-			h2,
-			h3,
-			h4,
-			h5,
-			h6,
-			div,
-			section {
-				font-family: custom-serif;
-				src: local(Source Code Pro), local(Arial);
-				unicode-range: U+00-024F;
-			}
+		body,
+		button,
+		input,
+		select,
+		textarea,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		div,
+		section {
+			font-family: custom-serif;
+			src: local(Source Code Pro), local(Arial);
+			unicode-range: U+00-024F;
+		}
 
-			p.Large {
-				font-size: 80px
-			}
+		p.Large {
+			font-size: 80px
+		}
 
-			p.large {
-				font-size: 65px
-			}
+		p.large {
+			font-size: 65px
+		}
 
-			p.medium {
-				font-size: 50px
-			}
+		p.medium {
+			font-size: 50px
+		}
 
-			p.Small {
-				font-size: 35px
-			}
+		p.Small {
+			font-size: 35px
+		}
 
-			p.small {
-				font-size: 30px
-			}
+		p.small {
+			font-size: 30px
+		}
 
-			.text_left {
-				text-align: left
-			}
+		.text_left {
+			text-align: left
+		}
 
-			.text_right {
-				text-align: right
-			}
+		.text_right {
+			text-align: right
+		}
 
-			red {
-				color: rgb(255, 35, 35)
-			}
+		red {
+			color: rgb(255, 35, 35)
+		}
 
-			blue {
-				color: rgb(0, 240, 240)
-			}
-		</style>
-		<!--[if lt IE 9]>
+		blue {
+			color: rgb(0, 240, 240)
+		}
+	</style>
+	<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
-	</head>
+</head>
 
-	<body>
+<body>
 
-		<div class="reveal">
+	<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>AI </h1>
-					<h3>of</h3>
-					<h2 class="fragment fade-up">Fighting Game</h2>
-					<p class="fragment">基於<blue>強化學習</blue>之<red>格鬥遊戲</red>即時反應操作 AI 設計</p>
-				</section>
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section>
+				<h1>AI </h1>
+				<h3>of</h3>
+				<h2 class="fragment fade-up">Fighting Game</h2>
+				<p class="fragment">基於<blue>強化學習</blue>之<red>格鬥遊戲</red>即時反應操作 AI 設計</p>
+			</section>
 
-				<section>
-					<p class="medium">目錄</p>
+			<section>
+				<p class="medium">目錄</p>
+				<br>
+				<ol>
+					<li>
+						<nobr><a href="index.html#/2">不管如何，先來點影片再說吧</a></nobr>
+					</li>
 					<br>
-					<ol>
-						<li>
-							<nobr><a href="index.html#/2">不管如何，先來點影片再說吧</a></nobr>
-						</li>
-						<br>
-						<li>
-							<nobr><a href="index.html#/3">關於AI玩格鬥遊戲這檔事</a></nobr>
-						</li>
-						<br>
-						<li>
-							<nobr><a href="index.html#/4">架構是由DDDQN、時間和很多玄妙的東西組成的</a></nobr>
-						</li>
-						<br>
-						<li>
-							<nobr><a href="index.html#/5">來自繽紛未來的展望</a></nobr>
-						</li>
-						<br>
-						<li>
-							<nobr><a href="index.html#/6">請問您現在要來點問題嗎?</a></nobr>
-						</li>
-					</ol>
+					<li>
+						<nobr><a href="index.html#/3">關於AI玩格鬥遊戲這檔事</a></nobr>
+					</li>
+					<br>
+					<li>
+						<nobr><a href="index.html#/4">架構是由DDDQN、時間和很多玄妙的東西組成的</a></nobr>
+					</li>
+					<br>
+					<li>
+						<nobr><a href="index.html#/5">來自繽紛未來的展望</a></nobr>
+					</li>
+					<br>
+					<li>
+						<nobr><a href="index.html#/6">請問您現在要來點問題嗎?</a></nobr>
+					</li>
+				</ol>
 
+			</section>
+
+			<section>
+				<section>
+					<p class="large">不管如何，先來點影片再說吧</p>
 				</section>
 
 				<section>
-					<section>
-						<p class="large">不管如何，先來點影片再說吧</p>
-					</section>
-
-					<section>
-						video
-					</section>
-
-				</section>
-				<section>
-					<section>
-						<p class="large">
-							<nobr>關於AI玩格鬥遊戲這檔事</nobr>
-						</p>
-					</section>
-					<section>
-						<p class="medium">
-							<nobr>為什麼專題會製作讓深度學習AI玩格鬥遊戲?</nobr>
-						</p>
-					</section>
-					<section>
-						<p class="small text_left">
-							一般格鬥遊戲上，常有入門門檻過高與玩家間常出現嚴重的技術斷層等等問題，新手玩家連初級AI都打不贏，而老玩家面對高階AI卻依舊取得壓倒性勝利，這樣巨大的斷層會帶給格鬥遊戲的初學者巨大的挫敗感。
-						</p>
-						<p class="small text_left fragment fade-up">
-							因此，本專題藉由強化學習方法訓練出能用於格鬥遊戲的AI，並利用調整獎勵來製作出不同風格、強度的模型，使得各種玩家都能充分享受格鬥遊戲帶來的樂趣。</p>
-					</section>
-					<section>
-						<img src="img/此乃謊言.png" width="20%">
-					</section>
-					<section>
-						<p class="Large">這個萌新</p>
-						<p class="medium text_left fragment fade-up">純粹只是沒有能一起打格鬥遊戲的好友，而決定做一個出來。</p>
-					</section>
-					<section>
-						<p class="large text_left">
-							邊緣人的專題往往就是這麼樸實無華且枯燥。
-						</p>
-						<p class="medium text_left">
-							──煌壬虹──
-						</p>
-					</section>
-				</section>
-				<section>
-					<section>
-						<p class="large">架構是由DDDQN、時間和<nobr>很多玄妙的東西</nobr>組成的</p>
-					</section>
-					<section>
-						<p>標題似乎混進了奇怪的東西</p>
-						<p class="Large fragment fade-up">DDDQN</p>
-					</section>
-					<section>
-						<p>既然你誠心誠意的發問了</p>
-						<p class=" fragment fade-up">那就在這稍微解釋一下</p>
-						<p class="large fragment fade-up">
-							<nobr>
-								<blue>D</blue>
-								<red>D</red>
-								DQN = <blue>Dueling</blue>
-								<red>Double</red> DQN
-							</nobr>
-						</p>
-					</section>
-					<section>
-						<p class="large">
-							結束(偽)
-						</p>
-					</section>
-					<section>
-						<p class="large">DQN</p>
-
-					</section>
-				</section>
-				<section>
-					<section>
-						<p class="large">來自繽紛未來的展望</p>
-					</section>
-					<section>
-					</section>
-				</section>
-				<section>
-					<section>
-						<p class="large">請問您現在要來點問題嗎?</p>
-					</section>
+					video
 				</section>
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
+			</section>
+			<section>
+				<section>
+					<p class="large">
+						<nobr>關於AI玩格鬥遊戲這檔事</nobr>
 					</p>
 				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
-							(default)</a> -
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
-						<br>
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>
-						-
-						<a href="#"
-							onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+				<section>
+					<p class="medium">
+						<nobr>為什麼專題會製作讓深度學習AI玩格鬥遊戲?</nobr>
 					</p>
 				</section>
-			</div>
+				<section>
+					<p class="small text_left">
+						一般格鬥遊戲上，常有入門門檻過高與玩家間常出現嚴重的技術斷層等等問題，新手玩家連初級AI都打不贏，而老玩家面對高階AI卻依舊取得壓倒性勝利，這樣巨大的斷層會帶給格鬥遊戲的初學者巨大的挫敗感。
+					</p>
+					<p class="small text_left fragment fade-up">
+						因此，本專題藉由強化學習方法訓練出能用於格鬥遊戲的AI，並利用調整獎勵來製作出不同風格、強度的模型，使得各種玩家都能充分享受格鬥遊戲帶來的樂趣。</p>
+				</section>
+				<section>
+					<img src="img/此乃謊言.png" width="20%">
+				</section>
+				<section>
+					<p class="Large">這個萌新</p>
+					<p class="medium text_left fragment fade-up">純粹只是沒有能一起打格鬥遊戲的好友，而決定做一個出來。</p>
+				</section>
+				<section>
+					<p class="large text_left">
+						邊緣人的專題往往就是這麼樸實無華且枯燥。
+					</p>
+					<p class="medium text_left">
+						──煌壬虹──
+					</p>
+				</section>
+			</section>
+			<section>
+				<section>
+					<p class="large">架構是由DDDQN、時間和<nobr>很多玄妙的東西</nobr>組成的</p>
+				</section>
+				<section>
+					<p>標題似乎混進了奇怪的東西</p>
+					<p class="Large fragment fade-up">DDDQN</p>
+				</section>
+				<section>
+					<p>既然你誠心誠意的發問了</p>
+					<p class=" fragment fade-up">那就在這稍微解釋一下</p>
+					<p class="large fragment fade-up">
+						<nobr>
+							<blue>D</blue>
+							<red>D</red>
+							DQN = <blue>Dueling</blue>
+							<red>Double</red> DQN
+						</nobr>
+					</p>
+				</section>
+				<section>
+					<p class="large">
+						結束(偽)
+					</p>
+				</section>
+				<section>
+					<p class="Large">
+						DQN
+					</p>
+				</section>
+				<section>
+					<img src="./img/DQN.png" width="70%" />
+				</section>
+				<section>
+					<img src="./img/DQN流程.png" />
+				</section>
+				<section>
+					<img src="./img/DQN流程_target.png" width="80%" />
+				</section>
+				<section>
+					<img src="./img/DQN流程_eval.png" width="80%" />
+				</section>
+				<section>
+					<img src="./img/DQN流程_update.png" />
+				</section>
+				<section>
+					<p class="Large">
+						Double DQN
+					</p>
+				</section>
+				<section>
+					<img src="./img/DoubleDQN.png" width="70%" />
+				</section>
+				<section>
+					<p class="medium">恩恩？？</p>
+					<p class="medium fragment fade-up">跟DQN好像一樣啊~~</p>
+				</section>
+				<section>
+					<p class="large text_left">解：</p>
+					<p class="medium fragment fade-up">DQN與Double DQN是相同的結構</p>
+				</section>
+				<section>
+					<img src="./img/不要瞎掰好嗎.jpg" />
+				</section>
+				<section>
+					<p class="medium">然而這是實話(大致上~)</p>
+					<p class="medium fragment fade-up">有沒有Double，差別在目標價值的計算方式</p>
+				</section>
+				<section>
+					<p class="Small">ps:因為太擠了，所以省略Double DQN的總流程</p>
+				</section>
+				<section>
+					<img src="./img/DoubleDQN流程_eval_next.png" width="80%" />
+				</section>
+				<section>
+					<img src="./img/DoubleDQN流程_target.png" width="80%" />
+				</section>
+				<section>
+					<img src="./img/DoubleDQN流程_eval.png" width="80%" />
+				</section>
+				<section>
+					<img src="./img/DoubleDQN流程_update.png" />
+				</section>
+			</section>
+			<section>
+				<section>
+					<p class="large">來自繽紛未來的展望</p>
+				</section>
+				<section>
+				</section>
+			</section>
+			<section>
+				<section>
+					<p class="large">請問您現在要來點問題嗎?</p>
+				</section>
+			</section>
 
+			<section id="transitions">
+				<h2>Transition Styles</h2>
+				<p>
+					You can select from different transitions, like: <br>
+					<a href="?transition=none#/transitions">None</a> -
+					<a href="?transition=fade#/transitions">Fade</a> -
+					<a href="?transition=slide#/transitions">Slide</a> -
+					<a href="?transition=convex#/transitions">Convex</a> -
+					<a href="?transition=concave#/transitions">Concave</a> -
+					<a href="?transition=zoom#/transitions">Zoom</a>
+				</p>
+			</section>
+
+			<section id="themes">
+				<h2>Themes</h2>
+				<p>
+					reveal.js comes with a few themes built in: <br>
+					<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
+						(default)</a> -
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
+					<br>
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+				</p>
+			</section>
 		</div>
 
-		<script src="js/reveal.js"></script>
+	</div>
 
-		<script>
+	<script src="js/reveal.js"></script>
 
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				center: true,
-				hash: true,
+	<script>
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			center: true,
+			hash: true,
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-					{ src: 'plugin/highlight/highlight.js', async: true },
-					{ src: 'plugin/search/search.js', async: true },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-		</script>
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'plugin/highlight/highlight.js', async: true },
+				{ src: 'plugin/search/search.js', async: true },
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+				{ src: 'plugin/notes/notes.js', async: true }
+			]
+		});
 
-	</body>
+	</script>
+
+</body>
 
 </html>
