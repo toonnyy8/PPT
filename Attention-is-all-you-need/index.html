@@ -194,24 +194,90 @@
 				<section>
 					<p>
 						在 NLP 領域中，要對文本進行前處理
-						<br />
-						文本=>單詞 or 字元
-						<br />
-						one hot encoding 或 word embedding
 					</p>
-				</section>
-				<section>
-					<img src="./img/one_hot_encoding.png" />
+					<br />
+					<ol class="fragment fade-up">
+						<li>建字典</li>
+						<li>切文本</li>
+						<li>轉換 Symbol</li>
+					</ol>
 				</section>
 
 				<section>
+					<p class="text-left pl-24">
+						建字典
+					</p>
+					<p class="text-left pl-32">
+						為所有可能出現的 Symbol 標上 ID
+					</p>
+				</section>
+
+				<section>
+					<p class="text-left pl-24">
+						切文本
+					</p>
+					<p class="text-left pl-32">
+						將文本分割成多個 Symbol，
+						<br />
+						Symbol 的單位可以是 Token 或是 Character
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-24">
+						轉換 Symbol
+					</p>
+					<ul class="fragment fade-up">
+						<li>One Hot Encoding</li>
+						<li>Word Embedding</li>
+					</ul>
+				</section>
+				<section>
+					<img src="./img/one_hot_encoding.png" />
+					One Hot Encoding
+				</section>
+				<section>
+					<p class="text-left pl-64">
+						缺點
+					</p>
+					<ul>
+						<li class="fragment fade-up">太~大~~</li>
+						<li class="fragment fade-up">資訊稀疏</li>
+					</ul>
+				</section>
+
+				<section>
+					<img src="./img/embedding_2.png" />
+					Word Embedding
+				</section>
+				<section>
+					<p class="text-left pl-24">建構 Embedding Table</p>
+					<p class="text-left pl-24">附註：Embedding Table 將會一起被訓練</p>
+
+				</section>
+				<section>
 					<img src="./img/embedding_0.png" />
+					Embedding Table
 				</section>
 				<section>
 					<img src="./img/embedding_1.png" />
+					查找 Table
 				</section>
 				<section>
 					<img src="./img/embedding_2.png" />
+					完成轉換
+				</section>
+				<section>
+					<p class="text-left pl-48">
+						優點
+					</p>
+					<ul>
+						<li class="fragment fade-up">較小</li>
+						<li class="fragment fade-up">
+							資訊緊緻，
+							<br />
+							可表示出 Symbol 之間的關係
+						</li>
+					</ul>
 				</section>
 			</section>
 
