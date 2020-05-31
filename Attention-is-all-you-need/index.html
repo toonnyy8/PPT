@@ -92,7 +92,7 @@
 				<ol>
 					<li>
 						<p>
-							<nobr><a href="index.html#/2">Attention？</a></nobr>
+							<nobr><a href="index.html#/2">背景知識</a></nobr>
 						</p>
 					</li>
 					<li>
@@ -119,8 +119,19 @@
 
 			</section>
 
-			<!-- Attention -->
+			<!-- 背景知識 -->
 			<section>
+				<section>
+					<p style="font-size: 150%;">
+						背景知識
+					</p>
+					<ol>
+						<li><a href="index.html#/2/1">Attention</a></li>
+						<li><a href="index.html#/2/6">Word Embedding</a></li>
+					</ol>
+				</section>
+
+				<!-- Attention -->
 				<section>
 					<p style="font-size: 150%;">
 						Attention？
@@ -159,10 +170,6 @@
 				</section>
 
 				<section>
-
-				</section>
-
-				<section>
 					<ol>
 						<li>Soft Attention</li>
 						<li>Hard Attention</li>
@@ -176,7 +183,26 @@
 						今天只會講解 Self Attention
 					</p>
 				</section>
+
+				<!-- Word Embedding -->
+				<section>
+					<p style="font-size: 150%;">
+						Word Embedding
+					</p>
+				</section>
+
+				<section>
+					<p>
+						在 NLP 領域中，要對文本進行前處理
+						<br />
+						文本=>單詞 or 字元
+						<br />
+						one hot encoding 或 word embedding
+					</p>
+				</section>
 			</section>
+
+
 
 			<!-- Transformer -->
 			<section>
@@ -240,12 +266,24 @@
 						但這不是今天要聊的（逃</p>
 				</section>
 
-				<section class="">
+				<section>
 					<div class="flex justify-center">
 						<img src="./img/transformer.png" class="w-5/6" />
 					</div>
 					Transformer
 				</section>
+				<section>
+					<p class="text-left pl-10">
+						Transformer 由 <strong class="text-green-400">Encoder</strong> 與 <strong
+							class="text-orange-500">Decoder</strong> 兩部分組成
+					</p>
+					<p class="text-left pl-10">
+						Encoder Input：
+						<br />
+						[&lt;START&gt;, "今天", "的", "口頭", "報告", "讓", "我", "超級", "緊張", &lt;END&gt;]
+					</p>
+				</section>
+
 				<section>
 					<img src="./img/encoder-decoder.png" />
 					Transformer
