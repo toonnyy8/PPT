@@ -1,6 +1,6 @@
-# Music Transformer 論文報告
+# Attention Is All You Need 論文報告
 
-https://toonnyy8.github.io/PPT/Music-Transformer/
+https://toonnyy8.github.io/PPT/Attention-is-all-you-need/
 
 按esc可以預覽每頁
 
