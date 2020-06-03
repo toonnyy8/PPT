@@ -485,9 +485,232 @@
 				</section>
 
 				<section>
-					<img src="./img/encoder-decoder.png" />
-					Transformer
+					<img src="./img/usage.png" />
+					Usage
 				</section>
+
+				<section>
+					<p class="text-left pl-10">
+						在使用時，最開始的 Target 只有 &lt;START&gt;
+					</p>
+					<p class="text-left pl-10">
+						再輸入 Input 與 Target 後可以得到模型預測的下一個字
+					</p>
+				</section>
+
+				<section>
+					<p class="text-left pl-10">
+						Input：
+						<br /><span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Target：
+						<br />
+						<span class="text-pink-500">&lt;START&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Output：
+						<br />
+						<strong><u class="text-blue-300">注意力</u></strong><sup class="text-yellow-400">NEW!</sup>
+					</p>
+				</section>
+
+				<section>
+					<p class="text-left pl-10">
+						將預測出的下個字詞接到 Target 後面
+					</p>
+				</section>
+
+				<section>
+					<p class="text-left pl-10">
+						Input：
+						<br /><span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Target：
+						<br />
+						<span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-orange-400">注意力</span>
+					</p>
+					<p class="text-left pl-10">
+						Output：
+						<br />
+						<span class="text-orange-400">注意力</span>,
+						<strong><u class="text-blue-300">就是</u></strong><sup class="text-yellow-400">NEW!</sup>
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						不斷重覆到預測出&lt;END&gt;或到達設定的預測上限次數
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						Input：
+						<br /><span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Target：
+						<br />
+						<span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>
+					</p>
+					<p class="text-left pl-10">
+						Output：
+						<br />
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<strong><u class="text-blue-300">你</u></strong><sup class="text-yellow-400">NEW!</sup>
+					</p>
+				</section>
+
+				<section>
+					<p class="text-left pl-10">
+						Input：
+						<br /><span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Target：
+						<br />
+						<span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>
+					</p>
+					<p class="text-left pl-10">
+						Output：
+						<br />
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<strong><u class="text-blue-300">所</u></strong><sup class="text-yellow-400">NEW!</sup>
+					</p>
+				</section>
+
+				<section>
+					<p class="text-left pl-10">
+						Input：
+						<br /><span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Target：
+						<br />
+						<span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<span class="text-orange-400">所</span>
+					</p>
+					<p class="text-left pl-10">
+						Output：
+						<br />
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<span class="text-orange-400">所</span>,
+						<strong><u class="text-blue-300">需要</u></strong><sup class="text-yellow-400">NEW!</sup>
+					</p>
+				</section>
+
+				<section>
+					<p class="text-left pl-10">
+						Input：
+						<br /><span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Target：
+						<br />
+						<span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<span class="text-orange-400">所</span>,
+						<span class="text-orange-400">需要</span>
+					</p>
+					<p class="text-left pl-10">
+						Output：
+						<br />
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<span class="text-orange-400">所</span>,
+						<span class="text-orange-400">需要</span>,
+						<strong><u class="text-blue-300">的</u></strong><sup class="text-yellow-400">NEW!</sup>
+					</p>
+				</section>
+
+				<section>
+					<p class="text-left pl-10">
+						Input：
+						<br /><span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Target：
+						<br />
+						<span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<span class="text-orange-400">所</span>,
+						<span class="text-orange-400">需要</span>,
+						<span class="text-orange-400">的</span>
+					</p>
+					<p class="text-left pl-10">
+						Output：
+						<br />
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<span class="text-orange-400">所</span>,
+						<span class="text-orange-400">需要</span>,
+						<span class="text-orange-400">的</span>,
+						<strong><u class="text-pink-500">&lt;END&gt;</u></strong><sup class="text-yellow-400">結束！</sup>
+					</p>
+				</section>
+
 				<section>
 					\[\begin{aligned}
 					V, K, Q
