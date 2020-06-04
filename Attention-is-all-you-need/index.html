@@ -295,6 +295,10 @@
 					<p class="fragment fade-up">
 						由<strong class="text-red-500">注意力機制</strong>組成的全新架構
 					</p>
+					<ol>
+						<li><a href="#/3/1">Why Transformer ?</a></li>
+						<li><a href="#/3/6">使用手冊，以翻譯為例</a></li>
+					</ol>
 				</section>
 
 				<section>
@@ -351,7 +355,7 @@
 				<section>
 					<p class="text-left pl-10">
 						在正式解構 Transformer 前，<br />
-						先介紹其訓練與使用方式。
+						先從「翻譯任務」介紹其訓練與使用方式。
 					</p>
 					<p class="text-left pl-10 flex items-center fragment fade-up">
 						<span class="pr-10">不然後面會越來越</span><img class="w-64" src="./img/黑人問號.jpg" />
@@ -360,7 +364,8 @@
 
 				<section>
 					<p>
-						Output 的 Sequence length 與 Target 相同
+						<span class="text-purple-400">Output</span> 的 Sequence length 與 <span
+							class="text-orange-400">Target</span> 相同
 					</p>
 					<img class="" src="./img/black_box.png" />
 					輸入與輸出
@@ -371,8 +376,8 @@
 						在訓練時會先準備兩筆資料
 					</p>
 					<ul>
-						<li>來源文本</li>
-						<li>目標文本</li>
+						<li><span class="text-green-400">來源文本</span></li>
+						<li><span class="text-orange-400">目標文本</span></li>
 					</ul>
 					<p class="fragment fade-up">
 						並將兩者<span class="text-yellow-500">拆成 Symbol </span>後加上
@@ -491,10 +496,14 @@
 
 				<section>
 					<p class="text-left pl-10">
-						在使用時，最開始的 Target 只有 &lt;START&gt;
+						在使用時，最開始的 <span class="text-orange-400">Target</span> 只有 <span
+							class="text-pink-500">&lt;START&gt;</span>
 					</p>
 					<p class="text-left pl-10">
-						再輸入 Input 與 Target 後可以得到模型預測的下一個字
+						輸入 <span class="text-green-400">Input</span> 與 <span class="text-orange-400">Target</span>
+						後可以得到模型預測的<br />
+						<strong><u class="text-blue-300">下一個字</u></strong><sup style="font-size:1.5rem;"
+							class="text-yellow-400">NEW!</sup>
 					</p>
 				</section>
 
@@ -514,7 +523,7 @@
 						<br />
 						<span class="text-pink-500">&lt;START&gt;</span>
 					</p>
-					<p class="text-left pl-10">
+					<p class="fragment fade-up text-left pl-10">
 						Output：
 						<br />
 						<strong><u class="text-blue-300">注意力</u></strong><sup class="text-yellow-400">NEW!</sup>
@@ -523,7 +532,11 @@
 
 				<section>
 					<p class="text-left pl-10">
-						將預測出的下個字詞接到 Target 後面
+						將預測出的 <strong><u class="text-blue-300">下一個字</u></strong><sup class="text-yellow-400">NEW!</sup>
+						接到
+						<span class="text-orange-400">Target</span> 後面，<br />
+						變成 <span class="text-orange-400">新的
+							Target</span>
 					</p>
 				</section>
 
@@ -544,7 +557,7 @@
 						<span class="text-pink-500">&lt;START&gt;</span>,
 						<span class="text-orange-400">注意力</span>
 					</p>
-					<p class="text-left pl-10">
+					<p class="fragment fade-up text-left pl-10">
 						Output：
 						<br />
 						<span class="text-orange-400">注意力</span>,
@@ -553,7 +566,7 @@
 				</section>
 				<section>
 					<p class="text-left pl-10">
-						不斷重覆到預測出&lt;END&gt;或到達設定的預測上限次數
+						不斷重覆到預測出 <span class="text-pink-500">&lt;END&gt;</span> 或到達設定的預測上限次數
 					</p>
 				</section>
 				<section>
@@ -574,7 +587,7 @@
 						<span class="text-orange-400">注意力</span>,
 						<span class="text-orange-400">就是</span>
 					</p>
-					<p class="text-left pl-10">
+					<p class="fragment fade-up text-left pl-10">
 						Output：
 						<br />
 						<span class="text-orange-400">注意力</span>,
@@ -602,7 +615,7 @@
 						<span class="text-orange-400">就是</span>,
 						<span class="text-orange-400">你</span>
 					</p>
-					<p class="text-left pl-10">
+					<p class="fragment fade-up text-left pl-10">
 						Output：
 						<br />
 						<span class="text-orange-400">注意力</span>,
@@ -632,7 +645,7 @@
 						<span class="text-orange-400">你</span>,
 						<span class="text-orange-400">所</span>
 					</p>
-					<p class="text-left pl-10">
+					<p class="fragment fade-up text-left pl-10">
 						Output：
 						<br />
 						<span class="text-orange-400">注意力</span>,
@@ -664,7 +677,7 @@
 						<span class="text-orange-400">所</span>,
 						<span class="text-orange-400">需要</span>
 					</p>
-					<p class="text-left pl-10">
+					<p class="fragment fade-up text-left pl-10">
 						Output：
 						<br />
 						<span class="text-orange-400">注意力</span>,
@@ -698,7 +711,7 @@
 						<span class="text-orange-400">需要</span>,
 						<span class="text-orange-400">的</span>
 					</p>
-					<p class="text-left pl-10">
+					<p class="fragment fade-up text-left pl-10">
 						Output：
 						<br />
 						<span class="text-orange-400">注意力</span>,
