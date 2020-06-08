@@ -895,15 +895,49 @@
 				</section>
 				<section>
 					<img src="./img/transformer.png" class="w-2/3 m-auto inline-block" />
+					<br />
+					Transformer
 				</section>
 				<section>
 					<img src="./img/transformer-embedding.png" class="w-2/3 m-auto inline-block" />
-				</section>
-				<section>
+					<br />
 					Embedding 就是前面科普過的 <a href="index.html#/2/6">Word Embedding</a>
 				</section>
 				<section>
 					<img src="./img/transformer-positional-encoding.png" class="w-2/3 m-auto inline-block" />
+					<br />
+					Positional Encoding
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						由於 Transformer 僅使用了注意力機制，<br />
+						所以不像 CNN 與 RNN 具備捕捉位置關係的能力
+					</p>
+					<p class="fragment fade-up text-left pl-10">
+						但在語言模型中，詞字的序列關係至關重要
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						因此研究團隊提出了一種位置標記方法，<br />
+						直接將位置資訊寫進輸入中
+					</p>
+					<p class="text-left pl-10">
+						\(PE_{(pos,2i)}=sin(pos/10000^{2i/d_{embedding}})\)
+						\(PE_{(pos,2i+1)}=cos(pos/10000^{2i+1/d_{embedding}})\)
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						\(PE_{(pos,2i)}=sin(pos/10000^{2i/d_{embedding}})\)
+						\(PE_{(pos,2i+1)}=cos(pos/10000^{2i+1/d_{embedding}})\)
+					</p>
+					<p>
+					<ul>
+						<li>pos：第 pos 個 Embedding 序列</li>
+						<li>i：Embedding 向量的第 i 個維度</li>
+					</ul>
+					</p>
 				</section>
 				<section>
 					<img src="./img/positional-encoding.png" />
