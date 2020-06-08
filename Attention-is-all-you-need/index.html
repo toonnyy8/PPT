@@ -34,10 +34,8 @@
 	</script>
 	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 	</script>
-	<script>
-		MathJax = {
-			chtml: { displayAlign: 'left' }
-		};
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
 	</script>
 
 	<style>
@@ -774,26 +772,39 @@
 					<p class="text-left pl-10">
 						\[
 						MultiHeadAttention(Q_{input},K_{input},V_{input})\\
-						= Concat(Head_1,Head_2,...,Head_h)W^{O}\\
+						= Concat(Head_1,Head_2,...,Head_h)W^{O}
 						\]
+					</p>
+					<p>
+						其中 <span class="text-yellow-400">\(Q_{input},K_{input},V_{input}\)</span> 是 Embedding 序列
 					</p>
 				</section>
 				<section>
-					<p>
-						其中 \(Q_{input},K_{input},V_{input}\) 是 Embedding 序列
-					</p>
 					<img src="./img/embedding_2.png" class="w-2/3 inline-block">
+					<p class="text-right pr-32">
+						\(\definecolor{indigo400}{RGB}{127, 156, 245}\)
+						\(Q_{input},K_{input}\in\mathbb{R}^{Sequence_K \times
+						{\color{indigo400}d_{embedding}}}\)
+						\(V_{input}\in\mathbb{R}^{Sequence_V \times
+						{\color{indigo400}d_{embedding}}}\)
+					</p>
 				</section>
 				<section>
 					<p class="text-left pl-10">
 						Embedding 序列在通過線性轉換後就會變成 \(Q,K,V\) 矩陣
 					</p>
 					<p class="fragment fade-up text-left pl-10">
-						$$
-						Q_{i}=Q_{input}W_{i}^Q,W^Q\in\mathbb{R}^{d_{embedding}\times d_k}\\
-						K_{i}=K_{input}W_{i}^K,W^K\in\mathbb{R}^{d_{embedding}\times d_k}\\
-						V_{i}=V_{input}W_{i}^V,W^V\in\mathbb{R}^{d_{embedding}\times d_v}\\
-						$$
+						\[
+						\definecolor{pink500}{RGB}{237,100,166}
+						\definecolor{indigo400}{RGB}{127, 156, 245}
+						\definecolor{blue400}{RGB}{99, 179, 237}
+						Q_{i}=Q_{input}W_{i}^Q,W^Q\in\mathbb{R}^{{\color{indigo400}d_{embedding}}\times
+						{\color{blue400}d_k}}\\
+						K_{i}=K_{input}W_{i}^K,W^K\in\mathbb{R}^{{\color{indigo400}d_{embedding}}\times
+						{\color{blue400}d_k}}\\
+						V_{i}=V_{input}W_{i}^V,W^V\in\mathbb{R}^{{\color{indigo400}d_{embedding}}\times
+						{\color{pink500}d_k}}
+						\]
 					</p>
 				</section>
 				<section>
@@ -831,21 +842,21 @@
 					</p>
 					<ul>
 						<li>
-							Q：<span class="text-orange-400">length<sub>Q</sub></span> X <span
-								class="text-blue-400">d<sub>k</sub></span>
+							\(Q\)：<span class="text-orange-400">\(length_Q\)</span> \(\times\) <span
+								class="text-blue-400">\(d_k\)</span>
 						</li>
 						<li>
-							K：<span class="text-teal-400">length<sub>K</sub></span> X <span
-								class="text-blue-400">d<sub>k</sub></span>
+							\(K\)：<span class="text-teal-400">\(length_K\)</span> \(\times\) <span
+								class="text-blue-400">\(d_k\)</span>
 						</li>
 						<li>
-							V：<span class="text-teal-400">length<sub>K</sub></span> X <span
-								class="text-pink-500">d<sub>v</sub></span>
+							\(V\)：<span class="text-teal-400">\(length_K\)</span> \(\times\) <span
+								class="text-pink-500">\(d_v\)</span>
 						</li>
 					</ul>
 					<p class="fragment fade-up">
-						Head：<span class="text-orange-400">length<sub>Q</sub></span> X <span
-							class="text-pink-500">d<sub>v</sub></span>
+						Head：<span class="text-orange-400">\(length_Q\)</span> \(\times\) <span
+							class="text-pink-500">\(d_v\)</span>
 					</p>
 				</section>
 				<section>
@@ -860,7 +871,9 @@
 						即為 Multi Head Attention
 					</p>
 					<p class="">
-						\(W^O\in \mathbb{R}^{(h\times d_{v})\times d_{embedding}}\)
+						\(\definecolor{pink500}{RGB}{237,100,166}\)
+						\(\definecolor{indigo400}{RGB}{127, 156, 245}\)
+						\(W^O\in \mathbb{R}^{(h\times {\color{pink500}d_{v}})\times {\color{indigo400}d_{embedding}}}\)
 					</p>
 				</section>
 			</section>
