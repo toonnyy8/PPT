@@ -783,10 +783,10 @@
 					<img src="./img/embedding_2.png" class="w-2/3 inline-block">
 					<p class="text-right pr-32">
 						\(\definecolor{indigo400}{RGB}{127, 156, 245}\)
-						\(Q_{input},K_{input}\in\mathbb{R}^{Sequence_K \times
-						{\color{indigo400}d_{embedding}}}\)
-						\(V_{input}\in\mathbb{R}^{Sequence_V \times
-						{\color{indigo400}d_{embedding}}}\)
+						\(Q_{input}\in\mathbb{R}^{{\color{indigo400}Sequence_Q} \times
+						d_{embedding}}\)
+						\(V_{input},K_{input}\in\mathbb{R}^{{\color{indigo400}Sequence_K} \times
+						d_{embedding}}\)
 					</p>
 				</section>
 				<section>
@@ -803,7 +803,7 @@
 						K_{i}=K_{input}W_{i}^K,W^K\in\mathbb{R}^{{\color{indigo400}d_{embedding}}\times
 						{\color{blue400}d_k}}\\
 						V_{i}=V_{input}W_{i}^V,W^V\in\mathbb{R}^{{\color{indigo400}d_{embedding}}\times
-						{\color{pink500}d_k}}
+						{\color{pink500}d_v}}
 						\]
 					</p>
 				</section>
@@ -1006,7 +1006,7 @@
 					<img src="./img/masking.png" />
 				</section>
 				<section>
-					<img src="./img/attention.png" />
+					<img src="./img/attention-weight.png" />
 				</section>
 				<section>
 					<img src="./img/mutil-head-attention-output.png" />
