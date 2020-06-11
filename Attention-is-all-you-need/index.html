@@ -936,14 +936,19 @@
 						直接將位置資訊寫進輸入中
 					</p>
 					<p class="text-left pl-10">
-						\(PE_{(pos,2i)}=sin(pos/10000^{2i/d_{embedding}})\)
-						\(PE_{(pos,2i+1)}=cos(pos/10000^{2i+1/d_{embedding}})\)
+						\(\definecolor{yello400}{RGB}{246, 224, 94}\)
+						\(PE_{({\color{yello400}pos},{\color{yello400}2i})}=sin({\color{yello400}pos}/10000^{{\color{yello400}2i}/d_{embedding}})\)
+						\(PE_{({\color{yello400}pos},{\color{yello400}2i+1})}=cos({\color{yello400}pos}/10000^{({\color{yello400}2i+1})/d_{embedding}})\)
+					</p>
+					<p class="text-left pl-10">
+						\(PE_{out}=PE_{in}+PE\)
 					</p>
 				</section>
 				<section>
 					<p class="text-left pl-10">
-						\(PE_{(pos,2i)}=sin(pos/10000^{2i/d_{embedding}})\)
-						\(PE_{(pos,2i+1)}=cos(pos/10000^{2i+1/d_{embedding}})\)
+						\(\definecolor{yello400}{RGB}{246, 224, 94}\)
+						\(PE_{({\color{yello400}pos},{\color{yello400}2i})}=sin({\color{yello400}pos}/10000^{{\color{yello400}2i}/d_{embedding}})\)
+						\(PE_{({\color{yello400}pos},{\color{yello400}2i+1})}=cos({\color{yello400}pos}/10000^{({\color{yello400}2i+1})/d_{embedding}})\)
 					</p>
 					<p>
 					<ul>
@@ -955,7 +960,9 @@
 					</p>
 				</section>
 				<section>
-					<img src="./img/positional-encoding.png" />
+					<img src="./img/positional-encoding.png" class="w-2/3 m-auto inline-block" />
+					<p class="text-left pl-10 text-4xl">Sequence length = 50、Embedding depth = 10 的 positional encoding
+					</p>
 				</section>
 				<section>
 					<img src="./img/transformer-encoders-decoders.png" class="w-2/3 m-auto inline-block" />
@@ -968,6 +975,9 @@
 				</section>
 				<section>
 					<img src="./img/encoder-layer.png" class="w-2/3 m-auto inline-block" />
+				</section>
+				<section>
+					<img src="./img/encoder-layer-multi-head-attention.png" class="w-2/3 m-auto inline-block" />
 				</section>
 				<section>
 					<img src="./img/multi-head-attention.png" class="w-2/3 m-auto inline-block" />
@@ -994,10 +1004,16 @@
 					<img src="./img/decoder-layer.png" class="w-2/3 m-auto inline-block" />
 				</section>
 				<section>
+					<img src="./img/decoder-layer-masked-multi-head-attention.png" class="w-2/3 m-auto inline-block" />
+				</section>
+				<section>
 					<img src="./img/decoder-masked-attention-1.png" />
 				</section>
 				<section>
 					<img src="./img/decoder-masked-attention-2.png" />
+				</section>
+				<section>
+					<img src="./img/decoder-layer-multi-head-attention.png" class="w-2/3 m-auto inline-block" />
 				</section>
 				<section>
 					<img src="./img/decoder-attention-1.png" />
