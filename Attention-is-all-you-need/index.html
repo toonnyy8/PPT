@@ -2,1056 +2,1090 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
 
-    <title>Attention Is All You Need 報告</title>
+	<title>Attention Is All You Need 報告</title>
 
-    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-    <meta name="author" content="Hakim El Hattab">
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
 
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/black.css" id="theme">
-    <style>
-        @import url("./css/index.css");
-    </style>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css" id="theme">
+	<style>
+		@import url("./css/index.css");
+	</style>
 
-    <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/monokai.css">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
 
-    <!-- Printing and PDF exports -->
-    <script>
-        var link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-        document.getElementsByTagName('head')[0].appendChild(link);
-    </script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-    <script type="text/x-mathjax-config">
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+	<script type="text/x-mathjax-config">
         MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
-    <style>
-        @font-face {
-            font-family: custom-serif;
-            src: local('Noto Sans TC');
-            unicode-range: U+4E00-9FFF;
-        }
-        
-        @font-face {
-            font-family: custom-serif;
-            src: local(Source Code Pro);
-            unicode-range: U+00-024F;
-        }
-        
-        section {
-            font-family: custom-serif;
-        }
-    </style>
+	</script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
-    <!--[if lt IE 9]>
+		section {
+			font-family: 'Source Code Pro', 'Noto Sans TC', sans-serif;
+		}
+	</style>
+
+	<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
 </head>
 
 <body>
 
-    <div class="reveal">
+	<div class="reveal">
 
-        <!-- Any section element inside of this container is displayed as a slide -->
-        <div class="slides text-4xl">
-            <section>
-                <p style="font-size: 150%;">
-                    <a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a>
-                </p>
-                <br />
-                <p class="text-left pl-24 text-2xl">
-                    <nobr>Ashish Vaswani</nobr>,
-                    <nobr>Noam Shazeer</nobr>,
-                    <nobr>Niki Parmar</nobr>,
-                    <nobr>Jakob Uszkoreit</nobr>,
-                    <nobr>Llion Jones</nobr>,
-                    <nobr>Aidan N. Gomez</nobr>,
-                    <nobr>Lukasz Kaiser</nobr>,
-                    <nobr>Illia Polosukhin</nobr>
-                </p>
-                <p class="text-left pl-24 text-2xl">
-                    <nobr>The International Conference on <br/>Neural Information Processing Systems (NIPS'17),</nobr>
-                    <nobr>pp. 6000–6010, Dec. 2017</nobr>
-                </p>
-            </section>
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides text-4xl">
+			<section>
+				<p style="font-size: 150%;">
+					<a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a>
+				</p>
+				<br />
+				<p class="text-left pl-24 text-2xl">
+					<nobr>Ashish Vaswani</nobr>,
+					<nobr>Noam Shazeer</nobr>,
+					<nobr>Niki Parmar</nobr>,
+					<nobr>Jakob Uszkoreit</nobr>,
+					<nobr>Llion Jones</nobr>,
+					<nobr>Aidan N. Gomez</nobr>,
+					<nobr>Lukasz Kaiser</nobr>,
+					<nobr>Illia Polosukhin</nobr>
+				</p>
+				<p class="text-left pl-24 text-2xl">
+					<nobr>The International Conference on <br />Neural Information Processing Systems (NIPS'17),</nobr>
+					<nobr>pp. 6000–6010, Dec. 2017</nobr>
+				</p>
+			</section>
 
-            <!-- 目錄 -->
-            <section>
-                <h3>目錄</h3>
-                <ol>
-                    <li>
-                        <p>
-                            <nobr><a href="index.html#/2">背景知識</a></nobr>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <nobr><a href="index.html#/3">Transformer 簡介</a></nobr>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <nobr><a href="index.html#/4">Multi-Head Attention</a></nobr>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <nobr><a href="index.html#/5">認真拆解 Transformer</a></nobr>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <nobr><a href="index.html#/6">實驗結果 & 結論</a></nobr>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <nobr><a href="index.html#/7">參考資料</a></nobr>
-                        </p>
-                    </li>
-                </ol>
+			<!-- 目錄 -->
+			<section>
+				<h3>目錄</h3>
+				<ol>
+					<li>
+						<p>
+							<nobr><a href="index.html#/2">背景知識</a></nobr>
+						</p>
+					</li>
+					<li>
+						<p>
+							<nobr><a href="index.html#/3">Transformer 簡介</a></nobr>
+						</p>
+					</li>
+					<li>
+						<p>
+							<nobr><a href="index.html#/4">Multi-Head Attention</a></nobr>
+						</p>
+					</li>
+					<li>
+						<p>
+							<nobr><a href="index.html#/5">認真拆解 Transformer</a></nobr>
+						</p>
+					</li>
+					<li>
+						<p>
+							<nobr><a href="index.html#/6">實驗結果 & 結論</a></nobr>
+						</p>
+					</li>
+					<li>
+						<p>
+							<nobr><a href="index.html#/7">參考資料</a></nobr>
+						</p>
+					</li>
+				</ol>
 
-            </section>
+			</section>
 
-            <!-- 背景知識 -->
-            <section>
-                <section>
-                    <p style="font-size: 150%;">
-                        背景知識
-                    </p>
-                    <ol>
-                        <li><a href="index.html#/2/1">Attention</a></li>
-                        <li><a href="index.html#/2/6">Word Embedding</a></li>
-                    </ol>
-                </section>
+			<!-- 背景知識 -->
+			<section>
+				<section>
+					<p style="font-size: 150%;">
+						背景知識
+					</p>
+					<ol>
+						<li><a href="index.html#/2/1">Attention</a></li>
+						<li><a href="index.html#/2/6">Word Embedding</a></li>
+					</ol>
+				</section>
 
-                <!-- Attention -->
-                <section>
-                    <p style="font-size: 150%;">
-                        Attention？
-                    </p>
-                </section>
+				<!-- Attention -->
+				<section>
+					<p style="font-size: 150%;">
+						Attention？
+					</p>
+				</section>
 
-                <section>
-                    <div class="flex flex-row">
-                        <div class="w-1/3">
-                            <video autoplay muted loop>
-								<source src="./img/attention.mkv" type="video/mp4">
+				<section>
+					<div class="flex flex-row">
+						<div class="w-1/3">
+							<video autoplay muted loop>
+								<source src="./img/attention.mp4" type="video/mp4">
 							</video>
-                        </div>
-                        <div>
-                            <p class="fragment fade-up pl-10 pt-10 text-left">
-                                你的視線是不是集中在
-                                <br /> 這隻史萊姆身上？ </p>
-                        </div>
-                </section>
+						</div>
+						<div>
+							<p class="fragment fade-up pl-10 pt-10 text-left">
+								你的視線是不是集中在
+								<br /> 這隻史萊姆身上？ </p>
+						</div>
+				</section>
 
-                <section>
-                    <img src="./img/attention.png" />
-                </section>
+				<section>
+					<img src="./img/attention.png" />
+				</section>
 
-                <section>
-                    <p>
-                        注意力機制「太」簡單的理解就是
-                    </p>
-                    <p class="fragment fade-up">
-                        「賦予剛剛<strong class="text-red-500">標記的位置</strong>較大的權重」
-                    </p>
-                    <p class="fragment fade-up text-3xl">
-                        像是 LSTM 的記憶機制其實就是一種 Attention
-                    </p>
-                </section>
+				<section>
+					<p>
+						注意力機制「太」簡單的理解就是
+					</p>
+					<p class="fragment fade-up">
+						「賦予剛剛<strong class="text-red-500">標記的位置</strong>較大的權重」
+					</p>
+					<p class="fragment fade-up text-3xl">
+						像是 LSTM 的記憶機制其實就是一種 Attention
+					</p>
+				</section>
 
-                <section>
-                    <ol>
-                        <li>Soft Attention</li>
-                        <li>Hard Attention</li>
-                        <li>Local Attention</li>
-                        <li>Global Attention</li>
-                        <li>
-                            <strong class="text-orange-500">Self Attention</strong>
-                        </li>
-                    </ol>
-                    <p class="fragment fade-up">
-                        今天只會講解 Self Attention
-                    </p>
-                </section>
+				<section>
+					<ol>
+						<li>Soft Attention</li>
+						<li>Hard Attention</li>
+						<li>Local Attention</li>
+						<li>Global Attention</li>
+						<li>
+							<strong class="text-orange-500">Self Attention</strong>
+						</li>
+					</ol>
+					<p class="fragment fade-up">
+						今天只會講解 Self Attention
+					</p>
+				</section>
 
-                <!-- Word Embedding -->
-                <section>
-                    <p style="font-size: 150%;">
-                        Word Embedding
-                    </p>
-                </section>
+				<!-- Word Embedding -->
+				<section>
+					<p style="font-size: 150%;">
+						Word Embedding
+					</p>
+				</section>
 
-                <section>
-                    <p>
-                        在 NLP 領域中，要對文本進行前處理
-                    </p>
-                    <br />
-                    <ol class="fragment fade-up">
-                        <li>建字典</li>
-                        <li>切文本</li>
-                        <li>轉換 Symbol</li>
-                    </ol>
-                </section>
+				<section>
+					<p>
+						在 NLP 領域中，要對文本進行前處理
+					</p>
+					<br />
+					<ol class="fragment fade-up">
+						<li>建字典</li>
+						<li>切文本</li>
+						<li>轉換 Symbol</li>
+					</ol>
+				</section>
 
-                <section>
-                    <p class="text-left pl-24">
-                        建字典
-                    </p>
-                    <p class="text-left pl-32">
-                        為所有可能出現的 Symbol 標上 ID
-                    </p>
-                </section>
+				<section>
+					<p class="text-left pl-24">
+						建字典
+					</p>
+					<p class="text-left pl-32">
+						為所有可能出現的 Symbol 標上 ID
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-24">
-                        切文本
-                    </p>
-                    <p class="text-left pl-32">
-                        將文本分割成多個 Symbol 並取得其 ID，
-                        <br /> Symbol 的單位可以是 Token 或是 Character
-                    </p>
-                </section>
-                <section>
-                    <p class="text-left pl-24">
-                        轉換 Symbol
-                    </p>
-                    <ul class="fragment fade-up">
-                        <li>One Hot Encoding</li>
-                        <li>Word Embedding</li>
-                    </ul>
-                </section>
-                <section>
-                    <img src="./img/one_hot_encoding.png" /> One Hot Encoding
-                </section>
-                <section>
-                    <p class="text-left pl-64">
-                        缺點
-                    </p>
-                    <ul>
-                        <li class="fragment fade-up">太~大~~</li>
-                        <li class="fragment fade-up">資訊稀疏</li>
-                    </ul>
-                </section>
+				<section>
+					<p class="text-left pl-24">
+						切文本
+					</p>
+					<p class="text-left pl-32">
+						將文本分割成多個 Symbol 並取得其 ID，
+						<br /> Symbol 的單位可以是 Token 或是 Character
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-24">
+						轉換 Symbol
+					</p>
+					<ul class="fragment fade-up">
+						<li>One Hot Encoding</li>
+						<li>Word Embedding</li>
+					</ul>
+				</section>
+				<section>
+					<img src="./img/one_hot_encoding.png" /> One Hot Encoding
+				</section>
+				<section>
+					<p class="text-left pl-64">
+						缺點
+					</p>
+					<ul>
+						<li class="fragment fade-up">太~大~~</li>
+						<li class="fragment fade-up">資訊稀疏</li>
+					</ul>
+				</section>
 
-                <section>
-                    <img src="./img/embedding_2.png" /> Word Embedding
-                </section>
-                <section>
-                    <p class="text-left pl-24">建構 Embedding Table</p>
-                    <p class="text-left pl-24">附註：Embedding Table 將會一起被訓練</p>
+				<section>
+					<img src="./img/embedding_2.png" /> Word Embedding
+				</section>
+				<section>
+					<p class="text-left pl-24">建構 Embedding Table</p>
+					<p class="text-left pl-24">附註：Embedding Table 將會一起被訓練</p>
 
-                </section>
-                <section>
-                    <img src="./img/embedding_0.png" /> Embedding Table
-                </section>
-                <section>
-                    <img src="./img/embedding_1.png" /> 查找 Table
-                </section>
-                <section>
-                    <img src="./img/embedding_2.png" /> 完成轉換
-                </section>
-                <section>
-                    <p class="text-left pl-48">
-                        優點
-                    </p>
-                    <ul>
-                        <li class="fragment fade-up">較小</li>
-                        <li class="fragment fade-up">
-                            資訊緊緻，
-                            <br /> 可表示出 Symbol 之間的關係
-                        </li>
-                    </ul>
-                </section>
-            </section>
+				</section>
+				<section>
+					<img src="./img/embedding_0.png" /> Embedding Table
+				</section>
+				<section>
+					<img src="./img/embedding_1.png" /> 查找 Table
+				</section>
+				<section>
+					<img src="./img/embedding_2.png" /> 完成轉換
+				</section>
+				<section>
+					<p class="text-left pl-48">
+						優點
+					</p>
+					<ul>
+						<li class="fragment fade-up">較小</li>
+						<li class="fragment fade-up">
+							資訊緊緻，
+							<br /> 可表示出 Symbol 之間的關係
+						</li>
+					</ul>
+				</section>
+			</section>
 
-            <!-- Transformer 簡介 -->
-            <section>
-                <section>
-                    <p style="font-size: 150%;">
-                        Transformer 簡介
-                    </p>
-                    <p class="fragment fade-up">
-                        由<strong class="text-red-500">注意力機制</strong>組成的全新架構
-                    </p>
-                    <ol>
-                        <li><a href="#/3/1">Why Transformer ?</a></li>
-                        <li><a href="#/3/7">使用手冊，以翻譯為例</a></li>
-                    </ol>
-                </section>
+			<!-- Transformer 簡介 -->
+			<section>
+				<section>
+					<p style="font-size: 150%;">
+						Transformer 簡介
+					</p>
+					<p class="fragment fade-up">
+						由<strong class="text-red-500">注意力機制</strong>組成的全新架構
+					</p>
+					<ol>
+						<li><a href="#/3/1">Why Transformer ?</a></li>
+						<li><a href="#/3/7">使用手冊，以翻譯為例</a></li>
+					</ol>
+				</section>
 
-                <section>
-                    <p class="text-left pl-24">
-                        在 <del>NLP 的領域中</del> 處理時序相關的問題時
-                    </p>
-                    <p class="text-left pl-24 fragment fade-up">
-                        通常會使用 RNN、LSTM 等等架構來解決
-                    </p>
-                    <p class="text-left pl-24 fragment fade-up">
-                        到後來還用上了<strong>注意力機制</strong>
-                    </p>
-                </section>
+				<section>
+					<p class="text-left pl-24">
+						在 <del>NLP 的領域中</del> 處理時序相關的問題時
+					</p>
+					<p class="text-left pl-24 fragment fade-up">
+						通常會使用 RNN、LSTM 等等架構來解決
+					</p>
+					<p class="text-left pl-24 fragment fade-up">
+						到後來還用上了<strong>注意力機制</strong>
+					</p>
+				</section>
 
-                <section>
-                    <img src="./img/rnn.png" /> RNN
-                </section>
+				<section>
+					<img src="./img/rnn.png" /> RNN
+				</section>
 
-                <section>
-                    <p>
-                        但是這類模型受到並行性限制影響
-                    </p>
-                    <p class="fragment fade-up">
-                        非常的緩～～～～～～～～～～慢
-                    </p>
-                </section>
+				<section>
+					<p>
+						但是這類模型受到並行性限制影響
+					</p>
+					<p class="fragment fade-up">
+						非常的緩～～～～～～～～～～慢
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-24">
-                        所以在 2017 年，
-                    </p>
-                    <p class="text-left pl-24">
-                        由 Attention 組成
-                    </p>
-                    <p class="text-left pl-24">
-                        全新的架構「Transformer」閃亮登場。
-                    </p>
-                </section>
+				<section>
+					<p class="text-left pl-24">
+						所以在 2017 年，
+					</p>
+					<p class="text-left pl-24">
+						由 Attention 組成
+					</p>
+					<p class="text-left pl-24">
+						全新的架構「Transformer」閃亮登場。
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-24">
-                        依靠的獨特的 Multi-Head Attention
-                    </p>
-                    <p class="text-left pl-24">
-                        Transformer 獲得了高並行性與充滿彈性的感受野。
-                    </p>
-                </section>
+				<section>
+					<p class="text-left pl-24">
+						依靠的獨特的 Multi-Head Attention
+					</p>
+					<p class="text-left pl-24">
+						Transformer 獲得了高並行性與充滿彈性的感受野。
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-24">
-                        <del>自此 RNN 便成為歷史</del>
-                    </p>
-                    <p class="text-left pl-24 fragment fade-up">
-                        並沒有！</p>
-                    <p class="text-left pl-24 fragment fade-up">後來還轉職成「<a href="https://arxiv.org/abs/1901.02860">Transformer XL</a>」的專業輔助
-                    </p>
-                    <p class="text-left pl-24 fragment fade-up">
-                        但這不是今天要聊的（逃</p>
-                </section>
+				<section>
+					<p class="text-left pl-24">
+						<del>自此 RNN 便成為歷史</del>
+					</p>
+					<p class="text-left pl-24 fragment fade-up">
+						並沒有！</p>
+					<p class="text-left pl-24 fragment fade-up">後來還轉職成「<a
+							href="https://arxiv.org/abs/1901.02860">Transformer XL</a>」的專業輔助
+					</p>
+					<p class="text-left pl-24 fragment fade-up">
+						但這不是今天要聊的（逃</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-10">
-                        在正式解構 Transformer 前，<br /> 先從「翻譯任務」介紹其訓練與使用方式。
-                    </p>
-                    <p class="text-left pl-10 flex items-center fragment fade-up">
-                        <span class="pr-10">不然後面會越來越</span><img class="w-64" src="./img/黑人問號.jpg" />
-                    </p>
-                </section>
+				<section>
+					<p class="text-left pl-10">
+						在正式解構 Transformer 前，<br /> 先從「翻譯任務」介紹其訓練與使用方式。
+					</p>
+					<p class="text-left pl-10 flex items-center fragment fade-up">
+						<span class="pr-10">不然後面會越來越</span><img class="w-64" src="./img/黑人問號.jpg" />
+					</p>
+				</section>
 
-                <section>
-                    <p>
-                        <span class="text-purple-400">Output</span> 的 Sequence length 與 <span class="text-orange-400">Target</span> 相同
-                    </p>
-                    <img class="" src="./img/black_box.png" /> 輸入與輸出
-                </section>
+				<section>
+					<p>
+						<span class="text-purple-400">Output</span> 的 Sequence length 與 <span
+							class="text-orange-400">Target</span> 相同
+					</p>
+					<img class="" src="./img/black_box.png" /> 輸入與輸出
+				</section>
 
-                <section>
-                    <p>
-                        在訓練時會先準備兩筆資料
-                    </p>
-                    <ul>
-                        <li><span class="text-green-400">來源文本</span></li>
-                        <li><span class="text-orange-400">目標文本</span></li>
-                    </ul>
-                    <p class="fragment fade-up">
-                        並將兩者<span class="text-yellow-500">拆成 Symbol </span>後加上
-                        <br />
-                        <span class="text-pink-500">「起始符號」</span>與<span class="text-pink-500">「結束符號」</span>
-                    </p>
-                </section>
+				<section>
+					<p>
+						在訓練時會先準備兩筆資料
+					</p>
+					<ul>
+						<li><span class="text-green-400">來源文本</span></li>
+						<li><span class="text-orange-400">目標文本</span></li>
+					</ul>
+					<p class="fragment fade-up">
+						並將兩者<span class="text-yellow-500">拆成 Symbol </span>後加上
+						<br />
+						<span class="text-pink-500">「起始符號」</span>與<span class="text-pink-500">「結束符號」</span>
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-10">
-                        來源文本：<span class="text-green-400">Attention is all you need</span>
-                    </p>
-                    <p class="text-left pl-10 fragment fade-up">
-                        處理後：<br />
-                        <span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-green-400">Attention</span>,
-                        <span class="text-green-400">is</span>,
-                        <span class="text-green-400">all</span>,
-                        <span class="text-green-400">you</span>,
-                        <span class="text-green-400">need</span>,
-                        <span class="text-pink-500">&lt;END&gt;</span>
-                    </p>
-                </section>
+				<section>
+					<p class="text-left pl-10">
+						來源文本：<span class="text-green-400">Attention is all you need</span>
+					</p>
+					<p class="text-left pl-10 fragment fade-up">
+						處理後：<br />
+						<span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-10">
-                        目標文本：<span class="text-orange-400">注意力就是你所需要的</span>
-                    </p>
-                    <p class="text-left pl-10 fragment fade-up">
-                        處理後：<br />
-                        <span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-orange-400">注意力</span>,
-                        <span class="text-orange-400">就是</span>,
-                        <span class="text-orange-400">你</span>,
-                        <span class="text-orange-400">所</span>,
-                        <span class="text-orange-400">需要</span>,
-                        <span class="text-orange-400">的</span>,
-                        <span class="text-pink-500">&lt;END&gt;</span>
-                    </p>
-                </section>
+				<section>
+					<p class="text-left pl-10">
+						目標文本：<span class="text-orange-400">注意力就是你所需要的</span>
+					</p>
+					<p class="text-left pl-10 fragment fade-up">
+						處理後：<br />
+						<span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<span class="text-orange-400">所</span>,
+						<span class="text-orange-400">需要</span>,
+						<span class="text-orange-400">的</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-10">
-                        Input：<strong class="text-green-400">來源文本</strong> 轉換成的 <strong class="text-yellow-500">Symbol
+				<section>
+					<p class="text-left pl-10">
+						Input：<strong class="text-green-400">來源文本</strong> 轉換成的 <strong class="text-yellow-500">Symbol
 							ID</strong> Sequence
-                    </p>
-                    <p class="text-left pl-10 fragment fade-up">
-                        Target：<br />
-                        <strong class="text-orange-400">目標文本[:-1]</strong> 轉換成的 <strong class="text-yellow-500">Symbol
+					</p>
+					<p class="text-left pl-10 fragment fade-up">
+						Target：<br />
+						<strong class="text-orange-400">目標文本[:-1]</strong> 轉換成的 <strong class="text-yellow-500">Symbol
 							ID</strong> Sequence
-                    </p>
-                    <p class="text-left pl-10 fragment fade-up">
-                        Output：預測詞字的 <strong class="text-pink-500">機率分布</strong> 序列
-                    </p>
-                    <p class="text-left pl-10 fragment fade-up">
-                        Ground Truth：<br />
-                        <strong class="text-orange-400">目標文本[1:]</strong> 的 <strong class="text-pink-500">One Hot
+					</p>
+					<p class="text-left pl-10 fragment fade-up">
+						Output：預測詞字的 <strong class="text-pink-500">機率分布</strong> 序列
+					</p>
+					<p class="text-left pl-10 fragment fade-up">
+						Ground Truth：<br />
+						<strong class="text-orange-400">目標文本[1:]</strong> 的 <strong class="text-pink-500">One Hot
 							Encoding</strong> Sequence
-                    </p>
-                </section>
-                <section>
-                    <img src="./img/黑人問號.jpg" />
-                </section>
+					</p>
+				</section>
+				<section>
+					<img src="./img/黑人問號.jpg" />
+				</section>
 
-                <section>
-                    <p class="text-left pl-10">
-                        Input：
-                        <br /><span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-green-400">Attention</span>,
-                        <span class="text-green-400">is</span>,
-                        <span class="text-green-400">all</span>,
-                        <span class="text-green-400">you</span>,
-                        <span class="text-green-400">need</span>,
-                        <span class="text-pink-500">&lt;END&gt;</span>
-                    </p>
-                    <p class="text-left pl-10">
-                        Target：
-                        <br />
-                        <span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-orange-400">注意力</span>,
-                        <span class="text-orange-400">就是</span>,
-                        <span class="text-orange-400">你</span>,
-                        <span class="text-orange-400">所</span>,
-                        <span class="text-orange-400">需要</span>,
-                        <span class="text-orange-400">的</span>,
-                        <del class="text-red-600">&lt;END&gt;</del>
-                    </p>
+				<section>
+					<p class="text-left pl-10">
+						Input：
+						<br /><span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Target：
+						<br />
+						<span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<span class="text-orange-400">所</span>,
+						<span class="text-orange-400">需要</span>,
+						<span class="text-orange-400">的</span>,
+						<del class="text-red-600">&lt;END&gt;</del>
+					</p>
 
-                    <p class="text-left pl-10">
-                        Ground Truth：
-                        <br />
-                        <del class="text-red-600">&lt;START&gt;</del>,
-                        <span class="text-orange-400">注意力</span>,
-                        <span class="text-orange-400">就是</span>,
-                        <span class="text-orange-400">你</span>,
-                        <span class="text-orange-400">所</span>,
-                        <span class="text-orange-400">需要</span>,
-                        <span class="text-orange-400">的</span>,
-                        <span class="text-pink-500">&lt;END&gt;</span>
-                    </p>
-                </section>
+					<p class="text-left pl-10">
+						Ground Truth：
+						<br />
+						<del class="text-red-600">&lt;START&gt;</del>,
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<span class="text-orange-400">所</span>,
+						<span class="text-orange-400">需要</span>,
+						<span class="text-orange-400">的</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-10">
-                        講人話就是：
-                    </p>
-                    <p class="text-left pl-10">
-                        希望模型能預測出 <span class="text-orange-400">Target</span> 的下一個字該是什麼
-                    </p>
-                </section>
+				<section>
+					<p class="text-left pl-10">
+						講人話就是：
+					</p>
+					<p class="text-left pl-10">
+						希望模型能預測出 <span class="text-orange-400">Target</span> 的下一個字該是什麼
+					</p>
+				</section>
 
-                <section>
-                    <img src="./img/usage.png" /> Usage
-                </section>
+				<section>
+					<img src="./img/usage.png" /> Usage
+				</section>
 
-                <section>
-                    <p class="text-left pl-10">
-                        在使用時，最開始的 <span class="text-orange-400">Target</span> 只有 <span class="text-pink-500">&lt;START&gt;</span>
-                    </p>
-                    <p class="text-left pl-10">
-                        輸入 <span class="text-green-400">Input</span> 與 <span class="text-orange-400">Target</span> 後可以得到模型預測的
-                        <br />
-                        <strong><u class="text-blue-300">下一個字</u></strong><sup style="font-size:1.5rem;" class="text-yellow-400">NEW!</sup>
-                    </p>
-                </section>
+				<section>
+					<p class="text-left pl-10">
+						在使用時，最開始的 <span class="text-orange-400">Target</span> 只有 <span
+							class="text-pink-500">&lt;START&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						輸入 <span class="text-green-400">Input</span> 與 <span class="text-orange-400">Target</span>
+						後可以得到模型預測的
+						<br />
+						<strong><u class="text-blue-300">下一個字</u></strong><sup style="font-size:1.5rem;"
+							class="text-yellow-400">NEW!</sup>
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-10">
-                        Input：
-                        <br /><span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-green-400">Attention</span>,
-                        <span class="text-green-400">is</span>,
-                        <span class="text-green-400">all</span>,
-                        <span class="text-green-400">you</span>,
-                        <span class="text-green-400">need</span>,
-                        <span class="text-pink-500">&lt;END&gt;</span>
-                    </p>
-                    <p class="text-left pl-10">
-                        Target：
-                        <br />
-                        <span class="text-pink-500">&lt;START&gt;</span>
-                    </p>
-                    <p class="fragment fade-up text-left pl-10">
-                        Output：
-                        <br />
-                        <strong><u class="text-blue-300">注意力</u></strong><sup class="text-yellow-400">NEW!</sup>
-                    </p>
-                </section>
+				<section>
+					<p class="text-left pl-10">
+						Input：
+						<br /><span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Target：
+						<br />
+						<span class="text-pink-500">&lt;START&gt;</span>
+					</p>
+					<p class="fragment fade-up text-left pl-10">
+						Output：
+						<br />
+						<strong><u class="text-blue-300">注意力</u></strong><sup class="text-yellow-400">NEW!</sup>
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-10">
-                        將預測出的 <strong><u class="text-blue-300">下一個字</u></strong><sup class="text-yellow-400">NEW!</sup> 接到
-                        <span class="text-orange-400">Target</span> 後面，<br /> 變成 <span class="text-orange-400">新的
+				<section>
+					<p class="text-left pl-10">
+						將預測出的 <strong><u class="text-blue-300">下一個字</u></strong><sup class="text-yellow-400">NEW!</sup>
+						接到
+						<span class="text-orange-400">Target</span> 後面，<br /> 變成 <span class="text-orange-400">新的
 							Target</span>
-                    </p>
-                </section>
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-10">
-                        Input：
-                        <br /><span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-green-400">Attention</span>,
-                        <span class="text-green-400">is</span>,
-                        <span class="text-green-400">all</span>,
-                        <span class="text-green-400">you</span>,
-                        <span class="text-green-400">need</span>,
-                        <span class="text-pink-500">&lt;END&gt;</span>
-                    </p>
-                    <p class="text-left pl-10">
-                        Target：
-                        <br />
-                        <span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-orange-400">注意力</span>
-                    </p>
-                    <p class="fragment fade-up text-left pl-10">
-                        Output：
-                        <br />
-                        <span class="text-orange-400">注意力</span>,
-                        <strong><u class="text-blue-300">就是</u></strong><sup class="text-yellow-400">NEW!</sup>
-                    </p>
-                </section>
-                <section>
-                    <p class="text-left pl-10">
-                        不斷重覆到預測出 <span class="text-pink-500">&lt;END&gt;</span> 或到達設定的預測上限次數
-                    </p>
-                </section>
-                <section>
-                    <p class="text-left pl-10">
-                        Input：
-                        <br /><span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-green-400">Attention</span>,
-                        <span class="text-green-400">is</span>,
-                        <span class="text-green-400">all</span>,
-                        <span class="text-green-400">you</span>,
-                        <span class="text-green-400">need</span>,
-                        <span class="text-pink-500">&lt;END&gt;</span>
-                    </p>
-                    <p class="text-left pl-10">
-                        Target：
-                        <br />
-                        <span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-orange-400">注意力</span>,
-                        <span class="text-orange-400">就是</span>
-                    </p>
-                    <p class="fragment fade-up text-left pl-10">
-                        Output：
-                        <br />
-                        <span class="text-orange-400">注意力</span>,
-                        <span class="text-orange-400">就是</span>,
-                        <strong><u class="text-blue-300">你</u></strong><sup class="text-yellow-400">NEW!</sup>
-                    </p>
-                </section>
+				<section>
+					<p class="text-left pl-10">
+						Input：
+						<br /><span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Target：
+						<br />
+						<span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-orange-400">注意力</span>
+					</p>
+					<p class="fragment fade-up text-left pl-10">
+						Output：
+						<br />
+						<span class="text-orange-400">注意力</span>,
+						<strong><u class="text-blue-300">就是</u></strong><sup class="text-yellow-400">NEW!</sup>
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						不斷重覆到預測出 <span class="text-pink-500">&lt;END&gt;</span> 或到達設定的預測上限次數
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						Input：
+						<br /><span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Target：
+						<br />
+						<span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>
+					</p>
+					<p class="fragment fade-up text-left pl-10">
+						Output：
+						<br />
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<strong><u class="text-blue-300">你</u></strong><sup class="text-yellow-400">NEW!</sup>
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-10">
-                        Input：
-                        <br /><span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-green-400">Attention</span>,
-                        <span class="text-green-400">is</span>,
-                        <span class="text-green-400">all</span>,
-                        <span class="text-green-400">you</span>,
-                        <span class="text-green-400">need</span>,
-                        <span class="text-pink-500">&lt;END&gt;</span>
-                    </p>
-                    <p class="text-left pl-10">
-                        Target：
-                        <br />
-                        <span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-orange-400">注意力</span>,
-                        <span class="text-orange-400">就是</span>,
-                        <span class="text-orange-400">你</span>
-                    </p>
-                    <p class="fragment fade-up text-left pl-10">
-                        Output：
-                        <br />
-                        <span class="text-orange-400">注意力</span>,
-                        <span class="text-orange-400">就是</span>,
-                        <span class="text-orange-400">你</span>,
-                        <strong><u class="text-blue-300">所</u></strong><sup class="text-yellow-400">NEW!</sup>
-                    </p>
-                </section>
+				<section>
+					<p class="text-left pl-10">
+						Input：
+						<br /><span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Target：
+						<br />
+						<span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>
+					</p>
+					<p class="fragment fade-up text-left pl-10">
+						Output：
+						<br />
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<strong><u class="text-blue-300">所</u></strong><sup class="text-yellow-400">NEW!</sup>
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-10">
-                        Input：
-                        <br /><span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-green-400">Attention</span>,
-                        <span class="text-green-400">is</span>,
-                        <span class="text-green-400">all</span>,
-                        <span class="text-green-400">you</span>,
-                        <span class="text-green-400">need</span>,
-                        <span class="text-pink-500">&lt;END&gt;</span>
-                    </p>
-                    <p class="text-left pl-10">
-                        Target：
-                        <br />
-                        <span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-orange-400">注意力</span>,
-                        <span class="text-orange-400">就是</span>,
-                        <span class="text-orange-400">你</span>,
-                        <span class="text-orange-400">所</span>
-                    </p>
-                    <p class="fragment fade-up text-left pl-10">
-                        Output：
-                        <br />
-                        <span class="text-orange-400">注意力</span>,
-                        <span class="text-orange-400">就是</span>,
-                        <span class="text-orange-400">你</span>,
-                        <span class="text-orange-400">所</span>,
-                        <strong><u class="text-blue-300">需要</u></strong><sup class="text-yellow-400">NEW!</sup>
-                    </p>
-                </section>
+				<section>
+					<p class="text-left pl-10">
+						Input：
+						<br /><span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Target：
+						<br />
+						<span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<span class="text-orange-400">所</span>
+					</p>
+					<p class="fragment fade-up text-left pl-10">
+						Output：
+						<br />
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<span class="text-orange-400">所</span>,
+						<strong><u class="text-blue-300">需要</u></strong><sup class="text-yellow-400">NEW!</sup>
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-10">
-                        Input：
-                        <br /><span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-green-400">Attention</span>,
-                        <span class="text-green-400">is</span>,
-                        <span class="text-green-400">all</span>,
-                        <span class="text-green-400">you</span>,
-                        <span class="text-green-400">need</span>,
-                        <span class="text-pink-500">&lt;END&gt;</span>
-                    </p>
-                    <p class="text-left pl-10">
-                        Target：
-                        <br />
-                        <span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-orange-400">注意力</span>,
-                        <span class="text-orange-400">就是</span>,
-                        <span class="text-orange-400">你</span>,
-                        <span class="text-orange-400">所</span>,
-                        <span class="text-orange-400">需要</span>
-                    </p>
-                    <p class="fragment fade-up text-left pl-10">
-                        Output：
-                        <br />
-                        <span class="text-orange-400">注意力</span>,
-                        <span class="text-orange-400">就是</span>,
-                        <span class="text-orange-400">你</span>,
-                        <span class="text-orange-400">所</span>,
-                        <span class="text-orange-400">需要</span>,
-                        <strong><u class="text-blue-300">的</u></strong><sup class="text-yellow-400">NEW!</sup>
-                    </p>
-                </section>
+				<section>
+					<p class="text-left pl-10">
+						Input：
+						<br /><span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Target：
+						<br />
+						<span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<span class="text-orange-400">所</span>,
+						<span class="text-orange-400">需要</span>
+					</p>
+					<p class="fragment fade-up text-left pl-10">
+						Output：
+						<br />
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<span class="text-orange-400">所</span>,
+						<span class="text-orange-400">需要</span>,
+						<strong><u class="text-blue-300">的</u></strong><sup class="text-yellow-400">NEW!</sup>
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-10">
-                        Input：
-                        <br /><span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-green-400">Attention</span>,
-                        <span class="text-green-400">is</span>,
-                        <span class="text-green-400">all</span>,
-                        <span class="text-green-400">you</span>,
-                        <span class="text-green-400">need</span>,
-                        <span class="text-pink-500">&lt;END&gt;</span>
-                    </p>
-                    <p class="text-left pl-10">
-                        Target：
-                        <br />
-                        <span class="text-pink-500">&lt;START&gt;</span>,
-                        <span class="text-orange-400">注意力</span>,
-                        <span class="text-orange-400">就是</span>,
-                        <span class="text-orange-400">你</span>,
-                        <span class="text-orange-400">所</span>,
-                        <span class="text-orange-400">需要</span>,
-                        <span class="text-orange-400">的</span>
-                    </p>
-                    <p class="fragment fade-up text-left pl-10">
-                        Output：
-                        <br />
-                        <span class="text-orange-400">注意力</span>,
-                        <span class="text-orange-400">就是</span>,
-                        <span class="text-orange-400">你</span>,
-                        <span class="text-orange-400">所</span>,
-                        <span class="text-orange-400">需要</span>,
-                        <span class="text-orange-400">的</span>,
-                        <strong><u class="text-pink-500">&lt;END&gt;</u></strong><sup class="text-yellow-400">結束！</sup>
-                    </p>
-                </section>
+				<section>
+					<p class="text-left pl-10">
+						Input：
+						<br /><span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-green-400">Attention</span>,
+						<span class="text-green-400">is</span>,
+						<span class="text-green-400">all</span>,
+						<span class="text-green-400">you</span>,
+						<span class="text-green-400">need</span>,
+						<span class="text-pink-500">&lt;END&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						Target：
+						<br />
+						<span class="text-pink-500">&lt;START&gt;</span>,
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<span class="text-orange-400">所</span>,
+						<span class="text-orange-400">需要</span>,
+						<span class="text-orange-400">的</span>
+					</p>
+					<p class="fragment fade-up text-left pl-10">
+						Output：
+						<br />
+						<span class="text-orange-400">注意力</span>,
+						<span class="text-orange-400">就是</span>,
+						<span class="text-orange-400">你</span>,
+						<span class="text-orange-400">所</span>,
+						<span class="text-orange-400">需要</span>,
+						<span class="text-orange-400">的</span>,
+						<strong><u class="text-pink-500">&lt;END&gt;</u></strong><sup class="text-yellow-400">結束！</sup>
+					</p>
+				</section>
 
-            </section>
+			</section>
 
-            <!-- Multi-Head Attention -->
-            <section>
-                <section>
-                    <p style="font-size: 150%;">
-                        Multi-Head Attention
-                    </p>
-                    <p class="fragment fade-up">
-                        NLP 界的 V8 引擎
-                    </p>
-                </section>
-                <section>
-                    <p class="text-left pl-10">
-                        在開始<del> 解剖 </del>解析 Transformer 前，
-                    </p>
-                    <p class="text-left pl-10">
-                        先來了解一下這個新架構的獨特之處
-                    </p>
-                    <p class="fragment fade-up">
-                        「Multi-Head Attention」
-                    </p>
-                </section>
-                <section>
-                    <p class="text-left pl-10 text-4xl">
-                        Multi-Head Attention 正如其名，<br /> 由數個 Head 合成
-                    </p>
-                    <p class="fragment fade-up text-left pl-10 text-4xl">
-                        而每個 Head 具有自己的關注標準，這使得 Multi-Head Attention 可以在詞字之間獲得更豐富的語意關係
-                    </p>
-                </section>
-                <section>
-                    <p class="text-left pl-10">
-                        \[ MultiHeadAttention(Q_{input},K_{input},V_{input})\\ = Concat(Head_1,Head_2,...,Head_h)W^{O} \]
-                    </p>
-                    <p>
-                        其中 <span class="text-yellow-400">\(Q_{input},K_{input},V_{input}\)</span> 是 Embedding 序列
-                    </p>
-                    <p class="fragment fade-up text-right pr-32 pt-10">
-                        \(\definecolor{yello400}{RGB}{246, 224, 94}\) \(V_{input},K_{input}\in\mathbb{R}^{{\color{yello400}Sequence_K} \times d_{embedding}}\) \(Q_{input}\in\mathbb{R}^{{\color{yello400}Sequence_Q} \times d_{embedding}}\)
-                    </p>
-                </section>
-                <section>
-                    <p class="text-left pl-10 text-4xl">
-                        \(V_{input}\) 與 \(K_{input}\) 來自相同語句，\(Q_{input}\) 則不一定
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <img src="./img/k_input-v_input.png"> \(V_{input},K_{input}\)
-                        </div>
-                        <!-- ... -->
-                        <div>
-                            <img src="./img/q_input.png"> \(Q_{input}\)
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <p class="text-left pl-10">
-                        Embedding 序列在通過線性轉換後就會變成 \(Q,K,V\) 矩陣
-                    </p>
-                    <p class="fragment fade-up text-left pl-10">
-                        \[ \definecolor{pink500}{RGB}{237,100,166} \definecolor{indigo400}{RGB}{127, 156, 245} \definecolor{blue400}{RGB}{99, 179, 237} Q_{i}=Q_{input}W_{i}^Q,W^Q\in\mathbb{R}^{{\color{indigo400}d_{embedding}}\times {\color{blue400}d_k}}\\ K_{i}=K_{input}W_{i}^K,W^K\in\mathbb{R}^{{\color{indigo400}d_{embedding}}\times
-                        {\color{blue400}d_k}}\\ V_{i}=V_{input}W_{i}^V,W^V\in\mathbb{R}^{{\color{indigo400}d_{embedding}}\times {\color{pink500}d_v}} \]
-                    </p>
-                </section>
-                <section>
-                    <p>
-                        而 \(Head_i\) 就是由 \(Q_{i},K_{i},V_{i}\) 通過<br /> Scaled Dot Product Attention 計算後的答案
-                    </p>
-                    <p>
-                        \(Head_i = Softmax(\frac{Q_iK_i^T}{\sqrt{d_k}})V_i\)<br />
-                    </p>
-                </section>
-                <section>
-                    <p>
-                        \(Head_i = Softmax(\frac{Q_iK_i^T}{\sqrt{d_k}})V_i\)
-                    </p>
-                    <p class="text-left pl-10 text-4xl">
-                        讓 \(Q(query)\) 與 \(K(key)\) 執行點積與 \(Softmax\)，藉此得出其中每個 token 的匹配度(關注權重)
-                    </p>
-                    <p class="fragment fade-up text-left pl-10 text-4xl">
-                        補充：匹配度可以使用不同的計算方式，只是 Transformer 是利用點積計算
-                    </p>
-                </section>
-                <section>
-                    <p>
-                        \(Head_i = Softmax(\frac{Q_iK_i^T}{\sqrt{d_k}})V_i\)
-                    </p>
-                    <p class="text-left pl-10 text-4xl">
-                        再利用關注權重與 \(V(value)\) 計算加權平均以獲得 Scaled Dot Product Attention 的輸出
-                    </p>
-                </section>
+			<!-- Multi-Head Attention -->
+			<section>
+				<section>
+					<p style="font-size: 150%;">
+						Multi-Head Attention
+					</p>
+					<p class="fragment fade-up">
+						NLP 界的 V8 引擎
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						在開始<del> 解剖 </del>解析 Transformer 前，
+					</p>
+					<p class="text-left pl-10">
+						先來了解一下這個新架構的獨特之處
+					</p>
+					<p class="fragment fade-up">
+						「Multi-Head Attention」
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-10 text-4xl">
+						Multi-Head Attention 正如其名，<br /> 由數個 Head 合成
+					</p>
+					<p class="fragment fade-up text-left pl-10 text-4xl">
+						而每個 Head 具有自己的關注標準，這使得 Multi-Head Attention 可以在詞字之間獲得更豐富的語意關係
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						\[ MultiHeadAttention(Q_{input},K_{input},V_{input})\\ = Concat(Head_1,Head_2,...,Head_h)W^{O}
+						\]
+					</p>
+					<p>
+						其中 <span class="text-yellow-400">\(Q_{input},K_{input},V_{input}\)</span> 是 Embedding 序列
+					</p>
+					<p class="fragment fade-up text-right pr-32 pt-10">
+						\(\definecolor{yello400}{RGB}{246, 224, 94}\)
+						\(V_{input},K_{input}\in\mathbb{R}^{{\color{yello400}Sequence_K} \times d_{embedding}}\)
+						\(Q_{input}\in\mathbb{R}^{{\color{yello400}Sequence_Q} \times d_{embedding}}\)
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-10 text-4xl">
+						\(V_{input}\) 與 \(K_{input}\) 來自相同語句，\(Q_{input}\) 則不一定
+					</p>
+					<div class="grid grid-cols-2 gap-4">
+						<div>
+							<img src="./img/k_input-v_input.png"> \(V_{input},K_{input}\)
+						</div>
+						<!-- ... -->
+						<div>
+							<img src="./img/q_input.png"> \(Q_{input}\)
+						</div>
+					</div>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						Embedding 序列在通過線性轉換後就會變成 \(Q,K,V\) 矩陣
+					</p>
+					<p class="fragment fade-up text-left pl-10">
+						\[ \definecolor{pink500}{RGB}{237,100,166} \definecolor{indigo400}{RGB}{127, 156, 245}
+						\definecolor{blue400}{RGB}{99, 179, 237}
+						Q_{i}=Q_{input}W_{i}^Q,W^Q\in\mathbb{R}^{{\color{indigo400}d_{embedding}}\times
+						{\color{blue400}d_k}}\\
+						K_{i}=K_{input}W_{i}^K,W^K\in\mathbb{R}^{{\color{indigo400}d_{embedding}}\times
+						{\color{blue400}d_k}}\\
+						V_{i}=V_{input}W_{i}^V,W^V\in\mathbb{R}^{{\color{indigo400}d_{embedding}}\times
+						{\color{pink500}d_v}} \]
+					</p>
+				</section>
+				<section>
+					<p>
+						而 \(Head_i\) 就是由 \(Q_{i},K_{i},V_{i}\) 通過<br /> Scaled Dot Product Attention 計算後的答案
+					</p>
+					<p>
+						\(Head_i = Softmax(\frac{Q_iK_i^T}{\sqrt{d_k}})V_i\)<br />
+					</p>
+				</section>
+				<section>
+					<p>
+						\(Head_i = Softmax(\frac{Q_iK_i^T}{\sqrt{d_k}})V_i\)
+					</p>
+					<p class="text-left pl-10 text-4xl">
+						讓 \(Q(query)\) 與 \(K(key)\) 執行點積與 \(Softmax\)，藉此得出其中每個 token 的匹配度(關注權重)
+					</p>
+					<p class="fragment fade-up text-left pl-10 text-4xl">
+						補充：匹配度可以使用不同的計算方式，只是 Transformer 是利用點積計算
+					</p>
+				</section>
+				<section>
+					<p>
+						\(Head_i = Softmax(\frac{Q_iK_i^T}{\sqrt{d_k}})V_i\)
+					</p>
+					<p class="text-left pl-10 text-4xl">
+						再利用關注權重與 \(V(value)\) 計算加權平均以獲得 Scaled Dot Product Attention 的輸出
+					</p>
+				</section>
 
-                <section>
-                    <p class="text-left pl-10">
-                        為了滿足計算條件，\(Q,K,V\) 的 Shape 要求如下
-                    </p>
-                    <ul>
-                        <li>
-                            \(Q\)：<span class="text-orange-400">\(length_Q\)</span> \(\times\) <span class="text-blue-400">\(d_k\)</span>
-                        </li>
-                        <li>
-                            \(K\)：<span class="text-teal-400">\(length_K\)</span> \(\times\) <span class="text-blue-400">\(d_k\)</span>
-                        </li>
-                        <li>
-                            \(V\)：<span class="text-teal-400">\(length_K\)</span> \(\times\) <span class="text-pink-500">\(d_v\)</span>
-                        </li>
-                    </ul>
-                    <p class="fragment fade-up">
-                        Head：<span class="text-orange-400">\(length_Q\)</span> \(\times\) <span class="text-pink-500">\(d_v\)</span>
-                    </p>
-                </section>
-                <section>
-                    <p class="text-4xl">
-                        \[ MultiHeadAttention(Q_{input},K_{input},V_{input})\\ = Concat(Head_1,Head_2,...,Head_h)W^{O} \]
-                    </p>
-                    <p class="text-left pl-10 text-4xl">
-                        將上面計算得到的數個 Head 串聯之後進行線性變換<br /> 即為 Multi Head Attention
-                    </p>
-                    <p class="">
-                        \(\definecolor{pink500}{RGB}{237,100,166}\) \(\definecolor{indigo400}{RGB}{127, 156, 245}\) \(W^O\in \mathbb{R}^{(h\times {\color{pink500}d_{v}})\times {\color{indigo400}d_{embedding}}}\)
-                    </p>
-                </section>
-            </section>
+				<section>
+					<p class="text-left pl-10">
+						為了滿足計算條件，\(Q,K,V\) 的 Shape 要求如下
+					</p>
+					<ul>
+						<li>
+							\(Q\)：<span class="text-orange-400">\(length_Q\)</span> \(\times\) <span
+								class="text-blue-400">\(d_k\)</span>
+						</li>
+						<li>
+							\(K\)：<span class="text-teal-400">\(length_K\)</span> \(\times\) <span
+								class="text-blue-400">\(d_k\)</span>
+						</li>
+						<li>
+							\(V\)：<span class="text-teal-400">\(length_K\)</span> \(\times\) <span
+								class="text-pink-500">\(d_v\)</span>
+						</li>
+					</ul>
+					<p class="fragment fade-up">
+						Head：<span class="text-orange-400">\(length_Q\)</span> \(\times\) <span
+							class="text-pink-500">\(d_v\)</span>
+					</p>
+				</section>
+				<section>
+					<p class="text-4xl">
+						\[ MultiHeadAttention(Q_{input},K_{input},V_{input})\\ = Concat(Head_1,Head_2,...,Head_h)W^{O}
+						\]
+					</p>
+					<p class="text-left pl-10 text-4xl">
+						將上面計算得到的數個 Head 串聯之後進行線性變換<br /> 即為 Multi Head Attention
+					</p>
+					<p class="">
+						\(\definecolor{pink500}{RGB}{237,100,166}\) \(\definecolor{indigo400}{RGB}{127, 156, 245}\)
+						\(W^O\in \mathbb{R}^{(h\times {\color{pink500}d_{v}})\times {\color{indigo400}d_{embedding}}}\)
+					</p>
+				</section>
+			</section>
 
-            <!-- 認真拆解 Transformer -->
-            <section>
-                <section>
-                    <p style="font-size: 150%;">
-                        認真拆解 Transformer
-                    </p>
-                    <ol>
-                        <li>拆解</li>
-                        <li>Position Encoding</li>
-                        <li>Masking</li>
-                        <li>Scaled Dot Product Attention</li>
-                        <li>Point wise feed forward network</li>
-                        <li>組合</li>
-                    </ol>
-                </section>
-                <section>
-                    <img src="./img/transformer.png" class="w-2/3 m-auto inline-block" />
-                    <br /> Transformer
-                </section>
-                <section>
-                    <img src="./img/transformer-embedding.png" class="w-2/3 m-auto inline-block" />
-                    <br /> Embedding 就是前面科普過的 <a href="index.html#/2/6">Word Embedding</a>
-                </section>
-                <section>
-                    <img src="./img/transformer-positional-encoding.png" class="w-2/3 m-auto inline-block" />
-                    <br /> Positional Encoding
-                </section>
-                <section>
-                    <p class="text-left pl-10">
-                        由於 Transformer 僅使用了注意力機制，<br /> 所以不像 CNN 與 RNN 具備捕捉位置關係的能力
-                    </p>
-                    <p class="fragment fade-up text-left pl-10">
-                        但在語言模型中，詞字的序列關係至關重要
-                    </p>
-                </section>
-                <section>
-                    <p class="text-left pl-10">
-                        因此研究團隊提出了一種位置標記方法，<br /> 直接將位置資訊寫進輸入中
-                    </p>
-                    <p class="text-left pl-10">
-                        \(\definecolor{yello400}{RGB}{246, 224, 94}\) \(PE_{({\color{yello400}pos},{\color{yello400}2i})}=sin({\color{yello400}pos}/10000^{{\color{yello400}2i}/d_{embedding}})\) \(PE_{({\color{yello400}pos},{\color{yello400}2i+1})}=cos({\color{yello400}pos}/10000^{({\color{yello400}2i+1})/d_{embedding}})\)
-                    </p>
-                    <p class="text-left pl-10">
-                        \(PE_{out}=PE_{in}+PE\)
-                    </p>
-                </section>
-                <section>
-                    <p class="text-left pl-10">
-                        \(\definecolor{yello400}{RGB}{246, 224, 94}\) \(PE_{({\color{yello400}pos},{\color{yello400}2i})}=sin({\color{yello400}pos}/10000^{{\color{yello400}2i}/d_{embedding}})\) \(PE_{({\color{yello400}pos},{\color{yello400}2i+1})}=cos({\color{yello400}pos}/10000^{({\color{yello400}2i+1})/d_{embedding}})\)
-                    </p>
-                    <p>
-                        <ul>
-                            <li>pos：<span class="text-yellow-400">第 pos 個</span> Embedding 序列</li>
-                            <li>i：Embedding 向量的<span class="text-yellow-400">第 i 個維度</span>，當 i 是<span class="text-pink-400">偶數</span>時用 sin 編碼，<span class="text-pink-400">奇數</span>時則用 cos 編碼
-                            </li>
-                        </ul>
-                    </p>
-                </section>
-                <section>
-                    <img src="./img/positional-encoding.png" class="w-2/3 m-auto inline-block" />
-                    <p class="text-left pl-10 text-4xl">Sequence length = 50、Embedding depth = 10 的 positional encoding
-                    </p>
-                </section>
-                <section>
-                    <img src="./img/transformer-encoders-decoders.png" class="w-2/3 m-auto inline-block" />
-                </section>
-                <section>
-                    <img src="./img/encoders-decoders.png" class="w-2/3 m-auto inline-block" />
-                </section>
-                <section>
-                    <img src="./img/encoders.png" class="w-2/3 m-auto inline-block" />
-                </section>
-                <section>
-                    <img src="./img/encoder-layer.png" class="w-2/3 m-auto inline-block" />
-                </section>
-                <section>
-                    <img src="./img/encoder-layer-multi-head-attention.png" class="w-2/3 m-auto inline-block" />
-                </section>
-                <section>
-                    <img src="./img/multi-head-attention.png" class="w-2/3 m-auto inline-block" />
-                </section>
-                <section>
-                    <img src="./img/attention-pre-linear.png" />
-                </section>
-                <section>
-                    <img src="./img/encoder-attention-2.png" />
-                </section>
-                <section>
-                    <img src="./img/encoder-attention-3.png" />
-                </section>
-                <section>
-                    <img src="./img/encoder-attention-4.png" />
-                </section>
-                <section>
-                    <img src="./img/encoder-attention-5.png" />
-                </section>
-                <section>
-                    <img src="./img/decoders.png" class="w-2/3 m-auto inline-block" />
-                </section>
-                <section>
-                    <img src="./img/decoder-layer.png" class="w-2/3 m-auto inline-block" />
-                </section>
-                <section>
-                    <img src="./img/decoder-layer-masked-multi-head-attention.png" class="w-2/3 m-auto inline-block" />
-                </section>
-                <section>
-                    <img src="./img/decoder-masked-attention-1.png" />
-                </section>
-                <section>
-                    <img src="./img/decoder-masked-attention-2.png" />
-                </section>
-                <section>
-                    <img src="./img/decoder-layer-multi-head-attention.png" class="w-2/3 m-auto inline-block" />
-                </section>
-                <section>
-                    <img src="./img/decoder-attention-1.png" />
-                </section>
-                <section>
-                    <img src="./img/decoder-attention-2.png" />
-                </section>
-                <section>
-                    <img src="./img/decoder-attention-3.png" />
-                </section>
-                <section>
-                    <img src="./img/decoder-attention-4.png" />
-                </section>
-                <section>
-                    <img src="./img/transformer-linear-softmax.png" class="w-2/3 m-auto inline-block" />
-                    <p>
-                        執行最後一層後輸出預測的單詞機率分布
-                    </p>
-                </section>
-            </section>
+			<!-- 認真拆解 Transformer -->
+			<section>
+				<section>
+					<p style="font-size: 150%;">
+						認真拆解 Transformer
+					</p>
+					<ol>
+						<li>拆解</li>
+						<li>Position Encoding</li>
+						<li>Masking</li>
+						<li>Scaled Dot Product Attention</li>
+						<li>Point wise feed forward network</li>
+						<li>組合</li>
+					</ol>
+				</section>
+				<section>
+					<img src="./img/transformer.png" class="w-2/3 m-auto inline-block" />
+					<br /> Transformer
+				</section>
+				<section>
+					<img src="./img/transformer-embedding.png" class="w-2/3 m-auto inline-block" />
+					<br /> Embedding 就是前面科普過的 <a href="index.html#/2/6">Word Embedding</a>
+				</section>
+				<section>
+					<img src="./img/transformer-positional-encoding.png" class="w-2/3 m-auto inline-block" />
+					<br /> Positional Encoding
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						由於 Transformer 僅使用了注意力機制，<br /> 所以不像 CNN 與 RNN 具備捕捉位置關係的能力
+					</p>
+					<p class="fragment fade-up text-left pl-10">
+						但在語言模型中，詞字的序列關係至關重要
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						因此研究團隊提出了一種位置標記方法，<br /> 直接將位置資訊寫進輸入中
+					</p>
+					<p class="text-left pl-10">
+						\(\definecolor{yello400}{RGB}{246, 224, 94}\)
+						\(PE_{({\color{yello400}pos},{\color{yello400}2i})}=sin({\color{yello400}pos}/10000^{{\color{yello400}2i}/d_{embedding}})\)
+						\(PE_{({\color{yello400}pos},{\color{yello400}2i+1})}=cos({\color{yello400}pos}/10000^{({\color{yello400}2i+1})/d_{embedding}})\)
+					</p>
+					<p class="text-left pl-10">
+						\(PE_{out}=PE_{in}+PE\)
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						\(\definecolor{yello400}{RGB}{246, 224, 94}\)
+						\(PE_{({\color{yello400}pos},{\color{yello400}2i})}=sin({\color{yello400}pos}/10000^{{\color{yello400}2i}/d_{embedding}})\)
+						\(PE_{({\color{yello400}pos},{\color{yello400}2i+1})}=cos({\color{yello400}pos}/10000^{({\color{yello400}2i+1})/d_{embedding}})\)
+					</p>
+					<p>
+					<ul>
+						<li>pos：<span class="text-yellow-400">第 pos 個</span> Embedding 序列</li>
+						<li>i：Embedding 向量的<span class="text-yellow-400">第 i 個維度</span>，當 i 是<span
+								class="text-pink-400">偶數</span>時用 sin 編碼，<span class="text-pink-400">奇數</span>時則用 cos 編碼
+						</li>
+					</ul>
+					</p>
+				</section>
+				<section>
+					<img src="./img/positional-encoding.png" class="w-2/3 m-auto inline-block" />
+					<p class="text-left pl-10 text-4xl">Sequence length = 50、Embedding depth = 10 的 positional encoding
+					</p>
+				</section>
+				<section>
+					<img src="./img/transformer-encoders-decoders.png" class="w-2/3 m-auto inline-block" />
+				</section>
+				<section>
+					<img src="./img/encoders-decoders.png" class="w-2/3 m-auto inline-block" />
+				</section>
+				<section>
+					<img src="./img/encoders.png" class="w-2/3 m-auto inline-block" />
+				</section>
+				<section>
+					<img src="./img/encoder-layer.png" class="w-2/3 m-auto inline-block" />
+				</section>
+				<section>
+					<img src="./img/encoder-layer-multi-head-attention.png" class="w-2/3 m-auto inline-block" />
+				</section>
+				<section>
+					<img src="./img/multi-head-attention.png" class="w-2/3 m-auto inline-block" />
+				</section>
+				<section>
+					<img src="./img/attention-pre-linear.png" />
+				</section>
+				<section>
+					<img src="./img/encoder-attention-2.png" />
+				</section>
+				<section>
+					<img src="./img/encoder-attention-3.png" />
+				</section>
+				<section>
+					<img src="./img/encoder-attention-4.png" />
+				</section>
+				<section>
+					<img src="./img/encoder-attention-5.png" />
+				</section>
+				<section>
+					<img src="./img/decoders.png" class="w-2/3 m-auto inline-block" />
+				</section>
+				<section>
+					<img src="./img/decoder-layer.png" class="w-2/3 m-auto inline-block" />
+				</section>
+				<section>
+					<img src="./img/decoder-layer-masked-multi-head-attention.png" class="w-2/3 m-auto inline-block" />
+				</section>
+				<section>
+					<img src="./img/decoder-masked-attention-1.png" />
+				</section>
+				<section>
+					<img src="./img/decoder-masked-attention-2.png" />
+				</section>
+				<section>
+					<img src="./img/decoder-layer-multi-head-attention.png" class="w-2/3 m-auto inline-block" />
+				</section>
+				<section>
+					<img src="./img/decoder-attention-1.png" />
+				</section>
+				<section>
+					<img src="./img/decoder-attention-2.png" />
+				</section>
+				<section>
+					<img src="./img/decoder-attention-3.png" />
+				</section>
+				<section>
+					<img src="./img/decoder-attention-4.png" />
+				</section>
+				<section>
+					<img src="./img/transformer-linear-softmax.png" class="w-2/3 m-auto inline-block" />
+					<p>
+						執行最後一層後輸出預測的單詞機率分布
+					</p>
+				</section>
+			</section>
 
-            <section id="transitions">
-                <h2>Transition Styles</h2>
-                <p>
-                    You can select from different transitions, like: <br>
-                    <a href="?transition=none#/transitions">None</a> -
-                    <a href="?transition=fade#/transitions">Fade</a> -
-                    <a href="?transition=slide#/transitions">Slide</a> -
-                    <a href="?transition=convex#/transitions">Convex</a> -
-                    <a href="?transition=concave#/transitions">Concave</a> -
-                    <a href="?transition=zoom#/transitions">Zoom</a>
-                </p>
-            </section>
+			<section id="transitions">
+				<h2>Transition Styles</h2>
+				<p>
+					You can select from different transitions, like: <br>
+					<a href="?transition=none#/transitions">None</a> -
+					<a href="?transition=fade#/transitions">Fade</a> -
+					<a href="?transition=slide#/transitions">Slide</a> -
+					<a href="?transition=convex#/transitions">Convex</a> -
+					<a href="?transition=concave#/transitions">Concave</a> -
+					<a href="?transition=zoom#/transitions">Zoom</a>
+				</p>
+			</section>
 
-            <section id="themes">
-                <h2>Themes</h2>
-                <p>
-                    reveal.js comes with a few themes built in: <br>
-                    <!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
+			<section id="themes">
+				<h2>Themes</h2>
+				<p>
+					reveal.js comes with a few themes built in: <br>
+					<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
 						(default)</a> -
-                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
-                    <br>
-                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-                </p>
-            </section>
-            </div>
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
+					<br>
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+				</p>
+			</section>
+		</div>
 
-        </div>
+	</div>
 
-        <script src="js/reveal.js"></script>
+	<script src="js/reveal.js"></script>
 
-        <script>
-            // More info https://github.com/hakimel/reveal.js#configuration
-            Reveal.initialize({
-                controls: true,
-                progress: true,
-                center: true,
-                hash: true,
+	<script>
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			center: true,
+			hash: true,
 
-                transition: 'slide', // none/fade/slide/convex/concave/zoom
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-                // More info https://github.com/hakimel/reveal.js#dependencies
-                dependencies: [{
-                    src: 'plugin/markdown/marked.js',
-                    condition: function() {
-                        return !!document.querySelector('[data-markdown]');
-                    }
-                }, {
-                    src: 'plugin/markdown/markdown.js',
-                    condition: function() {
-                        return !!document.querySelector('[data-markdown]');
-                    }
-                }, {
-                    src: 'plugin/highlight/highlight.js',
-                    async: true
-                }, {
-                    src: 'plugin/search/search.js',
-                    async: true
-                }, {
-                    src: 'plugin/zoom-js/zoom.js',
-                    async: true
-                }, {
-                    src: 'plugin/notes/notes.js',
-                    async: true
-                }]
-            });
-        </script>
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [{
+				src: 'plugin/markdown/marked.js',
+				condition: function () {
+					return !!document.querySelector('[data-markdown]');
+				}
+			}, {
+				src: 'plugin/markdown/markdown.js',
+				condition: function () {
+					return !!document.querySelector('[data-markdown]');
+				}
+			}, {
+				src: 'plugin/highlight/highlight.js',
+				async: true
+			}, {
+				src: 'plugin/search/search.js',
+				async: true
+			}, {
+				src: 'plugin/zoom-js/zoom.js',
+				async: true
+			}, {
+				src: 'plugin/notes/notes.js',
+				async: true
+			}]
+		});
+	</script>
 
 </body>
 
