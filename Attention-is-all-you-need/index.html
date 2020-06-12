@@ -240,15 +240,22 @@
 				</section>
 
 				<section>
-					<img src="./img/embedding_2.png" /> Word Embedding
+					<video class="w-5/6 m-auto" autoplay muted loop>
+						<source src="./img/word-vector-space_clip.mp4" type="video/mp4">
+					</video>
+					Word Embedding
 				</section>
 				<section>
-					<p class="text-left pl-24">建構 Embedding Table</p>
-					<p class="text-left pl-24">附註：Embedding Table 將會一起被訓練</p>
-
+					<p class="text-left pl-24">Word Embedding 的目標是將詞字轉換到向量空間</p>
+					<p class="fragment fade-up text-left pl-24">
+						具有相似語意的詞彙轉成的向量會很相似
+					</p>
+					<p class="fragment fade-up text-left pl-24">
+						語言不同但語意相同的詞向量，會遠比相同語言但不同意義的詞向量來的相近
+					</p>
 				</section>
 				<section>
-					<img src="./img/embedding_0.png" /> Embedding Table
+					<img src="./img/embedding_0.png" />建構 Embedding Table(可訓練的權重)
 				</section>
 				<section>
 					<img src="./img/embedding_1.png" /> 查找 Table
@@ -267,11 +274,6 @@
 							<br /> 可表示出 Symbol 之間的關係
 						</li>
 					</ul>
-				</section>
-				<section>
-					<video autoplay muted loop>
-						<source src="./img/word-vector-space_clip.mp4" type="video/mp4">
-					</video>
 				</section>
 			</section>
 
@@ -865,12 +867,9 @@
 						認真拆解 Transformer
 					</p>
 					<ol>
-						<li>拆解</li>
-						<li>Position Encoding</li>
-						<li>Masking</li>
-						<li>Scaled Dot Product Attention</li>
-						<li>Point wise feed forward network</li>
-						<li>組合</li>
+						<li><a href="#/5/3">Position Encoding</a></li>
+						<li><a href="#/5/11">Encoder Layer</a></li>
+						<li><a href="#/5/23">Decoder Layer</a></li>
 					</ol>
 				</section>
 				<section>
@@ -960,6 +959,31 @@
 					<img src="./img/encoder-attention-3.png" />
 				</section>
 				<section>
+					<img class="w-2/3 m-auto inline-block" src="./img/residual.png" />
+					<p class="text-left pl-10 text-3xl">
+						藉由 residual 結構保留 positional encoding 的資訊，<br />
+						因此不需要每通過一次 encoder/decoder 就重加一次位置訊息
+					</p>
+				</section>
+				<section>
+					小科普：Layer Normalization
+					<p class="text-left pl-10 text-3xl">
+						你可以簡單地將其當成 Channel 版的 Batch Normalization，<br />
+						他運算的對象由 Batch Axis 換成了 Channel Axis<br />
+						<br />
+						(註：在 Transformer 裡就是對 Embedding Vector 執行)
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-10 text-4xl">
+						優勢在於訓練與實際使用都有效果，且獨立於 Batch，<br />
+						使得每筆資料的輸入大小(長度)可不一致
+					</p>
+					<p class="text-left pl-10 text-4xl">
+						但在 Batch Size 較大的時候還是拚不過 Batch Normalization
+					</p>
+				</section>
+				<section>
 					<img src="./img/decoders.png" class="w-2/3 m-auto inline-block" />
 				</section>
 				<section>
@@ -972,7 +996,10 @@
 					<img src="./img/decoder-masked-attention-0.png" />
 				</section>
 				<section>
-					<img src="./img/decoder-masked-attention-1.png" />
+					<img class="m-auto inline-block" src="./img/decoder-masked-attention-1.png" />
+					<p class="text-3xl">
+						加上負很大的值後通過 Softmax，便可讓要 masked 的位置近似 0
+					</p>
 				</section>
 				<section>
 					<img src="./img/decoder-layer-multi-head-attention.png" class="w-2/3 m-auto inline-block" />
