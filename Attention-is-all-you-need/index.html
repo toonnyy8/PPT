@@ -1057,7 +1057,45 @@
 					</p>
 				</section>
 				<section>
-					<img src="./img/experiment-base.png">
+					<img src="./img/experiment-base.png" />
+					<table class="text-2xl">
+						<tr>
+							<th>N</th>
+							<td>encoder&decoder 的數量</td>
+						</tr>
+						<tr>
+							<th>d<sub>model</sub></th>
+							<td>embedding length</td>
+						</tr>
+						<tr>
+							<th>d<sub>ff</sub></th>
+							<td>encoder&decoder 中，Feed Forward 隱藏層神經元數量</td>
+						</tr>
+						<tr>
+							<th>h</th>
+							<td>Multi-Head Attention 的 head 個數</td>
+						</tr>
+						<tr>
+							<th>d<sub>k</sub></th>
+							<td>\(Q_{input}、K_{input}\) 經過線性轉換得到之 \(Q、K\) 的深度(維度)</td>
+						</tr>
+						<tr>
+							<th>d<sub>v</sub></th>
+							<td>\(V_{input}\) 經過線性轉換得到之 \(V\) 的深度(維度)</td>
+						</tr>
+						<tr>
+							<th>P<sub>drop</sub></th>
+							<td>Dropout 設定的機率</td>
+						</tr>
+						<tr>
+							<th class="text-3xl">\(\epsilon_{ls}\)</th>
+							<td>label smoothing 中的機率雜訊</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<img src="./img/label-smoothing.png">
+					Label Smoothing
 				</section>
 				<section>
 					<img src="./img/experiment-a.png">
