@@ -795,6 +795,9 @@
 					</p>
 				</section>
 				<section>
+					<img src="./img/QKV-vector-space_0.png" />
+				</section>
+				<section>
 					<p>
 						而 \(Head_i\) 就是由 \(Q_{i},K_{i},V_{i}\) 通過<br /> Scaled Dot Product Attention 計算後的答案
 					</p>
@@ -814,6 +817,9 @@
 					</p>
 				</section>
 				<section>
+					<img src="./img/QKV-vector-space_1.png" />
+				</section>
+				<section>
 					<p>
 						\(Head_i = Softmax(\frac{Q_iK_i^T}{\sqrt{d_k}})V_i\)
 					</p>
@@ -821,7 +827,9 @@
 						再利用關注權重與 \(V(value)\) 計算加權平均以獲得 Scaled Dot Product Attention 的輸出
 					</p>
 				</section>
-
+				<section>
+					<img src="./img/QKV-vector-space_2.png" />
+				</section>
 				<section>
 					<p class="text-left pl-10">
 						為了滿足計算條件，\(Q,K,V\) 的 Shape 要求如下
