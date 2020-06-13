@@ -795,9 +795,6 @@
 					</p>
 				</section>
 				<section>
-					<img src="./img/QKV-vector-space_0.png" />
-				</section>
-				<section>
 					<p>
 						而 \(Head_i\) 就是由 \(Q_{i},K_{i},V_{i}\) 通過<br /> Scaled Dot Product Attention 計算後的答案
 					</p>
@@ -817,15 +814,44 @@
 					</p>
 				</section>
 				<section>
-					<img src="./img/QKV-vector-space_1.png" />
-				</section>
-				<section>
 					<p>
 						\(Head_i = Softmax(\frac{Q_iK_i^T}{\sqrt{d_k}})V_i\)
 					</p>
 					<p class="text-left pl-10 text-4xl">
 						再利用關注權重與 \(V(value)\) 計算加權平均以獲得 Scaled Dot Product Attention 的輸出
 					</p>
+				</section>
+				<section>
+					<p>
+						讓我們從向量空間的觀點來理解前面到底做了什麼
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-32">
+						首先，\(Q_{input}\) 與 \(K_{input}=V_{input}\)<br />
+						分別來自於兩個不同的向量空間
+					</p>
+					<p class="fragment fade-up text-left pl-32">
+						我們希望能找出一種映射方式，使得 \(Q_{input}\) 能映射到 \(K_{input}=V_{input}\) 所處的向量空間
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						\(K_{input}=V_{input}\) 執行兩種線性轉換後變成<br />
+						<span class="text-pink-500">Keys</span> & <span class="text-green-400">Values</span>，分別處在 <span
+							class="text-pink-500">QK Space</span> 與 <span class="text-green-400">V
+							Space</span>
+					</p>
+					<p class="fragment fade-up text-left pl-10">
+						而 \(Q_{input}\) 執行線性轉換後則變成位在 <span class="text-pink-500">QK Space</span> 的 <span
+							class="text-pink-500">Querys</span>
+					</p>
+				</section>
+				<section>
+					<img src="./img/QKV-vector-space_0.png" />
+				</section>
+				<section>
+					<img src="./img/QKV-vector-space_1.png" />
 				</section>
 				<section>
 					<img src="./img/QKV-vector-space_2.png" />
@@ -1042,49 +1068,126 @@
 				<section>
 					<p class="text-left pl-10">
 						訓練硬體：
-						8 顆 NVIDIA P100 GPUs
 					</p>
+					<p class="text-left pl-20 text-4xl">8 顆 NVIDIA P100 GPUs</p>
 					<p class="text-left pl-10">
 						訓練資料集：
-						WMT(Workshop on Statistical Machine Translation) 2014 的「英文轉德文」(EN-DE)與「英文轉法文」(EN-FR)
 					</p>
+					<p class="text-left pl-20 text-3xl">WMT(Workshop on Statistical Machine Translation) 2014
+						的「英文轉德文」(EN-DE)
+						與「英文轉法文」(EN-FR)</p>
 				</section>
 				<section>
 					<p class="text-left pl-10">
-						訓練耗時：<br />
-						base model：100,000 steps(12 hours)，每個 step 花費 0.4 秒<br />
-						big model：300,000 steps(3.5 days)，每個 step 花費 1.0 秒
+						訓練耗時：
+					<ul>
+						<li>
+							base model
+							<p class="text-3xl">
+								100,000 steps(12 hours)，每個 step 花費 0.4 秒
+							</p>
+						</li>
+						<li>
+							big model
+							<p class="text-3xl">
+								300,000 steps(3.5 days)，每個 step 花費 1.0 秒
+							</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<p class="text-left pl-32">
+						Regularization：
+					</p>
+					<ul>
+						<li>
+							Dropout
+						</li>
+						<li>
+							Label Smoothing
+						</li>
+					</ul>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						Dropout
+					</p>
+					<ul class="text-3xl">
+						<li class="pt-5">
+							在 Input 與 Target 執行完<br />
+							Positional Encoding 後會執行 Dropout
+						</li>
+						<li class="pt-5">
+							Encoder & Decoder 中，<br />
+							每次執行完 (Masked)Multi-Head Attention<br />
+							或 Feed Forward 後都會接 Dropout
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						Label Smoothing
+					</p>
+					<p class="text-left pl-32 text-3xl">
+						為 Ground Truth 的 One Hot Encoding<br />
+						加上機率雜訊 <span class="text-4xl">\(\epsilon_{ls}\)</span>，<br />
+						可以避免因訓練集不足以代表所有樣本特徵而造成的 Overfitting
+
+					</p>
+				</section>
+				<section>
+					<img src="./img/label-smoothing.png">
+					Label Smoothing
+				</section>
+
+				<section>
+					<p class="text-left pl-48">
+						Optimizer：Adam
+					</p>
+					<ul>
+						<li>\(\beta_1=0.9\)</li>
+						<li>\(\beta_2=0.98\)</li>
+						<li>\(\epsilon=10^{-9}\)</li>
+					</ul>
+				</section>
+				<section>
+					<p class="text-left text-6xl">
+						\(lrate=\frac{min(\frac{1}{\sqrt{step\_num}},\frac{step\_num}{warmup\_steps^{1.5}})}{\sqrt{d_{embedding}}}\)
+					</p>
+					<p class="text-left">
+						\(warmup\_steps=4000\)
 					</p>
 				</section>
 				<section>
 					<img src="./img/experiment-base.png" />
 					<table class="text-2xl">
 						<tr>
-							<th>N</th>
+							<th>\(N\)</th>
 							<td>encoder&decoder 的數量</td>
 						</tr>
 						<tr>
-							<th>d<sub>model</sub></th>
-							<td>embedding length</td>
+							<th>\(d_{model}\)</th>
+							<td>embedding length (前面的 \(d_{embedding}\))</td>
 						</tr>
 						<tr>
-							<th>d<sub>ff</sub></th>
+							<th>\(d_{ff}\)</th>
 							<td>encoder&decoder 中，Feed Forward 隱藏層神經元數量</td>
 						</tr>
 						<tr>
-							<th>h</th>
+							<th>\(h\)</th>
 							<td>Multi-Head Attention 的 head 個數</td>
 						</tr>
 						<tr>
-							<th>d<sub>k</sub></th>
+							<th>\(d_{k}\)</th>
 							<td>\(Q_{input}、K_{input}\) 經過線性轉換得到之 \(Q、K\) 的深度(維度)</td>
 						</tr>
 						<tr>
-							<th>d<sub>v</sub></th>
+							<th>\(d_{v}\)</th>
 							<td>\(V_{input}\) 經過線性轉換得到之 \(V\) 的深度(維度)</td>
 						</tr>
 						<tr>
-							<th>P<sub>drop</sub></th>
+							<th>\(P_{drop}\)</th>
 							<td>Dropout 設定的機率</td>
 						</tr>
 						<tr>
@@ -1094,33 +1197,63 @@
 					</table>
 				</section>
 				<section>
-					<img src="./img/label-smoothing.png">
-					Label Smoothing
-				</section>
-				<section>
 					<img src="./img/experiment-a.png">
+					<p class="text-left pl-10 text-3xl">
+						實驗(A)主要在測試 head 數量對正確率的影響。<br />
+						從結果可以發現，在不過度壓縮 d<sub>k</sub> 與 d<sub>v</sub> 的狀況下，<br />
+						有較多 head 的模型正確率更高。
+					</p>
 				</section>
 				<section>
 					<img src="./img/experiment-b.png">
+					<p class="text-3xl">
+						由實驗(B)可知過度壓縮 d<sub>k</sub> 會使正確率下降。
+					</p>
 				</section>
 				<section>
 					<img src="./img/experiment-c.png">
+					<p class="text-left pl-10 text-3xl">
+						實驗(C)在測試參數量對模型的影響，結論是「大力出奇蹟」
+					</p>
 				</section>
 				<section>
 					<img src="./img/experiment-d.png">
+					<p class="text-left pl-10 text-3xl">
+						實驗(D)測試得出使用 Dropout 可有效避免 Overfitting
+					</p>
 				</section>
 				<section>
 					<img src="./img/experiment-e.png">
+					<p class="text-left pl-10 text-3xl">
+						實驗(E)使用了 <a href="https://arxiv.org/abs/1705.03122">Convolutional Sequence to Sequence
+							Learning</a> 所提出的 Positional Embedding 替代 Positional Encoding，實驗結果差別不大。
+					</p>
 				</section>
 				<section>
 					<img src="./img/experiment-big.png">
+					<p class="text-6xl">
+						大力出奇蹟
+					</p>
 				</section>
 				<section>
 					<img src="./img/experiment-all.png">
+					<p class="text-3xl">
+						總覽
+					</p>
 				</section>
 				<section>
 					<img src="./img/newstest2014.png">
 					在 newstest2014 資料集與其他模型的比較結果
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						Transformer 在剛推出時，<br />
+						光是 Training Cost 低的 Base Model 在<br />
+						「英文轉德文」上的表現就已經輾壓眾生。
+					</p>
+					<p class="text-left pl-10">
+						Big Model 更是在兩項任務都超過當時的 SOTA
+					</p>
 				</section>
 			</section>
 
