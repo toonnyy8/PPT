@@ -875,16 +875,40 @@
 				</section>
 				<section>
 					<p class="text-left pl-32">
-						首先，\(Q_{input}\) 與 \(K_{input}=V_{input}\)<br />
+						首先，\(Q_{input}\) 與 \(K=V_{input}\)<br />
 						分別來自於兩個不同的向量空間
 					</p>
-					<p class="fragment fade-up text-left pl-32">
-						我們希望能找出一種映射方式，使得 \(Q_{input}\) 能映射到 \(K_{input}=V_{input}\) 所處的向量空間
+				</section>
+				<section>
+					<img src="./img/QKV/0.png" />
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						我們希望能找出一種映射方式，使得 \(Q_{input}\) 能映射到 \(K=V_{input}\) 所處的向量空間
+					</p>
+				</section>
+				<section>
+					<img src="./img/QKV/1.png" />
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						且這個映射必須依靠 \(K=V_{input}\) 中的向量作為 basis 來達成
+					</p>
+				</section>
+				<section>
+					<img src="./img/QKV/2.png" />
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						然而，我們還是不知道要如何將 \(Q_{input}\) 映射至 \(K=V_{input}\)
+					</p>
+					<p class="fragment fade-up text-left pl-10">
+						為此，先將 \(Q_{input}\) 與 \(K=V_{input}\) 另外線性轉換到兩個向量空間
 					</p>
 				</section>
 				<section>
 					<p class="text-left pl-10">
-						\(K_{input}=V_{input}\) 執行兩種線性轉換後變成<br />
+						\(K=V_{input}\) 執行兩種線性轉換後變成<br />
 						<span class="text-pink-500">Keys</span> & <span class="text-green-400">Values</span>，分別處在 <span
 							class="text-pink-500">QK Space</span> 與 <span class="text-green-400">V
 							Space</span>
@@ -895,28 +919,61 @@
 					</p>
 				</section>
 				<section>
-					<img src="./img/QKV/0.png" />
+					<img src="./img/QKV/3.png" class="w-4/5 m-auto inline-block" />
 				</section>
 				<section>
-					<img src="./img/QKV/1.png" />
-				</section>
-				<section>
-					<img src="./img/QKV/2.png" />
-				</section>
-				<section>
-					<img src="./img/QKV/3.png" />
+					<p class="text-left pl-10">
+						<span class="text-pink-500">Keys</span> & <span class="text-green-400">Values</span>
+						是源於同個向量做不同轉換的結果，因此可以互相對應
+					</p>
 				</section>
 				<section>
 					<img src="./img/QKV/4.png" />
 				</section>
 				<section>
+					<p class="text-left pl-10">
+						接下來就可以分析位在同個空間中的 Querys 與 Keys
+					</p>
+				</section>
+				<section>
 					<img src="./img/QKV/5.png" />
+					<p class="">
+						計算 Query 與 Keys 的匹配度
+					</p>
 				</section>
 				<section>
-					<img src="./img/QKV/6.png" />
+					<img src="./img/QKV/6.png" class="m-auto inline-block" />
+					<p class="text-left text-3xl">
+						藉由匹配度以及對應的 Values，便可以在 V Space 找出對應的 query'
+					</p>
 				</section>
 				<section>
-					<img src="./img/QKV/7.png" />
+					<p class="text-left pl-10">
+						最後只需要將 query' 從 V Space 線性轉換回 \(K=V_{input}\) Space，
+						就可得到 \(Q_{input}\) 映射到 \(K=V_{input}\) Space 的 \(Q'_{input}\)
+					</p>
+				</section>
+				<section>
+					<img src="./img/QKV/7.png" class="w-4/5 m-auto inline-block" />
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						但是，只由一個 V Space 映射回去的位置並不準確
+					</p>
+					<p class="text-left pl-10">
+						為此才使用多個 QK、V Space
+					</p>
+				</section>
+				<section>
+					<img src="./img/QKV/8.png" class="w-4/5 m-auto inline-block" />
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						這樣使用多個 V Space 映射回去便可得出比單一映射更加精準的結果
+					</p>
+				</section>
+				<section>
+					<img src="./img/QKV/9.png" class="w-4/5 m-auto inline-block" />
 				</section>
 			</section>
 
