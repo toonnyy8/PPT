@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Attention Is All You Need 報告</title>
+
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../import/css/reset.css">
+	<link rel="stylesheet" href="../import/css/reveal.css">
+	<link rel="stylesheet" href="../import/css/theme/black.css" id="theme">
+	<style>
+		@import url("../import/css/index.css");
+	</style>
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../import/lib/css/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? '../import/css/print/pdf.css' : '../import/css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+	<script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
+	</script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+		section {
+			font-family: 'Source Code Pro', 'Noto Sans TC', sans-serif;
+		}
+	</style>
+
+	<script src="./js/src.f10117fe.js" defer></script>
+	<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides text-4xl">
+			<section>
+				<p style="font-size: 150%;">
+					編譯器<br />
+					期末專案報告
+				</p>
+				<br />
+				<p class="text-3xl">
+					<nobr>資工四 S10559028 黃仁鴻</nobr>
+				</p>
+			</section>
+
+			<!-- 目錄 -->
+			<section>
+				<h3>目錄</h3>
+				<ol>
+					<li>
+						<p>
+							<nobr><a href="index.html#/2">設計流程</a></nobr>
+						</p>
+					</li>
+					<li>
+						<p>
+							<nobr><a href="index.html#/3">WebAssembly</a></nobr>
+						</p>
+					</li>
+					<li>
+						<p>
+							<nobr><a href="index.html#/4">語法</a></nobr>
+						</p>
+					</li>
+					<li>
+						<p>
+							<nobr><a href="index.html#/5">PlayGround</a></nobr>
+						</p>
+					</li>
+					<li>
+						<p>
+							<nobr><a href="index.html#/6">期望</a></nobr>
+						</p>
+					</li>
+					<li>
+						<p>
+							<nobr><a href="index.html#/7">參考資料</a></nobr>
+						</p>
+					</li>
+				</ol>
+
+			</section>
+
+			<!-- 設計流程 -->
+			<section>
+				<section>
+					<p style="font-size: 150%;">
+						設計流程
+					</p>
+				</section>
+
+				<section>
+					<p class="text-5xl">
+						在哪執行？
+					</p>
+				</section>
+				<section>
+					<p class="">
+						我希望設計的語言能夠在任何地方執行
+					</p>
+				</section>
+				<section>
+					<p class="">
+						因此我決定將其編譯成 <span class="text-purple-400">WebAssembly</span>
+					</p>
+					<p class="fragment fade-up">
+						一種能在網頁上執行的 <span class="text-pink-500">IR</span>
+					</p>
+				</section>
+				<section>
+					<p class="text-5xl">
+						用何編寫？
+					</p>
+				</section>
+				<section>
+					<p class="">
+						既然都決定要能在網頁上執行我的程式語言
+					</p>
+					<p class="fragment fade-up">
+						那第一代的編譯器當然就直接用<span class="text-yellow-400">JS</span>來做啦~
+					</p>
+					<br /><br />
+					<p class="fragment fade-up">
+						希望等到遙遠的未來後能做到<span class="text-orange-400">自舉</span>...
+					</p>
+				</section>
+
+				<section>
+					<p class="text-5xl">
+						語法設計？
+					</p>
+				</section>
+				<section>
+					<p class="text-5xl">
+						期望
+					</p>
+					<ol class="text-4xl">
+						<li>靜態型別</li>
+						<li>一級函式</li>
+						<li>結構</li>
+						<li>泛型</li>
+						<li>反射</li>
+						<li>Scope 管理</li>
+					</ol>
+				</section>
+				<section>
+					<p class="text-5xl">
+						現實
+					</p>
+					<ol class="text-4xl">
+						<li>靜態型別</li>
+						<li><del class="text-gray-400">一級</del>函式</li>
+						<li><del class="text-gray-400">結構</del></li>
+						<li><del class="text-gray-400">泛型</del></li>
+						<li><del class="text-gray-400">反射</del></li>
+						<li><del class="text-gray-400">Scope 管理</del></li>
+					</ol>
+				</section>
+
+				<section>
+					<p class="text-5xl">
+						實作感悟
+					</p>
+				</section>
+				<section>
+					<img src="./img/implement_1.png" class="m-auto inline-block" />
+				</section>
+				<section>
+					<p>想說既然學了 scanner 與 parser 的算法</p>
+					<p>就來試著實作看看</p>
+				</section>
+				<section>
+					<p>畢竟 Scanner 的難度其實還好</p>
+					<p class="fragment fade-up">而 Parser 的想法又跟 Scanner 很相近</p>
+					<p class="fragment fade-up">肯定馬上就完成了</p>
+				</section>
+				<section>
+					<p>然後就後悔了</p>
+					<p class="fragment fade-up text-5xl">然後就後悔了</p>
+					<p class="fragment fade-up text-6xl">然後就後悔了</p>
+				</section>
+				<section>
+					<img src="./img/implement_2.png" class="m-auto inline-block" />
+				</section>
+				<section>
+					<p>Scanner 確實不難</p>
+					<p class="fragment fade-up">而有相同思路的 Parser 確實也不難</p>
+				</section>
+				<section>
+					<p>但問題在於沒法 Debug</p>
+					<p class="fragment fade-up text-5xl">沒法 Debug</p>
+					<p class="fragment fade-up text-6xl">Debug</p>
+				</section>
+				<section>
+					<img src="./img/yaccTable.png" class="m-auto inline-block" />
+					yacc 執行完後會生成如課本的 Table
+				</section>
+				<section>
+					<p>只是 state 順序都不一樣...</p>
+					<p class="fragment fade-up">這導致連有沒有錯都難以確認</p>
+				</section>
+				<section>
+					<p>這時候就要相信自己</p>
+					<p class="fragment fade-up"><span class="text-red-400">肯定有寫錯</span>然後嚴謹的重寫一次</p>
+				</section>
+
+				<section>
+					<p class="text-5xl">
+						實作
+					</p>
+				</section>
+				<section>
+					<p class="text-4xl">
+						開發環境
+					</p>
+					<img src="./img/Node.js_logo.svg" class="w-1/2 m-auto inline-block"
+						style="background-color:#eeeeee" />
+					<p class="text-4xl">
+						Node.js
+					</p>
+				</section>
+				<section>
+					<p class="text-4xl">
+						語言
+					</p>
+					<img src="./img/typescript.svg" class="w-1/3 m-auto inline-block" />
+					<p class="text-4xl">
+						Typescript
+					</p>
+				</section>
+				<section>
+					<p class="text-4xl">
+						函式庫
+					</p>
+					<p class="text-6xl">
+						<a href="https://github.com/AssemblyScript/wabt.js/" class="text-purple-400">Wabt.js</a>
+					</p>
+				</section>
+				<section>
+					<p class="text-4xl">
+						工具
+					</p>
+					<img src="./img/parcel.svg" class="w-1/2 m-auto inline-block" />
+				</section>
+			</section>
+
+			<!-- WebAssembly -->
+			<section>
+				<section>
+					<p style="font-size: 150%;">
+						WebAssembly
+					</p>
+					<p class="fragment fade-up">
+						簡單、高效、跨平台
+					</p>
+				</section>
+
+				<section>
+					<img src="./img/WebAssembly_Logo.svg" class="m-auto inline-block">
+				</section>
+				<section>
+					<img src="./img/mobilenet-v2-bench.svg" class="m-auto inline-block">
+					<br />
+					Transformer.js 中<br />
+					WebGL vs. WASM vs. JS
+				</section>
+				<section>
+					<img src="./img/wasm_1.png" class="m-auto inline-block">
+				</section>
+				<section>
+					<img src="./img/wasm_2.png" class="m-auto inline-block">
+				</section>
+				<section>
+					<img src="./img/compiler_1.png" class="m-auto inline-block">
+				</section>
+			</section>
+
+			<!-- 語法 -->
+			<section>
+				<section>
+					<p style="font-size: 150%;">
+						語法
+					</p>
+				</section>
+				<section>
+					<p>
+						目前完成的語法-基礎篇
+					</p>
+					<ul>
+						<li>四則運算與取餘數</li>
+						<li>比較</li>
+						<li>And、Or</li>
+						<li>宣告</li>
+						<li>賦值</li>
+					</ul>
+				</section>
+				<section>
+					<p>
+						宣告
+					</p>
+					<p class="text-left pl-10">
+						<span class="text-yellow-400">&lt;Declares&gt;</span> -> let <span
+							class="text-orange-400">&lt;Declare&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						<span class="text-orange-400">&lt;Declare&gt;</span> -> id
+					</p>
+					<p class="text-left pl-10">
+						<span class="text-orange-400">&lt;Declare&gt;</span> -> id , <span
+							class="text-orange-400">&lt;Declare&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						<span class="text-orange-400">&lt;Declare&gt;</span> -> &lt;Assign&gt;
+					</p>
+					<p class="text-left pl-10">
+						<span class="text-orange-400">&lt;Declare&gt;</span> -> &lt;Assign&gt; , <span
+							class="text-orange-400">&lt;Declare&gt;</span>
+					</p>
+				</section>
+				<section>
+					<p>
+						賦值
+					</p>
+					<p class="text-left pl-10">
+						<span class="text-pink-400">&lt;Assign&gt;</span> -> id = <span
+							class="text-pink-400">&lt;Assign&gt;</span>
+					</p>
+					<p class="text-left pl-10">
+						<span class="text-pink-400">&lt;Assign&gt;</span> -> id = &lt;Func&gt;
+					</p>
+					<p class="text-left pl-10">
+						<span class="text-pink-400">&lt;Assign&gt;</span> -> id = &lt;Exp&gt;
+					</p>
+					<p>
+						賦值完後會回傳 id 的 type
+					</p>
+				</section>
+				<section>
+					<p>
+						目前完成的語法-中級篇
+					</p>
+					<ul>
+						<li>While Loop</li>
+						<li>If else if else</li>
+					</ul>
+				</section>
+				<section>
+					<p>
+						While
+					</p>
+					<p class="text-left pl-10">
+						<span class="text-teal-400">&lt;While&gt;</span> -> while ( &lt;Exp&gt; ) { }
+					</p>
+					<p class="text-left pl-10">
+						<span class="text-teal-400">&lt;While&gt;</span> -> while ( &lt;Exp&gt; ) { &lt;Sections&gt; }
+					</p>
+				</section>
+				<section>
+					<p>
+						If else if else
+					</p>
+					<p class="text-left ">
+						<span class="text-green-400">&lt;If&gt;</span> -> if ( &lt;Exp&gt; ) { }
+					</p>
+					<p class="text-left ">
+						<span class="text-green-400">&lt;If&gt;</span> -> if ( &lt;Exp&gt; ) { } else {
+						}
+					</p>
+					<p class="text-left">
+						<span class="text-green-400">&lt;If&gt;</span> -> if ( &lt;Exp&gt; ) { } else
+						<span class="text-green-400">&lt;If&gt;</span>
+					</p>
+					<p class="text-left ">
+						<span class="text-green-400">&lt;If&gt;</span> -> if ( &lt;Exp&gt; ) { } else {
+						&lt;Sections&gt; }
+					</p>
+				</section>
+				<section>
+					<p>
+						If else if else
+					</p>
+					<p class="text-left ">
+						<span class="text-green-400">&lt;If&gt;</span> -> if ( &lt;Exp&gt; ) { &lt;Sections&gt; }
+					</p>
+					<p class="text-left ">
+						<span class="text-green-400">&lt;If&gt;</span> -> if ( &lt;Exp&gt; ) { &lt;Sections&gt; } else {
+						}
+					</p>
+					<p class="text-left">
+						<span class="text-green-400">&lt;If&gt;</span><br />
+						-> if ( &lt;Exp&gt; ) { &lt;Sections&gt; } else
+						<span class="text-green-400">&lt;If&gt;</span>
+					</p>
+					<p class="text-left ">
+						<span class="text-green-400">&lt;If&gt;</span><br />
+						-> if ( &lt;Exp&gt; ) { &lt;Sections&gt; } else {
+						&lt;Sections&gt; }
+					</p>
+				</section>
+				<section>
+					<p>
+						目前完成的語法-中級上去一點點篇
+					</p>
+					<ul>
+						<li>不能取得外部變數的 Function</li>
+					</ul>
+				</section>
+				<section>
+					<p>
+						Function
+					</p>
+					<p class="text-left ">
+						<span class="text-blue-400">&lt;Func&gt;</span> -> id ( )=> { }
+					</p>
+					<p class="text-left ">
+						<span class="text-blue-400">&lt;Func&gt;</span> -> id ( )=> { &lt;Sections&gt; }
+					</p>
+					<p class="text-left ">
+						<span class="text-blue-400">&lt;Func&gt;</span> -> id ( &lt;Params&gt; )=> { }
+					</p>
+					<p class="text-left ">
+						<span class="text-blue-400">&lt;Func&gt;</span> -> id ( &lt;Params&gt; )=> { &lt;Sections&gt; }
+					</p>
+				</section>
+			</section>
+
+			<!-- PlayGround -->
+			<section>
+				<section>
+					<p style="font-size: 150%;">
+						PlayGround
+					</p>
+				</section>
+				<section>
+					<textarea class="text-2xl h-64" style="color:#252525" id="sourceCode" cols="50" rows="25">let fib=(n) =>{
+	if((n==0)||(n==1)){
+		return n;
+	}
+	return self(n - 1)+self(n - 2);
+};
+log(fib(10));
+$
+					</textarea>
+					<br /><br />
+					<button id="startCompile">compile</button>
+					<br /><br />
+					<div class="text-3xl text-left px-32" id="log"></div>
+				</section>
+			</section>
+
+			<!-- 期望 -->
+			<section>
+				<section>
+					<p style="font-size: 150%;">
+						實驗 & 結論
+					</p>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						訓練硬體：
+					</p>
+					<p class="text-left pl-20 text-4xl">8 顆 NVIDIA P100 GPUs</p>
+					<p class="text-left pl-10">
+						訓練資料集：
+					</p>
+					<p class="text-left pl-20 text-3xl">WMT(Workshop on Statistical Machine Translation) 2014
+						的「英文轉德文」(EN-DE)
+						與「英文轉法文」(EN-FR)</p>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						訓練耗時：
+					<ul>
+						<li>
+							base model
+							<p class="text-3xl">
+								100,000 steps(12 hours)，每個 step 花費 0.4 秒
+							</p>
+						</li>
+						<li>
+							big model
+							<p class="text-3xl">
+								300,000 steps(3.5 days)，每個 step 花費 1.0 秒
+							</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<p class="text-left pl-32">
+						Regularization：
+					</p>
+					<ul>
+						<li>
+							Dropout
+						</li>
+						<li>
+							Label Smoothing
+						</li>
+					</ul>
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						Dropout
+					</p>
+					<ul class="text-3xl">
+						<li class="pt-5">
+							在 Input 與 Target 執行完<br />
+							Positional Encoding 後會執行 Dropout
+						</li>
+						<li class="pt-5">
+							Encoder & Decoder 中，<br />
+							每次執行完 (Masked)Multi-Head Attention<br />
+							或 Feed Forward 後都會接 Dropout
+						</li>
+					</ul>
+
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						Label Smoothing
+					</p>
+					<p class="text-left pl-32 text-3xl">
+						為 Ground Truth 的 One Hot Encoding<br />
+						加上機率雜訊 <span class="text-4xl">\(\epsilon_{ls}\)</span>，<br />
+						可以避免因訓練集不足以代表所有樣本特徵而造成的 Overfitting
+
+					</p>
+				</section>
+				<section>
+					<img src="./img/label-smoothing.png">
+					Label Smoothing
+				</section>
+
+				<section>
+					<p class="text-left pl-48">
+						Optimizer：Adam
+					</p>
+					<ul>
+						<li>\(\beta_1=0.9\)</li>
+						<li>\(\beta_2=0.98\)</li>
+						<li>\(\epsilon=10^{-9}\)</li>
+					</ul>
+				</section>
+				<section>
+					<p class="text-left text-6xl">
+						\(lrate=\frac{min(\frac{1}{\sqrt{step\_num}},\frac{step\_num}{warmup\_steps^{1.5}})}{\sqrt{d_{embedding}}}\)
+					</p>
+					<p class="text-left">
+						\(warmup\_steps=4000\)
+					</p>
+				</section>
+				<section>
+					<img src="./img/experiment-base.png" />
+					<table class="text-2xl">
+						<tr>
+							<th>\(N\)</th>
+							<td>encoder&decoder 的數量</td>
+						</tr>
+						<tr>
+							<th>\(d_{model}\)</th>
+							<td>embedding length (前面的 \(d_{embedding}\))</td>
+						</tr>
+						<tr>
+							<th>\(d_{ff}\)</th>
+							<td>encoder&decoder 中，Feed Forward 隱藏層神經元數量</td>
+						</tr>
+						<tr>
+							<th>\(h\)</th>
+							<td>Multi-Head Attention 的 head 個數</td>
+						</tr>
+						<tr>
+							<th>\(d_{k}\)</th>
+							<td>\(Q_{input}、K_{input}\) 經過線性轉換得到之 \(Q、K\) 的深度(維度)</td>
+						</tr>
+						<tr>
+							<th>\(d_{v}\)</th>
+							<td>\(V_{input}\) 經過線性轉換得到之 \(V\) 的深度(維度)</td>
+						</tr>
+						<tr>
+							<th>\(P_{drop}\)</th>
+							<td>Dropout 設定的機率</td>
+						</tr>
+						<tr>
+							<th class="text-3xl">\(\epsilon_{ls}\)</th>
+							<td>label smoothing 中的機率雜訊</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<img src="./img/experiment-a.png">
+					<p class="text-left pl-10 text-3xl">
+						實驗(A)主要在測試 head 數量對正確率的影響。<br />
+						從結果可以發現，在不過度壓縮 d<sub>k</sub> 與 d<sub>v</sub> 的狀況下，<br />
+						有較多 head 的模型正確率更高。
+					</p>
+				</section>
+				<section>
+					<img src="./img/experiment-b.png">
+					<p class="text-3xl">
+						由實驗(B)可知過度壓縮 d<sub>k</sub> 會使正確率下降。
+					</p>
+				</section>
+				<section>
+					<img src="./img/experiment-c.png">
+					<p class="text-left pl-10 text-3xl">
+						實驗(C)在測試參數量對模型的影響，結論是「大力出奇蹟」
+					</p>
+				</section>
+				<section>
+					<img src="./img/experiment-d.png">
+					<p class="text-left pl-10 text-3xl">
+						實驗(D)測試得出使用 Dropout 可有效避免 Overfitting
+					</p>
+				</section>
+				<section>
+					<img src="./img/experiment-e.png">
+					<p class="text-left pl-10 text-3xl">
+						實驗(E)使用了 <a href="https://arxiv.org/abs/1705.03122">Convolutional Sequence to Sequence
+							Learning</a> 所提出的 Positional Embedding 替代 Positional Encoding，實驗結果差別不大。
+					</p>
+				</section>
+				<section>
+					<img src="./img/experiment-big.png">
+					<p class="text-6xl">
+						大力出奇蹟
+					</p>
+				</section>
+				<section>
+					<img src="./img/experiment-all.png">
+					<p class="text-3xl">
+						總覽
+					</p>
+				</section>
+				<section>
+					<img src="./img/newstest2014.png">
+					在 newstest2014 資料集與其他模型的比較結果
+				</section>
+				<section>
+					<p class="text-left pl-10">
+						Transformer 在剛推出時，<br />
+						光是 Training Cost 低的 Base Model 在<br />
+						「英文轉德文」上的表現就已經輾壓眾生。
+					</p>
+					<p class="text-left pl-10">
+						Big Model 更是在兩項任務都超過當時的 SOTA
+					</p>
+				</section>
+			</section>
+
+			<!-- 參考資料 -->
+			<section>
+				<section>
+					<p style="font-size: 150%;">
+						參考資料
+					</p>
+				</section>
+				<section>
+					<p class="text-4xl text-left">
+						[1]<a href="https://projector.tensorflow.org/">Embedding Projector</a>
+					</p>
+					<p class="text-3xl text-left px-24">
+						由 Google 發布的互動式高維資料視覺化網頁工具，可以方便使用者查看各個單詞向量之間的相似關係。
+					</p>
+				</section>
+				<section>
+					<p class="text-4xl text-left">
+						[2]<a href="https://www.tensorflow.org/tutorials/text/transformer">Transformer model for
+							language understanding</a>
+					</p>
+					<p class="text-3xl text-left px-24">
+						Google 放在 Tensorflow 官網的教學，<br />
+						有放在 Colab 上面，<br />
+						配合 TF2 寫成的程式碼讓人非常容易理解，<br />
+						對 Transformer 有興趣的人請務必去看。
+					</p>
+				</section>
+				<section>
+					<p class="text-4xl text-left">
+						[3]<a
+							href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html">淺談神經機器翻譯
+							& 用 Transformer 與 TensorFlow 2 英翻中</a>
+					</p>
+					<p class="text-4xl text-left">
+						[4]<a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">進擊的 BERT：NLP
+							界的巨人之力與遷移學習</a>
+					</p>
+					<p class="text-4xl text-left">
+						[5]<a href="https://leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html">直觀理解
+							GPT-2 語言模型並生成金庸武俠小說</a>
+					</p>
+				</section>
+			</section>
+			<section id="transitions">
+				<h2>Transition Styles</h2>
+				<p>
+					You can select from different transitions, like: <br>
+					<a href="?transition=none#/transitions">None</a> -
+					<a href="?transition=fade#/transitions">Fade</a> -
+					<a href="?transition=slide#/transitions">Slide</a> -
+					<a href="?transition=convex#/transitions">Convex</a> -
+					<a href="?transition=concave#/transitions">Concave</a> -
+					<a href="?transition=zoom#/transitions">Zoom</a>
+				</p>
+			</section>
+
+			<section id="themes">
+				<h2>Themes</h2>
+				<p>
+					reveal.js comes with a few themes built in: <br>
+					<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black
+						(default)</a> -
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a>
+					<br>
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a>
+					-
+					<a href="#"
+						onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+				</p>
+			</section>
+		</div>
+
+	</div>
+
+	<script src="../import/js/reveal.js"></script>
+
+	<script>
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			center: true,
+			hash: true,
+			slideNumber: true,
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [{
+				src: '../import/plugin/markdown/marked.js',
+				condition: function () {
+					return !!document.querySelector('[data-markdown]');
+				}
+			}, {
+				src: '../import/plugin/markdown/markdown.js',
+				condition: function () {
+					return !!document.querySelector('[data-markdown]');
+				}
+			}, {
+				src: '../import/plugin/highlight/highlight.js',
+				async: true
+			}, {
+				src: '../import/plugin/search/search.js',
+				async: true
+			}, {
+				src: '../import/plugin/zoom-js/zoom.js',
+				async: true
+			}, {
+				src: '../import/plugin/notes/notes.js',
+				async: true
+			}]
+		});
+	</script>
+
+</body>
+
+</html>
