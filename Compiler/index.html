@@ -478,197 +478,30 @@ $
 			<section>
 				<section>
 					<p style="font-size: 150%;">
-						實驗 & 結論
+						期望
 					</p>
 				</section>
 				<section>
-					<p class="text-left pl-10">
-						訓練硬體：
+					<p>
+						首先，希望能優先完成一級函數
 					</p>
-					<p class="text-left pl-20 text-4xl">8 顆 NVIDIA P100 GPUs</p>
-					<p class="text-left pl-10">
-						訓練資料集：
+					<p class="fragment fade-up">
+						再來的下個目標則是泛型
 					</p>
-					<p class="text-left pl-20 text-3xl">WMT(Workshop on Statistical Machine Translation) 2014
-						的「英文轉德文」(EN-DE)
-						與「英文轉法文」(EN-FR)</p>
-				</section>
-				<section>
-					<p class="text-left pl-10">
-						訓練耗時：
-					<ul>
-						<li>
-							base model
-							<p class="text-3xl">
-								100,000 steps(12 hours)，每個 step 花費 0.4 秒
-							</p>
-						</li>
-						<li>
-							big model
-							<p class="text-3xl">
-								300,000 steps(3.5 days)，每個 step 花費 1.0 秒
-							</p>
-						</li>
-					</ul>
-				</section>
-				<section>
-					<p class="text-left pl-32">
-						Regularization：
-					</p>
-					<ul>
-						<li>
-							Dropout
-						</li>
-						<li>
-							Label Smoothing
-						</li>
-					</ul>
-				</section>
-				<section>
-					<p class="text-left pl-10">
-						Dropout
-					</p>
-					<ul class="text-3xl">
-						<li class="pt-5">
-							在 Input 與 Target 執行完<br />
-							Positional Encoding 後會執行 Dropout
-						</li>
-						<li class="pt-5">
-							Encoder & Decoder 中，<br />
-							每次執行完 (Masked)Multi-Head Attention<br />
-							或 Feed Forward 後都會接 Dropout
-						</li>
-					</ul>
-
-				</section>
-				<section>
-					<p class="text-left pl-10">
-						Label Smoothing
-					</p>
-					<p class="text-left pl-32 text-3xl">
-						為 Ground Truth 的 One Hot Encoding<br />
-						加上機率雜訊 <span class="text-4xl">\(\epsilon_{ls}\)</span>，<br />
-						可以避免因訓練集不足以代表所有樣本特徵而造成的 Overfitting
-
+					<p class="fragment fade-up">
+						還要更多的型態與自訂結構，讓泛型可以發揮全力(？？？
 					</p>
 				</section>
 				<section>
-					<img src="./img/label-smoothing.png">
-					Label Smoothing
-				</section>
-
-				<section>
-					<p class="text-left pl-48">
-						Optimizer：Adam
-					</p>
-					<ul>
-						<li>\(\beta_1=0.9\)</li>
-						<li>\(\beta_2=0.98\)</li>
-						<li>\(\epsilon=10^{-9}\)</li>
-					</ul>
-				</section>
-				<section>
-					<p class="text-left text-6xl">
-						\(lrate=\frac{min(\frac{1}{\sqrt{step\_num}},\frac{step\_num}{warmup\_steps^{1.5}})}{\sqrt{d_{embedding}}}\)
-					</p>
-					<p class="text-left">
-						\(warmup\_steps=4000\)
+					<p>
+						還有，讓大型程式可以方便開發的模組功能也是研究目標之一
 					</p>
 				</section>
 				<section>
-					<img src="./img/experiment-base.png" />
-					<table class="text-2xl">
-						<tr>
-							<th>\(N\)</th>
-							<td>encoder&decoder 的數量</td>
-						</tr>
-						<tr>
-							<th>\(d_{model}\)</th>
-							<td>embedding length (前面的 \(d_{embedding}\))</td>
-						</tr>
-						<tr>
-							<th>\(d_{ff}\)</th>
-							<td>encoder&decoder 中，Feed Forward 隱藏層神經元數量</td>
-						</tr>
-						<tr>
-							<th>\(h\)</th>
-							<td>Multi-Head Attention 的 head 個數</td>
-						</tr>
-						<tr>
-							<th>\(d_{k}\)</th>
-							<td>\(Q_{input}、K_{input}\) 經過線性轉換得到之 \(Q、K\) 的深度(維度)</td>
-						</tr>
-						<tr>
-							<th>\(d_{v}\)</th>
-							<td>\(V_{input}\) 經過線性轉換得到之 \(V\) 的深度(維度)</td>
-						</tr>
-						<tr>
-							<th>\(P_{drop}\)</th>
-							<td>Dropout 設定的機率</td>
-						</tr>
-						<tr>
-							<th class="text-3xl">\(\epsilon_{ls}\)</th>
-							<td>label smoothing 中的機率雜訊</td>
-						</tr>
-					</table>
-				</section>
-				<section>
-					<img src="./img/experiment-a.png">
-					<p class="text-left pl-10 text-3xl">
-						實驗(A)主要在測試 head 數量對正確率的影響。<br />
-						從結果可以發現，在不過度壓縮 d<sub>k</sub> 與 d<sub>v</sub> 的狀況下，<br />
-						有較多 head 的模型正確率更高。
-					</p>
-				</section>
-				<section>
-					<img src="./img/experiment-b.png">
-					<p class="text-3xl">
-						由實驗(B)可知過度壓縮 d<sub>k</sub> 會使正確率下降。
-					</p>
-				</section>
-				<section>
-					<img src="./img/experiment-c.png">
-					<p class="text-left pl-10 text-3xl">
-						實驗(C)在測試參數量對模型的影響，結論是「大力出奇蹟」
-					</p>
-				</section>
-				<section>
-					<img src="./img/experiment-d.png">
-					<p class="text-left pl-10 text-3xl">
-						實驗(D)測試得出使用 Dropout 可有效避免 Overfitting
-					</p>
-				</section>
-				<section>
-					<img src="./img/experiment-e.png">
-					<p class="text-left pl-10 text-3xl">
-						實驗(E)使用了 <a href="https://arxiv.org/abs/1705.03122">Convolutional Sequence to Sequence
-							Learning</a> 所提出的 Positional Embedding 替代 Positional Encoding，實驗結果差別不大。
-					</p>
-				</section>
-				<section>
-					<img src="./img/experiment-big.png">
-					<p class="text-6xl">
-						大力出奇蹟
-					</p>
-				</section>
-				<section>
-					<img src="./img/experiment-all.png">
-					<p class="text-3xl">
-						總覽
-					</p>
-				</section>
-				<section>
-					<img src="./img/newstest2014.png">
-					在 newstest2014 資料集與其他模型的比較結果
-				</section>
-				<section>
-					<p class="text-left pl-10">
-						Transformer 在剛推出時，<br />
-						光是 Training Cost 低的 Base Model 在<br />
-						「英文轉德文」上的表現就已經輾壓眾生。
-					</p>
-					<p class="text-left pl-10">
-						Big Model 更是在兩項任務都超過當時的 SOTA
+					<p>
+						另外是優化編譯方式，目前為了方便時做是使用遞迴來分析語法樹，但若是編譯大型程式，記憶體很容易就會爆炸。
+						<br /><br />
+						希望能更改成用樹的走訪來生成程式。
 					</p>
 				</section>
 			</section>
@@ -682,37 +515,26 @@ $
 				</section>
 				<section>
 					<p class="text-4xl text-left">
-						[1]<a href="https://projector.tensorflow.org/">Embedding Projector</a>
+						[1]<a href="https://openhome.cc/Gossip/WebAssembly/index.html">語言實作：WebAssembly</a>
 					</p>
 					<p class="text-3xl text-left px-24">
-						由 Google 發布的互動式高維資料視覺化網頁工具，可以方便使用者查看各個單詞向量之間的相似關係。
+						由 OpenHome.cc 的良葛格所編寫的 WebAssembly 語法教學
 					</p>
 				</section>
 				<section>
 					<p class="text-4xl text-left">
-						[2]<a href="https://www.tensorflow.org/tutorials/text/transformer">Transformer model for
-							language understanding</a>
+						[2]<a href="https://webassembly.studio/">webassembly.studio</a>
 					</p>
 					<p class="text-3xl text-left px-24">
-						Google 放在 Tensorflow 官網的教學，<br />
-						有放在 Colab 上面，<br />
-						配合 TF2 寫成的程式碼讓人非常容易理解，<br />
-						對 Transformer 有興趣的人請務必去看。
+						WebAssembly 的線上 IDE
 					</p>
 				</section>
 				<section>
 					<p class="text-4xl text-left">
-						[3]<a
-							href="https://leemeng.tw/neural-machine-translation-with-transformer-and-tensorflow2.html">淺談神經機器翻譯
-							& 用 Transformer 與 TensorFlow 2 英翻中</a>
+						[3]<a href="https://webassembly.org/">webassembly 官網</a>
 					</p>
 					<p class="text-4xl text-left">
-						[4]<a href="https://leemeng.tw/attack_on_bert_transfer_learning_in_nlp.html">進擊的 BERT：NLP
-							界的巨人之力與遷移學習</a>
-					</p>
-					<p class="text-4xl text-left">
-						[5]<a href="https://leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html">直觀理解
-							GPT-2 語言模型並生成金庸武俠小說</a>
+						[4]<a href="https://webassembly.github.io/spec/core/">webassembly 規範</a>
 					</p>
 				</section>
 			</section>
