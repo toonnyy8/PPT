@@ -34,7 +34,6 @@ const methodology =
                 'Methodology',
                 'Symbolic Encoder',
                 template.div_hc(0)([
-                    html.span({ class: ["text-lg"] })`源自於 VQ-VAE 中的 Code Book 概念`, html.br(), html.br(),
                     html.img({ src: './img/methodology/symbolic-encoder.png', style: [css.w.percent(80)] }),
                     html.img({ src: './img/methodology/loss-symbolic.png', style: [css.w.percent(70)] }),
                 ]),
@@ -46,15 +45,15 @@ const methodology =
                 html.div({ class: ["text-base"] })([
                     template.div_hc(0)([html.img({ src: './img/methodology/vq-vae.png', style: [css.w.percent(100)] })]),
                     html.br(),
-                    "先將 Encoder 輸出的 hidden vector 進行向量量化後才輸入 Decoder 生成", html.br(),
-                    "兩步驟訓練：",
-                    html.ul({ style: [css.p.l(70)] })([
-                        html.li()([
-                            "訓練 Encoder-CodeBook-Decoder"
+                    "The hidden vector output by the Encoder is vector quantized before being input to the Decoder for generation.", html.br(),
+                    "Two-step training：",
+                    html.ul({ style: [css.p.l(20)] })([
+                        html.li({ class: ["text-lg"], style: [css.tx.color(255, 0, 102)] })([
+                            "Train Encoder-CodeBook-Decoder."
                         ]),
                         html.li()([
-                            "訓練 Pixel CNN 來生成離散的 hidden variants", html.br(),
-                            "(上圖的 q(z|x))"
+                            "Train Pixel CNN to generate discrete hidden variants.", html.br(),
+                            "(Q(z|x) in the figure above)"
                         ]),
                     ])
                 ]),
