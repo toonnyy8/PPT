@@ -40,12 +40,14 @@
     window.addEventListener('keydown', (e) => {
         console.log(e.key)
         switch (e.key) {
+            case 'PageUp':
             case 'ArrowUp':
             case 'ArrowLeft':
                 {
                     back()
                     break
                 }
+            case 'PageDown':
             case 'ArrowDown':
             case 'ArrowRight':
                 {
