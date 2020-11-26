@@ -50,14 +50,14 @@ const methodology =
             template.page2(0)(
                 'Methodology',
                 'Sub-pixel Convolution',
-                template.div_hc(10)([
+                template.div_hc(0)([
                     html.img({ src: './img/sub-pixel.png', style: [css.w.percent(70)] }),
                 ]),
             ),
             template.page2(0)(
                 'Methodology',
                 'Self Attention',
-                template.div_hc(10)([
+                template.div_hc(0)([
                     html.p()([
                         'Causal：Softmax(Mask(QK', html.sup()`T`, '))V'
                     ]),
