@@ -22,21 +22,7 @@ const experiments = (() => {
                     ])
                 ]),
                 html.li()([
-                    "Input frame：64"
-                ]),
-                html.li()([
                     "Optimizer：Adam",
-                    html.ul()([
-                        html.li()([
-                            "learning rate：0.0001"
-                        ]),
-                        html.li()([
-                            "beta 1：0.5"
-                        ]),
-                        html.li()([
-                            "beta 9：0.9"
-                        ]),
-                    ])
                 ]),
             ])
         ),
@@ -46,11 +32,11 @@ const experiments = (() => {
             html.div({ class: ["text-lg"] })([
                 html.ul({ style: [css.p.l(60)] })([
                     html.li()([
-                        "語音：", template.a("https://github.com/philipperemy/timit")`TIMIT`, html.br(),
+                        "語音：WSJ0 SI-84 dataset", html.br(),
                     ]),
-                    html.li()(["噪音：", template.a("http://web.cse.ohio-state.edu/pnl/corpus/HuNonspeech/HuCorpus.html")`PNL 100 Nonspeech Sounds`])
+                    html.li()(["訓練用噪音：", template.a("https://www.sound-ideas.com/")`10000 non-speech sounds from Sound Ideas`]),
+                    html.li()(["測試用噪音：", template.a("https://auditec.com/")`babble and cafeteria noises from an Auditec CD`])
                 ]),
-                "將語音與噪音以不同的訊號雜訊比 (SNR, Signal-to-noise ratio) 混和後作為輸入，並將乾淨的語音作為 Ground Truth"
             ]),
         ),
         template.page(0)(
@@ -77,36 +63,13 @@ const experiments = (() => {
                 html.img({ src: './img/alpha.png', style: [css.w.percent(65)] }),
             ]),
         ),
-        template.page(0)(
+        template.page2(0)(
             "Experiments",
-            html.table({ class: ["text-base"] })([
-                html.tr()([
-                    html.td({ style: [css.w.percent(50)] })([
-                        html.img({ src: './img/experiments/chosen-times.png', style: [css.w.percent(100)] })
-                    ]),
-                    html.td({ style: [css.w.percent(10),] })([]),
-                    html.td({ style: [css.w.percent(40),] })([
-                        "橫軸是 Symbolic index", html.br(), html.br(),
-                        "而上面每個值代表某個發音作為輸入時，",
-                        "會被 mapping 到某個 Symbolic 的次數", html.br(), html.br(),
-                        "當發音越相似，其分佈就越接近"
-                    ]),
-                ])
-            ]),
-        ),
-        template.page(0)(
-            "Experiments",
-            html.table({ class: ["text-base"] })([
-                html.tr()([
-                    html.td({ style: [css.w.percent(50)] })([
-                        html.img({ src: './img/experiments/phoneme-similarity.png', style: [css.w.percent(100)] })
-                    ]),
-                    html.td({ style: [css.w.percent(10),] })([]),
-                    html.td({ style: [css.w.percent(40),] })([
-                        "將各種發音的分佈進行相似度計算", html.br(), html.br(),
-                        "有些不同的發音會得出相似的結果是因為輸入含有噪音的緣故"
-                    ]),
-                ])
+            "Demo",
+            html.div()([
+                html.br(),
+                html.a({ class: ["text-xl"], href: "https://web.cse.ohio-state.edu/~wang.77/pnl/demo/PandeyDCN.html", style: [css.tx.color(255, 235, 205)] })
+                    `https://web.cse.ohio-state.edu/~wang.77/pnl/demo/PandeyDCN.html`,
             ]),
         ),
     ]

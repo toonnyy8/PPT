@@ -7,15 +7,18 @@ const introduction = (() => {
         template.default_page(
             "Introduction",
             html.p({ class: ["text-base"] })([
-                `Even in a noisy environment, as long as the listener can understand what the speaker is saying, the defective voice signal can be restored.`,
-                html.br(), html.br(),
-                `The author believes that this is the result of relying on the language knowledge possessed by humans.`, html.br(), html.br(),
-                `In other words, with the aid of the language model, the damage caused by interference noise can be effectively suppressed.`, html.br(), html.br(),
+                `When the voice is polluted by background noise, not only the magnitude will be affected,`,
+                `but also the phase will also change, but the risk of adjusting the phase is extremely high,`,
+                `and it is very likely that the voice quality will become very bad.`,
             ])
-        ), template.default_page(
+        ),
+        template.default_page(
             "Introduction",
             html.p({ class: ["text-base"] })([
-                `Therefore, this paper attempts to use VQ-VAE's Symbolic Book to construct acoustic units, and then Transformer's Multi Head Attention (MHA) uses acoustic features to extract speech content to help improve the effect of Speech Enhancement.`
+                `On the other hand, when processing signals in the time domain, the magnitude and phase can be changed together,`,
+                `and it is safer than processing the phase in the frequency domain.`, html.br(), html.br(),
+                `Therefore, this paper proposes a time-domain speech enhancement model that combines Dense CNN and Self Attention,`,
+                `and uses a new loss function that simultaneously constrains speech and background sounds.`
             ])
         ),
     ]

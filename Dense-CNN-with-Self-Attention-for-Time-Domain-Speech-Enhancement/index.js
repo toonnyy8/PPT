@@ -29,12 +29,20 @@
         window.location.href = `#/${pageNum}`
     }
 
-    let backB = img({ class: ["page-back-button"], src: "./icon/arrow_back_ios-white-18dp.svg" })
-    backB.onclick = back
-    let forwardB = img({ class: ["page-forward-button"], src: "./icon/arrow_forward_ios-white-18dp.svg" })
-    forwardB.onclick = forward
-    document.body.append(backB, forwardB)
+    console.log(document.body.classList.contains("theme-light"))
+    let backB, forwardB
 
+    if (document.body.classList.contains("theme-light")) {
+        backB = img({ class: ["page-back-button"], src: "./icon/arrow_back_ios-black-18dp.svg" })
+        forwardB = img({ class: ["page-forward-button"], src: "./icon/arrow_forward_ios-black-18dp.svg" })
+        document.body.append(backB, forwardB)
+    } else {
+        backB = img({ class: ["page-back-button"], src: "./icon/arrow_back_ios-white-18dp.svg" })
+        forwardB = img({ class: ["page-forward-button"], src: "./icon/arrow_forward_ios-white-18dp.svg" })
+        document.body.append(backB, forwardB)
+    }
+    backB.onclick = back
+    forwardB.onclick = forward
 
     let buf = []
     window.addEventListener('keydown', (e) => {

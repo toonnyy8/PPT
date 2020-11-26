@@ -7,75 +7,94 @@ const methodology =
         return [
             template.default_page(
                 'Methodology',
-                html.p({ style: [css.tx.center(), css.tx.size(15), css.p.t(15)] })([
+                html.p({ style: [css.tx.center(), css.tx.size(12), css.p.t(15)] })([
                     html.a({
                         href: 'https://arxiv.org/abs/1505.04597',
-                        style: [css.tx.color(255, 235, 205)]
+                        style: [css.tx.color(40, 40, 40)]
                     })`U-Net`, html.br(),
                     `+`, html.br(), html.a({
-                        href: 'https://arxiv.org/abs/1711.00937',
-                        style: [css.tx.color(255, 235, 205)]
-                    })`VQ-VAE`,
-                    html.br(), `+`, html.br(), html.a({
+                        href: 'https://arxiv.org/abs/1608.06993',
+                        style: [css.tx.color(40, 40, 40)]
+                    })`Dense Net`, html.br(),
+                    `+`, html.br(), html.a({
+                        href: 'https://arxiv.org/abs/1609.05158',
+                        style: [css.tx.color(40, 40, 40)]
+                    })`Sub-pixel Convolution`, html.br(),
+                    `+`, html.br(), html.a({
                         href: 'https://arxiv.org/abs/1706.03762',
-                        style: [css.tx.color(255, 235, 205)]
-                    })`Multi Head Attention`,
+                        style: [css.tx.color(40, 40, 40)]
+                    })`Self Attention`,
+                ]),
+            ),
+            template.page2(0)(
+                'Methodology',
+                'Input',
+                template.div_hc(0)([
+                    html.img({ src: './img/input.png', style: [css.w.percent(100)] }),
                 ]),
             ),
             template.page2(0)(
                 'Methodology',
                 'U-Net',
                 template.div_hc(0)([
-                    html.img({ src: './img/methodology/u-net.png', style: [css.w.percent(100)] }),
-                    html.img({ src: './img/methodology/loss-mse.png', style: [css.w.percent(60)] }),
+                    html.img({ src: './img/u-net.png', style: [css.w.percent(100)] }),
                 ]),
             ),
             template.page2(0)(
                 'Methodology',
-                'Symbolic Encoder',
+                'Dense Net',
                 template.div_hc(0)([
-                    html.img({ src: './img/methodology/symbolic-encoder.png', style: [css.w.percent(80)] }),
-                    html.img({ src: './img/methodology/loss-symbolic.png', style: [css.w.percent(70)] }),
+                    html.img({ src: './img/dense-net.png', style: [css.w.percent(100)] }),
                 ]),
             ),
-            template.page3(10)(
+            template.page2(0)(
                 'Methodology',
-                'Symbolic Encoder',
-                'VQ-VAE',
-                html.div({ class: ["text-base"] })([
-                    template.div_hc(0)([html.img({ src: './img/methodology/vq-vae.png', style: [css.w.percent(100)] })]),
+                'Sub-pixel Convolution',
+                template.div_hc(10)([
+                    html.img({ src: './img/sub-pixel.png', style: [css.w.percent(70)] }),
+                ]),
+            ),
+            template.page2(0)(
+                'Methodology',
+                'Self Attention',
+                template.div_hc(10)([
+                    html.p()([
+                        'Causal：Softmax(Mask(QK', html.sup()`T`, '))V'
+                    ]),
                     html.br(),
-                    "The hidden vector output by the Encoder is vector quantized before being input to the Decoder for generation.", html.br(),
-                    "Two-step training：",
-                    html.ul({ style: [css.p.l(20)] })([
-                        html.li({ class: ["text-lg"], style: [css.tx.color(255, 0, 102)] })([
-                            "Train Encoder-CodeBook-Decoder."
-                        ]),
-                        html.li()([
-                            "Train Pixel CNN to generate discrete hidden variants.", html.br(),
-                            "(Q(z|x) in the figure above)"
-                        ]),
-                    ])
+                    html.p()([
+                        'Non Causal：Softmax(QK', html.sup()`T`, ')V'
+                    ]),
                 ]),
             ),
-            template.page2(0)(
-                'Methodology',
-                'Multi Head Attention',
-                template.div_hc(0)([
-                    html.img({ src: './img/methodology/mha.png', style: [css.w.percent(35), css.p.r(5)] }),
-                    html.img({ src: './img/methodology/multi-head-attention.png', style: [css.w.percent(55), css.p.l(5)] }),
-                ]),
-            ),
-
             template.page2(0)(
                 'Methodology',
                 'Loss',
+                html.ul({ class: ["text-lg"], style: [css.p.l(30)] })([
+                    html.li()([
+                        `Time-Domain Loss`, html.br(),
+                        html.img({ src: './img/loss-t.png', style: [css.w.percent(50)] }), html.br(),
+                    ]),
+                    html.li()([
+                        `STFT Magnitude Loss`, html.br(),
+                        html.img({ src: './img/loss-sm.png', style: [css.w.percent(80)] }), html.br(),
+                    ]),
+                    html.li()([
+                        `Time-frequency Loss`, html.br(),
+                        html.img({ src: './img/loss-tf.png', style: [css.w.percent(70)] }), html.br(),
+                    ]),
+                    html.li()([
+                        `Phase Constrained Magnitude Loss`, html.br(),
+                        html.img({ src: './img/loss-pcm.png', style: [css.w.percent(100)] }), html.br(),
+                    ]),
+                ]),
+            ),
+            template.page3(0)(
+                'Methodology',
+                'Loss',
+                'PCM Loss',
                 template.div_hc(0)([
-                    html.img({ src: './img/methodology/loss-mse.png', style: [css.h.mm(40)] }),
-                    html.img({ src: './img/methodology/loss-symbolic.png', style: [css.h.mm(20)] }),
-                    html.br(),
-                    html.br(),
-                    html.img({ src: './img/methodology/loss-total.png', style: [css.h.mm(20)] }),
+                    html.img({ src: './img/sm-vs-pcm.png', style: [css.w.percent(80)] })
                 ]),
             ),
         ]

@@ -5,33 +5,41 @@
 const architecture =
     (() => {
         return [
-            template.default_page(
+            template.page(0)(
                 'Architecture',
-                html.p()([html.img({ src: './img/architecture/model.png', style: [css.w.percent(100)] })]),
+                template.div_hc(0)([html.img({ src: './img/complete-model.png', style: [css.w.percent(100)] })]),
             ),
             template.page2(0)(
                 'Architecture',
-                'Encoder',
+                '1 x 3 Conv',
                 template.div_hc(0)([
-                    html.img({ src: './img/architecture/encoder.png', style: [css.w.percent(60)] })
+                    html.img({ src: './img/1x3conv.png', style: [css.w.percent(60)] })
                 ]),
             ),
             template.page2(0)(
                 'Architecture',
-                'Decoder',
+                'Self Attention Shape',
                 template.div_hc(0)([
-                    html.img({ src: './img/architecture/decoder.png', style: [css.w.percent(70)] })
+                    html.img({ src: './img/self-attention-reshape.png', style: [css.w.percent(75)] })
                 ]),
             ),
             template.page2(0)(
                 'Architecture',
-                'Symbolic Encoder',
-                template.div_hc(0)([html.img({ src: './img/architecture/symbolic-encoder.png', style: [css.w.percent(90)] })]),
+                'Self Attention Shape',
+                template.div_hc(0)([
+                    html.img({ src: './img/self-attention-shape.png', style: [css.w.percent(30)] })
+                ]),
             ),
             template.page2(0)(
                 'Architecture',
-                'Complete Model',
-                template.div_hc(0)([html.img({ src: './img/architecture/complete-model.png', style: [css.w.percent(80)] })]),
+                'Dense Net Conv',
+                template.div_hc(0)([html.img({ src: './img/dense-net-conv.png', style: [css.w.percent(70)] })]),
+            ),
+            template.page3(0)(
+                'Architecture',
+                'Dense Net Conv',
+                'Causal',
+                template.div_hc(0)([html.img({ src: './img/causal-conv.png', style: [css.w.percent(60)] })]),
             ),
         ]
     })()

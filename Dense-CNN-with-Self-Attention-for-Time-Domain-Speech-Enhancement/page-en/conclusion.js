@@ -7,26 +7,25 @@ const conclusion = (() => {
         template.default_page(
             "Conclusion",
             html.div({ class: ["text-base"] })([
-                html.p()([
-                    `Use Symbolic Encoder to first encode speech into high-level phoneme-like content,
-                    and extract features through Multi Head Attention,
-                    which can achieve better results than before.`
-                ])
+                html.ul()([
+                    html.li({ style: [css.tx.color(0, 150, 50)] })([
+                        `This paper proposes a time-domain-based DCN model with a time-frequency loss function to obtain good results in the task of speech enhancement.`, html.br(), html.br(),
+                    ]),
+                    html.li({ style: [css.tx.color(0, 150, 50)] })([
+                        `Although SM loss has good results in the evaluation indicators of STOI and PESQ, when judged by human ears, the effect of PCM loss is closer to clean speech.`, html.br(), html.br(),
+                    ]),
+                ]),
             ]),
         ),
         template.default_page(
             "Conclusion",
             html.div({ class: ["text-base"] })([
-                "Review：",
                 html.ul()([
-                    html.li()([
-                        `The structure of Symbolic Encoder + Multi Head Attention is to establish a basic skeleton for speech (speaking content).`, html.br(), html.br(),
+                    html.li({ style: [css.tx.color(255, 0, 50)] })([
+                        `The author mentioned that DNN-based speech enhancement methods are not easy to generalize to speech that has not been learned.`, html.br(), html.br(),
                     ]),
-                    html.li()([
-                        `U-Net's shortcut can assist in adding intonation information (tonal fluctuations, timbre, etc.) to the basic skeleton.`, html.br(), html.br(),
-                    ]),
-                    html.li()([
-                        `In the second generation of VQ-VAE, you can try to use a multi-layer (multi-resolution) method to retain more acoustic features for the model`
+                    html.li({})([
+                        `Time domain loss can help improve SNR, and frequency domain loss can improve scores on STOI and PESQ.`
                     ]),
                 ]),
             ]),

@@ -93,8 +93,8 @@ const methodology =
                 'Methodology',
                 'Loss',
                 'PCM Loss',
-                html.ul({ class: ["text-lg"], style: [css.p.l(40)] })([
-                    html.img({ src: './img/loss-pcm.png', style: [css.w.percent(100)] }),
+                template.div_hc(0)([
+                    html.img({ src: './img/sm-vs-pcm.png', style: [css.w.percent(80)] })
                 ]),
             ),
         ]

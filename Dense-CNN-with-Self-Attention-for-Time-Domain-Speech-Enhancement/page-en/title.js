@@ -29,12 +29,12 @@ const title = (() => {
         html.page()([
             div_vc([
                 div_hc([
-                    html.a({ class: ["text-2xl"], href: "https://arxiv.org/abs/1904.13142", style: [css.tx.color(255, 235, 205)] })
-                        `Incorporating Symbolic Sequential Modeling for Speech Enhancement`,
+                    html.a({ class: ["text-2xl"], href: "https://arxiv.org/abs/2009.01941", style: [css.tx.color(40, 40, 40)] })
+                        `Dense CNN with Self-Attention for Time-Domain Speech Enhancement`,
                     html.hr(),
                     pxl_1([
-                        spanlg`Chien-Feng Liao, Yu Tsao,`, html.br(),
-                        spanlg`Xugang Lu, Hisashi Kawai`,
+                        spanlg`Ashutosh Pandey,`, html.br(),
+                        spanlg`DeLiang Wang`,
                     ]),
                 ])
             ])
@@ -47,11 +47,6 @@ const title = (() => {
                     html.ul({ style: [css.tx.left(), css.m.l(100)] })([
                         html.li()`Introduction`,
                         html.li()`Methodology`,
-                        html.ul({ class: ["text-lg"] })([
-                            html.li()`U-Net`,
-                            html.li()`Symbolic Encoder`,
-                            html.li()`Multi Head Attention`,
-                        ]),
                         html.li()`Architecture`,
                         html.li()`Experiments`,
                         html.li()`Conclusion`,
