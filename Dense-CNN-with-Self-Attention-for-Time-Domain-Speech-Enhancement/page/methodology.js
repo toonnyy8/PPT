@@ -67,11 +67,10 @@ const methodology =
                     ]),
                 ]),
             ),
-
             template.page2(0)(
                 'Methodology',
                 'Loss',
-                html.ul({ class: ["text-lg"], style: [css.p.l(40)] })([
+                html.ul({ class: ["text-lg"], style: [css.p.l(30)] })([
                     html.li()([
                         `Time-Domain Loss`, html.br(),
                         html.img({ src: './img/loss-t.png', style: [css.w.percent(50)] }), html.br(),
@@ -88,6 +87,14 @@ const methodology =
                         `Phase Constrained Magnitude Loss`, html.br(),
                         html.img({ src: './img/loss-pcm.png', style: [css.w.percent(100)] }), html.br(),
                     ]),
+                ]),
+            ),
+            template.page3(0)(
+                'Methodology',
+                'Loss',
+                'PCM Loss',
+                html.ul({ class: ["text-lg"], style: [css.p.l(40)] })([
+                    html.img({ src: './img/loss-pcm.png', style: [css.w.percent(100)] }),
                 ]),
             ),
         ]
