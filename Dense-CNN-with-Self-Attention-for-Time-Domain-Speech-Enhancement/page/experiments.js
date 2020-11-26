@@ -48,13 +48,31 @@ const experiments = (() => {
         template.page(0)(
             "Experiments",
             template.div_hc(0)([
-                html.img({ src: './img/experiments-1.png', style: [css.w.percent(100)] }),
+                html.img({ src: './img/experiments-1-stoi.png', style: [css.w.percent(70)] }),
             ]),
         ),
         template.page(0)(
             "Experiments",
             template.div_hc(0)([
-                html.img({ src: './img/experiments-2.png', style: [css.w.percent(100)] }),
+                html.img({ src: './img/experiments-1-pesq.png', style: [css.w.percent(70)] }),
+            ]),
+        ),
+        template.page(0)(
+            "Experiments",
+            template.div_hc(0)([
+                html.img({ src: './img/experiments-1-snr.png', style: [css.w.percent(70)] }),
+            ]),
+        ),
+        template.page(0)(
+            "Experiments",
+            template.div_hc(0)([
+                html.img({ src: './img/experiments-2-stoi.png', style: [css.w.percent(80)] }),
+            ]),
+        ),
+        template.page(0)(
+            "Experiments",
+            template.div_hc(0)([
+                html.img({ src: './img/experiments-2-pesq.png', style: [css.w.percent(80)] }),
             ]),
         ),
         template.page(0)(

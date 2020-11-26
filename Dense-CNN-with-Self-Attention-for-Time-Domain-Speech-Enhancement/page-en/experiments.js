@@ -34,8 +34,8 @@ const experiments = (() => {
                     html.li()([
                         "語音：WSJ0 SI-84 dataset", html.br(),
                     ]),
-                    html.li()(["訓練用噪音：", template.a("https://www.sound-ideas.com/")`10000 non-speech sounds from Sound Ideas`]),
-                    html.li()(["測試用噪音：", template.a("https://auditec.com/")`babble and cafeteria noises from an Auditec CD`])
+                    html.li()(["訓練用噪音：", html.a({ href: "https://www.sound-ideas.com/", style: [css.tx.color(40, 40, 40)] })`10000 non-speech sounds from Sound Ideas`]),
+                    html.li()(["測試用噪音：", html.a({ href: "https://auditec.com/", style: [css.tx.color(40, 40, 40)] })`babble and cafeteria noises from an Auditec CD`])
                 ]),
             ]),
         ),
@@ -48,13 +48,31 @@ const experiments = (() => {
         template.page(0)(
             "Experiments",
             template.div_hc(0)([
-                html.img({ src: './img/experiments-1.png', style: [css.w.percent(100)] }),
+                html.img({ src: './img/experiments-1-stoi.png', style: [css.w.percent(70)] }),
             ]),
         ),
         template.page(0)(
             "Experiments",
             template.div_hc(0)([
-                html.img({ src: './img/experiments-2.png', style: [css.w.percent(100)] }),
+                html.img({ src: './img/experiments-1-pesq.png', style: [css.w.percent(70)] }),
+            ]),
+        ),
+        template.page(0)(
+            "Experiments",
+            template.div_hc(0)([
+                html.img({ src: './img/experiments-1-snr.png', style: [css.w.percent(70)] }),
+            ]),
+        ),
+        template.page(0)(
+            "Experiments",
+            template.div_hc(0)([
+                html.img({ src: './img/experiments-2-stoi.png', style: [css.w.percent(80)] }),
+            ]),
+        ),
+        template.page(0)(
+            "Experiments",
+            template.div_hc(0)([
+                html.img({ src: './img/experiments-2-pesq.png', style: [css.w.percent(80)] }),
             ]),
         ),
         template.page(0)(
