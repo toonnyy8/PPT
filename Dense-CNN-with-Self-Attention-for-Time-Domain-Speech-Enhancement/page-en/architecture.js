@@ -27,7 +27,7 @@ const architecture =
                 'Architecture',
                 'Self Attention Shape',
                 template.div_hc(0)([
-                    html.img({ src: './img/self-attention-shape.png', style: [css.w.percent(30)] })
+                    html.img({ src: './img/self-attention-shape.png', style: [css.w.percent(25)] })
                 ]),
             ),
             template.page2(0)(
