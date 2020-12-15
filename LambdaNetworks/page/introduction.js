@@ -7,10 +7,13 @@ const introduction = (() => {
         template.default_page(
             "Introduction",
             html.p({ class: ["text-base"] })([
-                `當語音受到背景噪音污染時，不只是頻率的大小會受到影響，連同相位也會跟著改變，`,
-                `但是調整相位的風險極大，很有可能會使語音品質變得非常糟。`, html.br(), html.br(),
-                `而從在時域處理訊號時，可以將頻率的大小與相位一同改變，而且比從頻域處理相位更加安全。`, html.br(), html.br(),
-                `因此本篇論文提出了一種結合了 Dense CNN 與 Self Attention 的時域語音增強模型，並使用了對語音及背景音同時約束的新損失函數。`
+                `利用 Self Attention 獲得上下文資訊對提升模型正確率確實是有幫助的。`,
+                html.br(),
+                html.br(),
+                `但要消耗的記憶體量使其難以應用於超長序列及多維度(如圖像)任務上。`,
+                html.br(),
+                html.br(),
+                `因此，作者提出 lambda network 這個架構，在能獲取上下文資訊的同時減少了記憶體消耗量並提升了運算速度。`,
             ])
         ),
     ]
