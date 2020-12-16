@@ -47,7 +47,6 @@ const title = (() => {
                     html.ul({ style: [css.tx.left(), css.m.l(100)] })([
                         html.li()`Introduction`,
                         html.li()`Methodology`,
-                        html.li()`Architecture`,
                         html.li()`Experiments`,
                         html.li()`Conclusion`,
                     ])

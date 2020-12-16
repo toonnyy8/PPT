@@ -9,13 +9,13 @@ const conclusion = (() => {
             html.div({ class: ["text-base"] })([
                 html.ul()([
                     html.li({ style: [css.tx.color(100, 255, 50)] })([
-                        `本篇論文提出基於時域的 DCN 模型並搭配時頻的損失函數在語音增強的任務中獲得了良好的成果。`, html.br(), html.br(),
+                        `可以將 Lambda Layer 理解成為更加優秀的 Channel + Spatial Attention。`, html.br(), html.br(),
                     ]),
                     html.li({ style: [css.tx.color(100, 255, 50)] })([
-                        `雖然在 STOI 與 PESQ 的評估指標上，SM loss 具有較好的結果，但在實際由人耳評斷時 PCM loss 更接近乾淨的語音。`, html.br(), html.br(),
+                        `與 Linear Attention 相比，Lambda Layer 具有更好的位置關注能力。`, html.br(), html.br(),
                     ]),
                     html.li({ style: [css.tx.color(255, 100, 50)] })([
-                        `作者提到，基於 DNN 的語音增強方法不易泛化到未曾學習過的資料上面。`, html.br(), html.br(),
+                        `配合 CNN 使用時，將 Lambda Layer 放在後面會有比較好的效果。`, html.br(), html.br(),
                     ]),
                     html.li({})([
                         `時域的 loss 有助於提升 SNR、頻域 loss 則能使 STOI 與 PESQ 上的分數提升。`

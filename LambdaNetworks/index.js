@@ -9,7 +9,7 @@
         ...title,
         ...introduction,
         ...methodology,
-        ...architecture,
+        // ...architecture,
         ...experiments,
         ...conclusion,
     )
