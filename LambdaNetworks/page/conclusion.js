@@ -6,8 +6,8 @@ const conclusion = (() => {
     return [
         template.default_page(
             "Conclusion",
-            html.div({ class: ["text-base"] })([
-                html.ul()([
+            html.p({ style: [css.p.t(1)] })([
+                html.ul({ style: [css.tx.size(8)] })([
                     html.li({ style: [css.tx.color(100, 255, 50)] })([
                         `可以將 Lambda Layer 理解成為更加優秀的 Channel + Spatial Attention。`,
                         html.br(),

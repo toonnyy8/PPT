@@ -3,17 +3,10 @@
 ///<reference path="./introduction.js">
 ///<reference path="./methodology.js">
 
-(() => {
+;(() => {
     const { render, img } = html
-    const control = render(
-        ...title,
-        ...introduction,
-        ...methodology,
-        // ...architecture,
-        ...experiments,
-        ...conclusion,
-    )
-    let pageNum = Number(window.location.href.split('#/')[1] || 1)
+    const control = render(...title, ...introduction, ...methodology, ...experiments, ...conclusion)
+    let pageNum = Number(window.location.href.split("#/")[1] || 1)
     control.jump(pageNum - 1)
     pageNum = control.at() + 1
     window.location.href = `#/${pageNum}`
@@ -45,41 +38,37 @@
     forwardB.onclick = forward
 
     let buf = []
-    window.addEventListener('keydown', (e) => {
+    window.addEventListener("keydown", (e) => {
         console.log(e.key)
         switch (e.key) {
-            case 'PageUp':
-            case 'ArrowUp':
-            case 'ArrowLeft':
-                {
-                    back()
-                    break
+            case "PageUp":
+            case "ArrowUp":
+            case "ArrowLeft": {
+                back()
+                break
+            }
+            case "PageDown":
+            case "ArrowDown":
+            case "ArrowRight": {
+                forward()
+                break
+            }
+            case "Enter": {
+                if (buf.length != 0) {
+                    control.jump(Number(buf.reduce((prev, curr) => prev + curr, "")) - 1)
+                    pageNum = control.at() + 1
+                    window.location.href = `#/${pageNum}`
+                    buf = []
                 }
-            case 'PageDown':
-            case 'ArrowDown':
-            case 'ArrowRight':
-                {
-                    forward()
-                    break
+                break
+            }
+            default: {
+                if (e.key >= "0" && e.key <= "9") {
+                    buf = buf.concat(e.key)
+                } else {
+                    buf = []
                 }
-            case 'Enter':
-                {
-                    if (buf.length != 0) {
-                        control.jump(Number(buf.reduce((prev, curr) => prev + curr, '')) - 1)
-                        pageNum = control.at() + 1
-                        window.location.href = `#/${pageNum}`
-                        buf = []
-                    }
-                    break
-                }
-            default:
-                {
-                    if (e.key >= '0' && e.key <= '9') {
-                        buf = buf.concat(e.key)
-                    } else {
-                        buf = []
-                    }
-                }
+            }
         }
     })
 })()
