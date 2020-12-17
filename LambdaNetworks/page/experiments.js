@@ -4,91 +4,137 @@
 
 const experiments = (() => {
     return [
-        template.page(10)(
+        template.default_page(
             "Experiments",
-            html.ul({ class: ["text-lg"], style: [css.p.l(70), css.tx.left()] })([
-                html.li()([
-                    "Sample rate：16kHz"
+            html.p({ style: [css.tx.size(12), css.p.t(1)] })([
+                html.ul({ style: [css.tx.left(), css.m.l(80)] })([
+                    html.li()`vs Baseline ${html.br()}${html.br()}`,
+                    html.li()`Content vs Position ${html.br()}${html.br()}`,
+                    html.li()`Normalization ${html.br()}${html.br()}`,
+                    html.li()`Other`,
                 ]),
-                html.li()([
-                    "Hamming window",
-                    html.ul()([
-                        html.li()([
-                            "size：512"
-                        ]),
-                        html.li()([
-                            "stride：256"
-                        ]),
-                    ])
-                ]),
-                html.li()([
-                    "Optimizer：Adam",
-                ]),
+            ])
+        ),
+        template.page3(0)(
+            "Experiments",
+            "vs Baseline",
+            "Classification",
+            template.div_hc(0)([
+                html.img({ src: "./img/lambda_vs_baseline-classification.png", style: [css.w.percent(90)] }),
+            ])
+        ),
+        template.page3(0)(
+            "Experiments",
+            "vs Baseline",
+            `Detection`,
+            template.div_hc(0)([
+                html.img({
+                    src: "./img/lambda_vs_baseline-detection.png",
+                    style: [css.w.percent(90)],
+                }),
+            ])
+        ),
+        template.page3(0)(
+            "Experiments",
+            "vs Baseline",
+            `Segmentation`,
+            template.div_hc(0)([
+                html.img({
+                    src: "./img/lambda_vs_baseline-segmentation.png",
+                    style: [css.w.percent(90)],
+                }),
+            ])
+        ),
+        template.page3(0)(
+            "Experiments",
+            "vs Baseline",
+            `Training`,
+            template.div_hc(0)([
+                html.img({
+                    src: "./img/training.png",
+                    style: [css.w.percent(70)],
+                }),
             ])
         ),
         template.page2(0)(
             "Experiments",
-            "Data Set",
-            html.div({ class: ["text-lg"] })([
-                html.ul({ style: [css.p.l(60)] })([
-                    html.li()([
-                        "語音：WSJ0 SI-84 dataset", html.br(),
-                    ]),
-                    html.li()(["訓練用噪音：", template.a("https://www.sound-ideas.com/")`10000 non-speech sounds from Sound Ideas`]),
-                    html.li()(["測試用噪音：", template.a("https://auditec.com/")`babble and cafeteria noises from an Auditec CD`])
-                ]),
-            ]),
-        ),
-        template.page(0)(
-            "Experiments",
+            "Content vs Position",
             template.div_hc(0)([
-                html.img({ src: './img/loss-vs.png', style: [css.w.percent(65)] }),
-            ]),
-        ),
-        template.page(0)(
-            "Experiments",
-            template.div_hc(0)([
-                html.img({ src: './img/experiments-1-stoi.png', style: [css.w.percent(70)] }),
-            ]),
-        ),
-        template.page(0)(
-            "Experiments",
-            template.div_hc(0)([
-                html.img({ src: './img/experiments-1-pesq.png', style: [css.w.percent(70)] }),
-            ]),
-        ),
-        template.page(0)(
-            "Experiments",
-            template.div_hc(0)([
-                html.img({ src: './img/experiments-1-snr.png', style: [css.w.percent(70)] }),
-            ]),
-        ),
-        template.page(0)(
-            "Experiments",
-            template.div_hc(0)([
-                html.img({ src: './img/experiments-2-stoi.png', style: [css.w.percent(80)] }),
-            ]),
-        ),
-        template.page(0)(
-            "Experiments",
-            template.div_hc(0)([
-                html.img({ src: './img/experiments-2-pesq.png', style: [css.w.percent(80)] }),
-            ]),
-        ),
-        template.page(0)(
-            "Experiments",
-            template.div_hc(0)([
-                html.img({ src: './img/alpha.png', style: [css.w.percent(65)] }),
-            ]),
+                html.img({
+                    src: "./img/content_vs_position.png",
+                    style: [css.w.percent(90)],
+                }),
+                html.br(),
+                html.br(),
+                html.div({ style: [css.tx.size(8)] })`Position Lambda 提供的資訊比起 Content Lambda 更為重要`,
+            ])
         ),
         template.page2(0)(
             "Experiments",
-            "Demo",
-            html.div()([
+            "Normalization",
+            template.div_hc(0)([
+                html.img({
+                    src: "./img/normalization_schemes.png",
+                    style: [css.w.percent(90)],
+                }),
                 html.br(),
-                html.a({ class: ["text-xl"], href: "https://web.cse.ohio-state.edu/~wang.77/pnl/demo/PandeyDCN.html", style: [css.tx.color(255, 235, 205)] })
-                    `https://web.cse.ohio-state.edu/~wang.77/pnl/demo/PandeyDCN.html`,
-            ]),
+                html.br(),
+                html.div({ style: [css.tx.size(10)] })`對 K 進行規範是有必要的`,
+            ])
+        ),
+        template.page2(0)(
+            "Experiments",
+            "Other",
+            template.div_hc(0)([
+                html.img({
+                    src: "./img/lambda_vs_conv.png",
+                    style: [css.w.percent(70)],
+                }),
+                html.br(),
+                html.br(),
+                html.div({ style: [css.tx.size(9)] })`Lambda Layer 放至於 Convolution 之後會有比較好的效果`,
+            ])
+        ),
+        template.page2(0)(
+            "Experiments",
+            "Other",
+            template.div_hc(0)([
+                html.img({
+                    src: "./img/powerful.png",
+                    style: [css.w.percent(100)],
+                }),
+                html.br(),
+                html.br(),
+                html.div({
+                    style: [css.tx.left(), css.tx.size(8)],
+                })`Lambda 具有比 Self Attention 更高的速度、正確率與更低的記憶體消耗量。`,
+            ])
+        ),
+        template.page2(0)(
+            "Experiments",
+            "Other",
+            template.div_hc(0)([
+                html.img({
+                    src: "./img/tradeoff.png",
+                    style: [css.w.percent(70)],
+                }),
+            ])
+        ),
+        template.page3(0)(
+            "Experiments",
+            "Other",
+            "Receptive Field",
+            template.div_hc(0)([
+                html.img({
+                    src: "./img/position_lambda_scope_size.png",
+                    style: [css.w.percent(100)],
+                }),
+                html.br(),
+                html.br(),
+                html.div({
+                    style: [ css.tx.size(10)],
+                })`在實驗中，Position Lambda 的感受野並非是越大越好。`,
+            ])
         ),
     ]
 })()
