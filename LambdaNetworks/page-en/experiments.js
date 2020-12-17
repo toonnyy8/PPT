@@ -66,7 +66,7 @@ const experiments = (() => {
                 }),
                 html.br(),
                 html.br(),
-                html.div({ style: [css.tx.size(8)] })`Position Lambda 提供的資訊比起 Content Lambda 更為重要`,
+                html.div({ style: [css.tx.size(8)] })`Position Lambda is more important than Content Lambda.`,
             ])
         ),
         template.page2(0)(
@@ -79,7 +79,7 @@ const experiments = (() => {
                 }),
                 html.br(),
                 html.br(),
-                html.div({ style: [css.tx.size(10)] })`對 K 進行規範是有必要的`,
+                html.div({ style: [css.tx.size(10)] })`It is necessary to regulate K.`,
             ])
         ),
         template.page2(0)(
@@ -92,7 +92,7 @@ const experiments = (() => {
                 }),
                 html.br(),
                 html.br(),
-                html.div({ style: [css.tx.size(9)] })`Lambda Layer 放至於 Convolution 之後會有比較好的效果`,
+                html.div({ style: [css.tx.size(9)] })`Lambda Layer will have better results after Convolution.`,
             ])
         ),
         template.page2(0)(
@@ -107,7 +107,7 @@ const experiments = (() => {
                 html.br(),
                 html.div({
                     style: [css.tx.left(), css.tx.size(8)],
-                })`Lambda 具有比 Self Attention 更高的速度、正確率與更低的記憶體消耗量。`,
+                })`Lambda has higher speed, accuracy and lower memory consumption than Self Attention.`,
             ])
         ),
         template.page2(0)(
@@ -132,8 +132,8 @@ const experiments = (() => {
                 html.br(),
                 html.br(),
                 html.div({
-                    style: [ css.tx.size(10)],
-                })`在實驗中，Position Lambda 的感受野並非是越大越好。`,
+                    style: [css.tx.size(10)],
+                })`In the experiment, the receptive field of Position Lambda is not the bigger the better.`,
             ])
         ),
     ]

@@ -44,7 +44,7 @@ const methodology = (() => {
                 html.img({ src: './img/lambda.png', style: [css.w.percent(75)] })
             ]),
         ),
-        template.page2(0)("Methodology", "Content Lambda", template.div_hc(40)([`對 Feature「Map」的匹配`])),
+        template.page2(0)("Methodology", "Content Lambda", template.div_hc(40)([`Matching to Feature「Map」`])),
         template.page2(0)(
             'Methodology',
             "Content Lambda",
@@ -73,7 +73,7 @@ const methodology = (() => {
                 html.img({ src: './img/content_lambda-4.png', style: [css.w.percent(70)] })
             ]),
         ),
-        template.page2(0)("Methodology", "Position Lambda", template.div_hc(40)([`對 Feature「Vector」的匹配`])),
+        template.page2(0)("Methodology", "Position Lambda", template.div_hc(40)([`Matching to Feature「Vector」`])),
         template.page2(0)(
             'Methodology',
             "Position Lambda",
