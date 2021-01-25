@@ -5,7 +5,7 @@
 
 ; (() => {
     const { render, img } = html
-    const control = render(...title, ...ch1, ...ch2)
+    const control = render(...title, ...ch1, ...ch2, ...ch3)
     let pageNum = Number(window.location.href.split("#/")[1] || 1)
     control.jump(pageNum - 1)
     pageNum = control.at() + 1
