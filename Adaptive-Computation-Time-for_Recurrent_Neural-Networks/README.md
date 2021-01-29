@@ -1,7 +1,7 @@
 # Adaptive Computation Time for Recurrent Neural Network 報告
 
-[中文連結](https://toonnyy8.github.io/PPT/Adaptive-Computation-Time-for-Recurrent-Neural-Network/index.html)  
-[英文連結](https://toonnyy8.github.io/PPT/Adaptive-Computation-Time-for-Recurrent-Neural-Network/index-en.html)
+[中文連結](https://toonnyy8.github.io/PPT/Adaptive-Computation-Time-for_Recurrent_Neural-Networks/index.html)  
+[英文連結](https://toonnyy8.github.io/PPT/Adaptive-Computation-Time-for_Recurrent_Neural-Networks/index-en.html)
 
 ponder*loss = τ \* ponder_cost  
 ponder_cost = ponder_1+ponder_2+...ponder_T  
