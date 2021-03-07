@@ -516,7 +516,7 @@ const html = (() => {
          * @param {number} pageNum 
          */
         const tagPageNum = (_page, pageNum) => {
-            _page.innerHTML += `<div class="page-num text-lg">${pageNum + 1}</div>`
+            _page.appendChild(div({ class: ["page-num", "text-lg"] })`${pageNum + 1}`)
         }
         let pageNum = 0
         pages.forEach((_page, idx) => {

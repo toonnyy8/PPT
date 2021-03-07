@@ -151,9 +151,9 @@ const css = (() => {
          */
         color: (r, g, b, a) => {
             if (a === undefined) {
-                return `background-color:rgb(${r},${g},${b})`
+                return `background-color:rgb(${r},${g},${b});`
             } else {
-                return `background-color:rgba(${r},${g},${b},${a})`
+                return `background-color:rgba(${r},${g},${b},${a});`
             }
         }
     }
