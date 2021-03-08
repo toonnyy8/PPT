@@ -98,7 +98,7 @@ const title = (() => {
                         [html.tr()([
                             html.td({ style: [css.w.percent(50)] })([
                                 html.video({
-                                    src: "./img/attention.mp4", autoplay: true, controls: true, loop: true,
+                                    src: "./img/attention.mp4", autoplay: true, controls: false, loop: true,
                                     style: [css.w.percent(100)]
                                 })
                             ]),
@@ -219,52 +219,60 @@ const title = (() => {
                 ])
             ]),
         ),
-        template.page(0)(
-            `情況1：輸入一組 Feature Vector`,
+        template.page2(0)(
+            `Self Attention`,
+            html.span({ class: ["text-xl"] })([`情況1：`, html.br(), `輸入一組 Feature Vector`]),
             template.div_hc(0)([
-                html.img({ src: './img/from-one.png', style: [css.w.percent(70)] }),
+                html.img({ src: './img/from-one.png', style: [css.w.percent(65)] }),
             ]),
         ),
-        template.page(0)(
-            `情況2：輸入兩組 Feature Vector`,
+        template.page2(0)(
+            `Self Attention`,
+            html.span({ class: ["text-xl"] })([`情況2：`, html.br(), `輸入兩組 Feature Vector`]),
             template.div_hc(0)([
-                html.img({ src: './img/from-two.png', style: [css.w.percent(70)] }),
+                html.img({ src: './img/from-two.png', style: [css.w.percent(65)] }),
             ]),
         ),
-        template.page(0)(
+        template.page2(0)(
+            `Self Attention`,
             `Query、Key 與 Value`,
             template.div_hc(0)([
                 html.img({ src: './img/query-key-value-1.png', style: [css.w.percent(80)] }),
                 html.p()`Query 與 Key 大多數都源於同樣的資料，所以稱為 Self`,
             ]),
         ),
-        template.page(0)(
-            `配對每個 Query 與 Key 之間的相似度`,
+        template.page2(0)(
+            `Self Attention`,
+            html.span({ class: ["text-xl"] })([`配對每個 Query 與 Key`, html.br(), `獲得兩者間的相似度`]),
             template.div_hc(0)([
                 html.img({ src: './img/query-key.png', style: [css.w.percent(80)] }),
             ]),
         ),
-        template.page(0)(
-            `再透過相似度合成每個 Key 對應的 Value`,
+        template.page2(0)(
+            `Self Attention`,
+            html.span({ class: ["text-xl"] })([`再透過相似度`, html.br(), `合成每個 Key 對應的 Value`]),
             template.div_hc(0)([
                 html.img({ src: './img/query-key-value-2.png', style: [css.w.percent(60)] }),
             ]),
         ),
-        template.page(0)(
+        template.page2(0)(
+            `Self Attention`,
             `換個說法就是`,
             template.div_hc(0)([
                 html.img({ src: './img/explosion-1.png', style: [css.w.percent(80)] }),
                 // html.img({ src: './img/explosion.gif', style: [css.w.percent(80)] }),
             ]),
         ),
-        template.page(0)(
+        template.page2(0)(
+            `Self Attention`,
             `Explosion！！！`,
             template.div_hc(0)([
                 html.img({ src: './img/explosion-2.png', style: [css.w.percent(50)] }),
                 html.img({ src: './img/explosion.jfif', style: [css.w.percent(40)] }),
             ]),
         ),
-        template.page(0)(
+        template.page2(0)(
+            `Multi Head`,
             `少了點東西`,
             template.div_hc(0)([
                 html.table()(
@@ -283,13 +291,15 @@ const title = (() => {
                 ),
             ]),
         ),
-        template.page(0)(
+        template.page2(0)(
+            `Multi Head`,
             `Explosion-聲光篇`,
             template.div_hc(0)([
                 html.img({ src: './img/explosion-3.png', style: [css.w.percent(100)] }),
             ]),
         ),
-        template.page(0)(
+        template.page2(0)(
+            `Multi Head`,
             `Explosion-聲光篇`,
             template.div_hc(0)([
                 html.img({ src: './img/explosion-4.png', style: [css.w.percent(50)] }),
@@ -299,7 +309,8 @@ const title = (() => {
                 html.p()([`這樣就獲得了絢麗十足的特效了`]),
             ]),
         ),
-        template.page(0)(
+        template.page2(0)(
+            `Multi Head`,
             `混合傷害與特效`,
             template.div_hc(0)([
                 html.img({ src: './img/explosion-mixture.png', style: [css.w.percent(50)] }),
@@ -307,27 +318,29 @@ const title = (() => {
                 html.p()([`真正的，Explosion！！！`]),
             ]),
         ),
-        template.page(0)(
-            `Multi Head == Multi Feature`,
+        template.page2(0)(
+            `Multi Head`,
+            html.span({ class: ["text-xl"] })`Multi Head == Multi Feature`,
             template.div_hc(0)([
                 html.p()([`剛剛的例子就是 2 head self attention`]),
                 html.br(),
                 html.p()([`因為，萬事都不只有一個面貌`]),
                 html.p({ style: [css.tx.size(7)] })([`(這不是在說人生道理)`]),
                 html.br(),
-                html.p()([`如果只去注意單一特徵會有盲點`]),
+                html.p()([`如果只去注意單一面向就會產生偏見`]),
                 html.p({ style: [css.tx.size(7)] })([`(這依然不是在說人生道理)`]),
                 html.br(),
-                html.p()([`Multi Head 就是從多種面向去思考同一件事`]),
+                html.p()([`為了解決這問題，Multi Head 便從多種角度去觀察同一件事`]),
             ]),
         ),
-        template.page(0)(
-            `我，不想延畢 == 不，我想延畢...？`,
+        template.page2(0)(
+            `Positional Encoding`,
+            html.span({ class: ["text-xl"] })([html.br(), `我，不想延畢 == 不，我想延畢...？`]),
             template.div_hc(0)([
                 html.table()(
                     [html.tr()([
-                        html.td({ style: [css.w.percent(50)] })([
-                            html.img({ src: './img/position.png', style: [css.w.percent(100)] }),
+                        html.td({ style: [css.w.percent(55)] })([
+                            html.img({ src: './img/position.png', style: [css.w.percent(90)] }),
                         ]),
                         html.td({ style: [css.w.percent(45)] })([
                             html.p()([`在沒有`, html.span({ class: ["text-2xl"], style: [css.tx.color(100, 200, 255)] })`外加資訊`, `的情況下`]),
@@ -366,11 +379,76 @@ const title = (() => {
                 ])
             ]),
         ),
-        template.page(0)(
-            `直接加上 PE`,
+        template.page2(0)(
+            `Position Encoding`,
+            html.span({ class: ["text-2xl"] })([`直接與輸入相加做使用`]),
             template.div_hc(0)([
-                html.div()([
-                    html.img({ src: './img/use-pe.png', style: [css.w.percent(50)] }),
+                html.img({ src: './img/use-pe.png', style: [css.w.percent(50)] }),
+            ]),
+        ),
+        template.page2(0)(
+            `統整`,
+            `Multi Head Self Attention`,
+            template.div_hc(0)([
+                html.img({ src: './img/multi-head-attention.png', style: [css.w.percent(70)] }),
+                html.p()`這邊的 Scale Dot Product Attention 就是前面說的 Self Attention`
+            ]),
+        ),
+        template.page2(0)(
+            `統整`,
+            `Multi Head Self Attention`,
+            template.div_hc(0)([
+                html.img({ src: './img/encoder-attention-0.png', style: [css.w.percent(100)] }),
+                html.p()`每個 Q K 都利用內積計算相似度`
+            ]),
+        ),
+        template.page2(0)(
+            `統整`,
+            `Multi Head Self Attention`,
+            template.div_hc(0)([
+                html.img({ src: './img/encoder-attention-1.png', style: [css.w.percent(100)] }),
+                html.p()`再透過 Softmax 正規化成注意力權重`
+            ]),
+        ),
+        template.page2(0)(
+            `統整`,
+            `Multi Head Self Attention`,
+            template.div_hc(0)([
+                html.img({ src: './img/encoder-attention-2.png', style: [css.w.percent(100)] }),
+                html.p()`利用注意力權重與 V 合成 Single Head Output`
+            ]),
+        ),
+        template.page2(0)(
+            `統整`,
+            `Multi Head Self Attention`,
+            template.div_hc(0)([
+                html.img({ src: './img/encoder-attention-3.png', style: [css.w.percent(80)] }),
+                html.p()`將每個 Head Output 融合為輸出`
+            ]),
+        ),
+        template.page(0)(
+            html.span()([`缺點：記憶體複雜度是 N`, html.sup()`2`]),
+            template.div_hc(0)([
+                html.img({ src: './img/encoder-attention-1.png', style: [css.w.percent(70)] }),
+                html.p()`在計算相似度與注意力權重時要耗費巨量的記憶體，因此最初的 Self Attention 處理高維度問題時非常昂貴(物理上)`
+            ]),
+        ),
+        template.page(0)(
+            `延伸閱讀`,
+            template.div_hc(0)([
+                html.ol({ style: [css.tx.justify(), css.p.l(25)] })([
+                    html.li()([
+                        html.a({ href: `https://www.tensorflow.org/tutorials/text/transformer#create_the_transformer` })
+                            `Tensorflow 官方手把手教你刻 Transformer`
+                    ]),
+                    html.li()([
+                        html.a({ href: `https://lilianweng.github.io/lil-log/2020/04/07/the-transformer-family.html` })
+                            `OpenAI Researcher 寫的 Transformer 系列講解`
+                    ]),
+                    html.li()([
+                        html.a({ href: `https://toonnyy8.github.io/PPT/Attention-is-all-you-need/#/` })
+                            `很難看的 Transformer 講解`
+                    ]),
                 ])
             ]),
         ),

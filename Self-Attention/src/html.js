@@ -201,6 +201,12 @@ const html = (() => {
         el.controls = options.controls
         el.autoplay = options.autoplay
         el.loop = options.loop
+        el.onclick = () => {
+            if (el.paused) {
+                el.play()
+            } else { el.pause() }
+
+        }
 
         return el
     }
