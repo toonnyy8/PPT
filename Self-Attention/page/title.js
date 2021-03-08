@@ -210,6 +210,16 @@ const title = (() => {
             ]),
         ),
         template.page(0)(
+            `「Multi Head」Self Attention`,
+            template.div_hc(0)([
+                html.ol({ class: ["text-2xl"], style: [css.tx.justify(), css.p.l(100)] })([
+                    html.li()`Self Attention`,
+                    html.li()`Multi Head`,
+                    html.li()`Positional Encoding`,
+                ])
+            ]),
+        ),
+        template.page(0)(
             `情況1：輸入一組 Feature Vector`,
             template.div_hc(0)([
                 html.img({ src: './img/from-one.png', style: [css.w.percent(70)] }),
@@ -251,7 +261,64 @@ const title = (() => {
             `Explosion！！！`,
             template.div_hc(0)([
                 html.img({ src: './img/explosion-2.png', style: [css.w.percent(50)] }),
+                html.img({ src: './img/explosion.jfif', style: [css.w.percent(40)] }),
+            ]),
+        ),
+        template.page(0)(
+            `少了點東西`,
+            template.div_hc(0)([
+                html.table()(
+                    [html.tr()([
+                        html.td({ style: [css.w.percent(40)] })([
+                            html.img({ src: './img/explosion.jfif', style: [css.w.percent(100)] }),
+                        ]),
+                        html.td({ style: [css.w.percent(60)] })([
+                            html.p()([`但這只是很厲害的爆炸`]),
+                            html.br(),
+                            html.p()([`不是中二破表的爆裂魔法`]),
+                            html.br(),
+                            html.p()([`所以要再製作出爆裂魔法的聲光效果`]),
+                        ])
+                    ])]
+                ),
+            ]),
+        ),
+        template.page(0)(
+            `Explosion-聲光篇`,
+            template.div_hc(0)([
+                html.img({ src: './img/explosion-3.png', style: [css.w.percent(100)] }),
+            ]),
+        ),
+        template.page(0)(
+            `Explosion-聲光篇`,
+            template.div_hc(0)([
+                html.img({ src: './img/explosion-4.png', style: [css.w.percent(50)] }),
+                html.img({ src: './img/explosion-show.png', style: [css.w.percent(50)] }),
+                html.br(),
+                html.br(),
+                html.p()([`這樣就獲得了絢麗十足的特效了`]),
+            ]),
+        ),
+        template.page(0)(
+            `混合傷害與特效`,
+            template.div_hc(0)([
+                html.img({ src: './img/explosion-mixture.png', style: [css.w.percent(50)] }),
                 html.img({ src: './img/explosion.gif', style: [css.w.percent(50)] }),
+                html.p()([`真正的，Explosion！！！`]),
+            ]),
+        ),
+        template.page(0)(
+            `Multi Head == Multi Feature`,
+            template.div_hc(0)([
+                html.p()([`剛剛的例子就是 2 head self attention`]),
+                html.br(),
+                html.p()([`因為，萬事都不只有一個面貌`]),
+                html.p({ style: [css.tx.size(7)] })([`(這不是在說人生道理)`]),
+                html.br(),
+                html.p()([`如果只去注意單一特徵會有盲點`]),
+                html.p({ style: [css.tx.size(7)] })([`(這依然不是在說人生道理)`]),
+                html.br(),
+                html.p()([`Multi Head 就是從多種面向去思考同一件事`]),
             ]),
         ),
         template.page(0)(
