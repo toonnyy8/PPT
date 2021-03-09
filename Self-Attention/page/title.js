@@ -493,6 +493,10 @@ const title = (() => {
                         html.a({ href: `https://toonnyy8.github.io/PPT/Attention-is-all-you-need/#/` })
                             `很難看的 Transformer 講解`
                     ]),
+                    html.li()([
+                        html.a({ href: `https://www.facebook.com/groups/pythontw/permalink/10161063608963438/` })
+                            `Transformer 各種高效變形`
+                    ]),
                 ])
             ]),
         ),
