@@ -131,6 +131,50 @@ const title = (() => {
             ]),
         ),
         template.page(0)(
+            html.span()`優勢：vs CNN`,
+            template.div_hc(0)([
+                html.p()`不同於 CNN 固定大小的感受野`,
+                html.br(),
+                html.p()`Self Attention 的感受野是全域級的`,
+                html.br(),
+                html.p()`不管身在何處，總能牽起與你的那條紅線(嘔`,
+
+            ]),
+        ),
+        template.page(0)(
+            html.span()`優勢：vs RNN`,
+            template.div_hc(0)([
+                html.p()`RNN 的問題有兩個`,
+                html.ol({ class: ["text-lg"], style: [, css.tx.justify(), css.p.l(25)] })([
+                    html.li()([
+                        `無法平行化處理，有 L 個輸入就相當於要通過 L 層。`
+                    ]),
+                    html.br(),
+                    html.li()([
+                        `有可能會遺忘很久以前的輸入，強行留下這些記憶又會導致梯度爆炸。`
+                    ]),
+                ]),
+            ]),
+        ),
+        template.page(0)(
+            html.span()`優勢：vs RNN`,
+            template.div_hc(0)([
+                html.img({ src: "./img/rnn.png", style: [css.w.percent(90)] })
+
+            ]),
+        ),
+        template.page(0)(
+            html.span()`優勢：vs RNN`,
+            template.div_hc(0)([
+                `而 Self Attention 具有一個`,
+                html.br(),
+                `超巨大的感受野可以同時處理這些輸入，`,
+                html.br(),
+                html.br(),
+                `既可平行化處理又沒有遺忘的問題`,
+            ]),
+        ),
+        template.page(0)(
             html.span({ class: ["text-xl"] })`技術晚點再說，先講發展`,
             template.div_hc(0)([
                 html.p()`最開始應用在機器翻譯的任務上，並推出了大名鼎鼎的`,
