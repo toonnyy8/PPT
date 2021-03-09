@@ -1,16 +1,10 @@
 ///<reference path="./html.js">
 ///<reference path="./title.js">
-///<reference path="./introduction.js">
-///<reference path="./methodology.js">
 
 (() => {
     const { render, img } = html
     const control = render(
         ...title,
-        // ...introduction,
-        // ...methodology,
-        // ...experiments,
-        // ...conclusion,
     )
     let pageNum = Number(window.location.href.split('#/')[1] || 1)
     control.jump(pageNum - 1)
