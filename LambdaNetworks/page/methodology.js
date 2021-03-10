@@ -92,7 +92,7 @@ const methodology = (() => {
             'Methodology',
             "Position Lambda",
             template.div_hc(0)([
-                html.img({ src: './img/position_lambda-3.png', style: [css.w.percent(70)] })
+                html.img({ src: './img/position_lambda-3.png', style: [css.w.percent(80)] })
             ]),
         ),
     ]
