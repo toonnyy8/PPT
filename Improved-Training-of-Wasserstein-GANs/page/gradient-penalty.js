@@ -52,43 +52,60 @@ const gradient_penalty =
                 template.div_hc(0)([
                     html.table()([
                         html.tr()([
+                            html.td({ style: [css.w.percent(10)] })([]),
                             html.td({ style: [css.w.percent(30)] })([
                                 html.p()`8 Gaussians`,
                             ]),
-                            html.td({ style: [css.w.percent(5)] })([]),
                             html.td({ style: [css.w.percent(30)] })([
                                 html.p()`25 Gaussians`,
                             ]),
-                            html.td({ style: [css.w.percent(5)] })([]),
                             html.td({ style: [css.w.percent(30)] })([
                                 html.p()`Swiss Roll`,
                             ])
                         ]),
                         html.tr()([
+                            html.td({ style: [css.w.percent(10)] })`WC`,
                             html.td({ style: [css.w.percent(30)] })([
                                 html.img({ src: './img/8g-wgan.png', style: [css.w.percent(100)] }),
                             ]),
-                            html.td({ style: [css.w.percent(5)] })([]),
                             html.td({ style: [css.w.percent(30)] })([
                                 html.img({ src: './img/25g-wgan.png', style: [css.w.percent(100)] }),
                             ]),
-                            html.td({ style: [css.w.percent(5)] })([]),
                             html.td({ style: [css.w.percent(30)] })([
                                 html.img({ src: './img/sr-wgan.png', style: [css.w.percent(100)] }),
                             ])
                         ]),
                         html.tr()([
+                            html.td({ style: [css.w.percent(10)] })`GP`,
                             html.td({ style: [css.w.percent(30)] })([
                                 html.img({ src: './img/8g-wgan-gp.png', style: [css.w.percent(100)] }),
                             ]),
-                            html.td({ style: [css.w.percent(5)] })([]),
                             html.td({ style: [css.w.percent(30)] })([
                                 html.img({ src: './img/25g-wgan-gp.png', style: [css.w.percent(100)] }),
                             ]),
-                            html.td({ style: [css.w.percent(5)] })([]),
                             html.td({ style: [css.w.percent(30)] })([
                                 html.img({ src: './img/sr-wgan-gp.png', style: [css.w.percent(100)] }),
                             ])
+                        ]),
+                    ]),
+                ]),
+            ),
+            template.page2(0)(
+                'Gradient Penalty',
+                'Loss',
+                template.div_hc(0)([
+                    html.table()([
+                        html.tr()([
+                            html.td({ style: [css.w.percent(30)] })`Generate Loss`,
+                            html.td({ style: [css.w.percent(70)] })([
+                                html.img({ src: './img/g-loss.png', style: [css.w.percent(55)] }),
+                            ]),
+                        ]),
+                        html.tr()([
+                            html.td({ style: [css.w.percent(30)] })`Critic Loss`,
+                            html.td({ style: [css.w.percent(70)] })([
+                                html.img({ src: './img/c-loss.png', style: [css.w.percent(90)] }),
+                            ]),
                         ]),
                     ]),
                 ]),

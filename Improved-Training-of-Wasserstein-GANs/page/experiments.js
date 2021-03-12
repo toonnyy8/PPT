@@ -6,147 +6,55 @@ const experiments = (() => {
     return [
         template.page2(0)(
             "Experiments",
-            "Parity",
+            "Robustness",
             template.div_hc(0)([
-                html.img({ src: './img/parity.png', style: [css.w.percent(65)] }),
+                html.img({ src: './img/figure-2-1.png', style: [css.w.percent(100)] }),
             ]),
         ),
-        template.page3(0)(
-            "Experiments",
-            "Parity",
-            "Time Penalty",
-            template.div_hc(0)([
-                html.img({ src: './img/parity-time-penalty.png', style: [css.w.percent(100)] }),
-            ]),
-        ),
-        template.page3(0)(
-            "Experiments",
-            "Parity",
-            "Ponder",
-            template.div_hc(0)([
-                html.img({ src: './img/parity-ponder.png', style: [css.w.percent(75)] }),
-            ]),
-        ),
-        template.page3(0)(
-            "Experiments",
-            "Parity",
-            "Ponder",
-            template.div_hc(0)([
-                html.img({ src: './img/parity-ponder-2.png', style: [css.w.percent(100)] }),
-            ]),
-        ),
-
         template.page2(0)(
             "Experiments",
-            "Addition",
+            "Robustness",
             template.div_hc(0)([
-                html.img({ src: './img/addition.png', style: [css.w.percent(70)] }),
+                html.img({ src: './img/figure-2-2.png', style: [css.w.percent(100)] }),
+                html.p()`利用 Gradient Penalty 可以使 WGAN 泛化到各模型架構`
             ]),
         ),
-        template.page3(0)(
-            "Experiments",
-            "Addition",
-            "Time Penalty",
-            template.div_hc(0)([
-                html.img({ src: './img/addition-time-penalty.png', style: [css.w.percent(100)] }),
-            ]),
-        ),
-        template.page3(0)(
-            "Experiments",
-            "Addition",
-            "Ponder",
-            template.div_hc(0)([
-                html.img({ src: './img/addition-ponder.png', style: [css.w.percent(75)] }),
-            ]),
-        ),
-        template.page3(0)(
-            "Experiments",
-            "Addition",
-            "Ponder",
-            template.div_hc(0)([
-                html.img({ src: './img/addition-ponder-2.png', style: [css.w.percent(100)] }),
-            ]),
-        ),
-        template.page3(0)(
-            "Experiments",
-            "Addition",
-            "Ponder",
-            template.div_hc(0)([
-                html.img({ src: './img/addition-ponder-3.png', style: [css.w.percent(100)] }),
-            ]),
-        ),
-
         template.page2(0)(
             "Experiments",
-            "Sort",
+            "Inception Score",
             template.div_hc(0)([
-                html.img({ src: './img/sort.png', style: [css.w.percent(70)] }),
+                html.table()([
+                    html.tr()([
+                        html.td({ style: [css.w.percent(65)] })([
+                            html.img({ src: './img/inception-score.png', style: [css.w.percent(90)] }),
+                        ]),
+                        html.td({ style: [css.w.percent(35), css.tx.justify()] })([
+                            html.p()`可以達到與 DCGCN 相當的水平，且訓練收斂性不會限制於模型架構。`
+                        ]),
+                    ]),
+                ]),
             ]),
         ),
-        template.page3(0)(
-            "Experiments",
-            "Sort",
-            "Time Penalty",
-            template.div_hc(0)([
-                html.img({ src: './img/sort-time-penalty.png', style: [css.w.percent(100)] }),
-            ]),
-        ),
-        template.page3(0)(
-            "Experiments",
-            "Sort",
-            "Ponder",
-            template.div_hc(0)([
-                html.img({ src: './img/sort-ponder.png', style: [css.w.percent(75)] }),
-            ]),
-        ),
-        template.page3(0)(
-            "Experiments",
-            "Sort",
-            "Ponder",
-            template.div_hc(0)([
-                html.img({ src: './img/sort-ponder-2.png', style: [css.w.percent(100)] }),
-            ]),
-        ),
-
         template.page2(0)(
             "Experiments",
-            "Wiki Char Pred",
+            "Overfitting",
             template.div_hc(0)([
-                html.br(),
-                html.br(),
-                html.span({ class: ["text-6xl"] })`Model：LSTM`
-            ]),
-        ),
-        template.page3(0)(
-            "Experiments",
-            "Wiki Char Pred",
-            "Time Penalty",
-            template.div_hc(0)([
-                html.img({ src: './img/wiki-char-pred-time-penalty.png', style: [css.w.percent(100)] }),
-            ]),
-        ),
-        template.page3(0)(
-            "Experiments",
-            "Wiki Char Pred",
-            "Ponder",
-            template.div_hc(0)([
-                html.img({ src: './img/wiki-char-pred-ponder.png', style: [css.w.percent(75)] }),
-            ]),
-        ),
-        template.page3(0)(
-            "Experiments",
-            "Wiki Char Pred",
-            "Ponder",
-            template.div_hc(0)([
-                html.img({ src: './img/wiki-char-pred-ponder-2.png', style: [css.w.percent(100)] }),
-            ]),
-        ),
-        template.page3(0)(
-            "Experiments",
-            "Wiki Char Pred",
-            "Ponder",
-            template.div_hc(0)([
-                html.img({ src: './img/wiki-char-pred-ponder-3.png', style: [css.w.percent(100)] }),
+                html.table()([
+                    html.tr()([
+                        html.td({ style: [css.w.percent(50)] })`Non Overfitting`,
+                        html.td({ style: [css.w.percent(50)] })`Overfitting`
+                    ]),
+                    html.tr()([
+                        html.td({ style: [css.w.percent(50)] })([
+                            html.img({ src: './img/non-overfitting.png', style: [css.w.percent(95)] }),
+                        ]),
+                        html.td({ style: [css.w.percent(50)] })([
+                            html.img({ src: './img/overfitting.png', style: [css.w.percent(98)] }),
+                        ]),
+                    ]),
+                ]),
+                html.p({ class: ["text-lg"] })`當使用 WGAN-GP 時，若真實樣本過少，`,
+                html.p({ class: ["text-lg"] })`Critic 會比 Generator 更快發生 Overfitting`
             ]),
         ),
     ]
