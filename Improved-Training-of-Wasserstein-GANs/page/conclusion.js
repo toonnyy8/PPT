@@ -24,7 +24,8 @@ const conclusion = (() => {
                 ]),
             ]),
         ),
-        template.default_page(
+        template.page2(20)(
+            "Conclusion",
             "Note",
             html.div({ class: ["text-lg"] })([
                 html.ul()([
@@ -32,7 +33,7 @@ const conclusion = (() => {
                         `在 WGAN-GP 中，所有的 Batch Norm 都替換成 Layer Norm。`
                     ]),
                     html.li({})([
-                        `論文有提到，對實施雙向 Gradient Penalty 的效果比實施單向 Gradient Penalty(只對大於 1 的梯度實施)更好。`
+                        `論文有提到，對雙向 Gradient Penalty 的效果比單向 Gradient Penalty(只對大於 1 的梯度懲罰)更好。`
                     ]),
                     html.li({})([
                         `非線性非平滑函數(e.g. ELU if α != 1)無法訓練 WGAN-GP`

@@ -29,7 +29,7 @@ const title = (() => {
         html.page()([
             div_vc([
                 div_hc([
-                    html.a({ class: ["text-4xl"], href: "https://arxiv.org/abs/1704.00028", style: [css.tx.color(255, 235, 205)] })
+                    html.a({ class: ["text-4xl"], href: "https://arxiv.org/abs/1704.00028" })
                         `Improved Training of Wasserstein GANs`,
                     html.hr(),
                     pxl_1([

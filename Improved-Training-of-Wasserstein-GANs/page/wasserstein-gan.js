@@ -8,16 +8,6 @@ const wasserstein_gan =
             template.default_page(
                 'Wasserstein GAN',
                 template.div_hc(0)([
-                    // html.table()([
-                    //     html.tr()([
-                    //         html.td({ style: [css.w.percent(60)] })([
-                    //             html.img({ src: './img/d2c.png', style: [css.w.percent(100)] }),
-                    //         ]),
-                    //         html.td({ style: [css.w.percent(40)] })([
-                    //             "s"
-                    //         ]),
-                    //     ]),
-                    // ]),
                     html.img({ src: './img/d2c-1.png', style: [css.w.percent(75)] }),
                 ]),
             ),
@@ -38,7 +28,7 @@ const wasserstein_gan =
                 '判別器 => 評估器',
                 template.div_hc(0)([
                     html.img({ src: './img/wrong-way-to-update.png', style: [css.w.percent(80)] }),
-                    html.p()`無限制的增長權重是錯誤的評估方式`
+                    html.p()`不做限制的話可能會導致權重無限制增長`
                 ]),
             ),
             template.page2(0)(
