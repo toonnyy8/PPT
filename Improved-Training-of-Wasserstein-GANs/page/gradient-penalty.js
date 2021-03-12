@@ -6,84 +6,91 @@ const gradient_penalty =
     (() => {
         return [
             template.default_page(
-                'Methodology',
+                'Gradient Penalty',
                 template.div_hc(0)([
-                    html.img({ src: './img/act-rnn-1.png', style: [css.w.percent(85)] }),
+                    html.img({ src: './img/gp-1.png', style: [css.w.percent(100)] }),
                 ]),
             ),
-            template.page2(0)(
-                'Methodology',
-                'ACT',
+            template.default_page(
+                'Gradient Penalty',
                 template.div_hc(0)([
-                    html.img({ src: './img/act-rnn-2.png', style: [css.w.percent(85)] }),
+                    html.img({ src: './img/gp-2.png', style: [css.w.percent(100)] }),
                 ]),
             ),
-            template.page2(0)(
-                'Methodology',
-                'ACT',
+            template.page(0)(
+                'Gradient Penalty',
                 template.div_hc(0)([
-                    html.img({ src: './img/act-rnn-3.png', style: [css.w.percent(100)] }),
+                    html.table()([
+                        html.tr()([
+                            html.td({ style: [css.w.percent(60)] })([
+                                html.img({ src: './img/gp-weight.png', style: [css.w.percent(90)] }),
+                            ]),
+                            html.td({ class: ["text-lg"], style: [css.tx.justify()] })([
+                                html.p()`權重均勻的分佈在 0 的周圍，使模型具有更高的強健性。`,
+                            ])
+                        ]),
+                    ]),
                 ]),
             ),
-            template.page2(0)(
-                'Methodology',
-                'Repeat Times',
+            template.page(0)(
+                'Gradient Penalty',
                 template.div_hc(0)([
-                    html.br(),
-                    html.br(),
-                    html.img({ src: './img/repeat-times.png', style: [css.w.percent(100)] }),
+                    html.table()([
+                        html.tr()([
+                            html.td({ style: [css.w.percent(60)] })([
+                                html.img({ src: './img/wc-vs-gp-gradient.png', style: [css.w.percent(90)] }),
+                            ]),
+                            html.td({ class: ["text-lg"], style: [css.tx.justify()] })([
+                                html.p()`即便是在深層的模型中，Gradient Penalty 也可以使梯度保持穩定，而不會像 Weight Clipping 一樣發散或消失。`,
+                            ])
+                        ]),
+                    ]),
                 ]),
             ),
-            template.page2(0)(
-                'Methodology',
-                'Halting Probability',
+            template.page(0)(
+                'Gradient Penalty',
                 template.div_hc(0)([
-                    html.img({ src: './img/halting-probability.png', style: [css.w.percent(90)] }),
-                ]),
-            ),
-            template.page2(0)(
-                'Methodology',
-                'Remainder',
-                template.div_hc(0)([
-                    html.img({ src: './img/remainder.png', style: [css.w.percent(70)] }),
-                ]),
-            ),
-            template.page2(0)(
-                'Methodology',
-                'Output & State',
-                template.div_hc(0)([
-                    html.img({ src: './img/output-and-state.png', style: [css.w.percent(50)] }),
-                ]),
-            ),
-            template.page2(0)(
-                'Methodology',
-                'Loss',
-                template.div_hc(0)([
-                    html.img({ src: './img/loss.png', style: [css.w.percent(100)] }),
-                ]),
-            ),
-            template.page3(0)(
-                'Methodology',
-                'Loss',
-                'Ponder Loss',
-                template.div_hc(0)([
-                    html.img({ src: './img/loss-ponder-1.png', style: [css.w.percent(80)] }),
-                ]),
-            ),
-            template.page3(0)(
-                'Methodology',
-                'Loss',
-                'Ponder Loss',
-                template.div_hc(0)([
-                    html.img({ src: './img/loss-ponder-2.png', style: [css.w.percent(90)] }),
-                ]),
-            ),
-            template.page3(0)(
-                'Methodology',
-                'Loss',
-                'Ponder Loss',
-                template.div_hc(0)([
-                    html.img({ src: './img/loss-ponder-3.png', style: [css.w.percent(80)] }),
+                    html.table()([
+                        html.tr()([
+                            html.td({ style: [css.w.percent(30)] })([
+                                html.p()`8 Gaussians`,
+                            ]),
+                            html.td({ style: [css.w.percent(5)] })([]),
+                            html.td({ style: [css.w.percent(30)] })([
+                                html.p()`25 Gaussians`,
+                            ]),
+                            html.td({ style: [css.w.percent(5)] })([]),
+                            html.td({ style: [css.w.percent(30)] })([
+                                html.p()`Swiss Roll`,
+                            ])
+                        ]),
+                        html.tr()([
+                            html.td({ style: [css.w.percent(30)] })([
+                                html.img({ src: './img/8g-wgan.png', style: [css.w.percent(100)] }),
+                            ]),
+                            html.td({ style: [css.w.percent(5)] })([]),
+                            html.td({ style: [css.w.percent(30)] })([
+                                html.img({ src: './img/25g-wgan.png', style: [css.w.percent(100)] }),
+                            ]),
+                            html.td({ style: [css.w.percent(5)] })([]),
+                            html.td({ style: [css.w.percent(30)] })([
+                                html.img({ src: './img/sr-wgan.png', style: [css.w.percent(100)] }),
+                            ])
+                        ]),
+                        html.tr()([
+                            html.td({ style: [css.w.percent(30)] })([
+                                html.img({ src: './img/8g-wgan-gp.png', style: [css.w.percent(100)] }),
+                            ]),
+                            html.td({ style: [css.w.percent(5)] })([]),
+                            html.td({ style: [css.w.percent(30)] })([
+                                html.img({ src: './img/25g-wgan-gp.png', style: [css.w.percent(100)] }),
+                            ]),
+                            html.td({ style: [css.w.percent(5)] })([]),
+                            html.td({ style: [css.w.percent(30)] })([
+                                html.img({ src: './img/sr-wgan-gp.png', style: [css.w.percent(100)] }),
+                            ])
+                        ]),
+                    ]),
                 ]),
             ),
         ]

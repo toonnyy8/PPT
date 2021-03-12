@@ -38,7 +38,7 @@ const wasserstein_gan =
                 '判別器 => 評估器',
                 template.div_hc(0)([
                     html.img({ src: './img/wrong-way-to-update.png', style: [css.w.percent(80)] }),
-                    html.p()`無限制的增長權重視錯誤的評估方式`
+                    html.p()`無限制的增長權重是錯誤的評估方式`
                 ]),
             ),
             template.page2(0)(
