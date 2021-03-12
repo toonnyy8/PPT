@@ -1,3 +1,4 @@
-# Self Attention 介紹
+# Improved Training of Wasserstein GANs 報告
 
-[連結](https://toonnyy8.github.io/PPT/Self-Attention/index.html)
+[中文連結](https://toonnyy8.github.io/PPT/Improved-Training-of-Wasserstein-GANs/index.html)
+[英文連結](https://toonnyy8.github.io/PPT/Improved-Training-of-Wasserstein-GANs/index-en.html)
