@@ -10,7 +10,7 @@ const introduction = (() => {
                 `Although GAN is a powerful generative model, its training is unstable due to the gradient vanishing.`,
                 html.br(),
                 html.br(),
-                `WGAN can solve many of the problems of the original GAN with some simple changes.`,
+                `WGAN uses some simple changes to greatly reduce the gradient vanishing problem of the original GAN.`,
                 html.br(),
                 html.br(),
                 `However, the weight clipping used in WGAN may still cause the gradient to vanish or explode.`,
