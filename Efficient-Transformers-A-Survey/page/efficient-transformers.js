@@ -27,6 +27,13 @@ const efficient_transformers =
                     ]),
                 ]),
             ),
+            template.page2(0)(
+                'Fixed',
+                "Shortcomings",
+                template.div_hc(0)([
+                    "固定的關注區塊無法處理所有狀況，會有缺失的資訊"
+                ]),
+            ),
         ]
         const learnable_patterns = [
             template.page(0)(
@@ -35,10 +42,43 @@ const efficient_transformers =
                     html.img({ src: './img/Learnable-Patterns.png', style: [css.w.percent(55)] }),
                 ]),
             ),
-            template.page(0)(
-                'Learnable Patterns',
+            template.page3(0)(
+                'Learnable',
+                "Reformer",
+                "Sort",
                 template.div_hc(0)([
-                    "降低計算量的原理與 Fixed Patterns 相同，但其關注區域是會變動的"
+                    html.img({ src: './img/Reformer-sort.png', style: [css.w.percent(90)] }),
+                    html.p({ class: ["text-lg"] })([
+                        "依據每個 key、query 的相似度，將其分組",
+                        html.ul({ style: [css.tx.left(), css.p.l(40)] })([
+                            html.li()`在 Reformer 中使用 Locality Sensitive Hash 分組`,
+                            html.li()`Routing Transformer 則是用 k-means 分組`
+                        ]),
+                    ])
+
+                ]),
+            ),
+            template.page3(0)(
+                'Learnable',
+                "Reformer",
+                "Attention",
+                template.div_hc(0)([
+                    html.img({ src: './img/Reformer-attention.png', style: [css.w.percent(90)] }),
+                    html.p({ class: ["text-lg"] })([
+                        "進行組內的 Self Attention",
+                        html.br(),
+                        html.br(),
+                        `不同組代表`,
+                        html.span({ style: [css.tx.color(255, 100, 100)] })`相似度低`,
+                        `，沒有互相匹配的必要`
+                    ])
+                ]),
+            ),
+            template.page2(0)(
+                'Fixed',
+                "Shortcomings",
+                template.div_hc(0)([
+                    "在分組的過程中會產生 overhead，導致計算速度無法提升。"
                 ]),
             ),
         ]
@@ -49,18 +89,37 @@ const efficient_transformers =
                     html.img({ src: './img/Memory.png', style: [css.w.percent(55)] }),
                 ]),
             ),
-            template.page(0)(
+            template.page2(0)(
                 'Memory',
+                "Set Transformer",
                 template.div_hc(0)([
-                    "利用額外加入的資訊(Memory)來提取、補足",
+                    html.img({ src: './img/Set-Transformer.png', style: [css.w.percent(100)] }),
+
                 ]),
             ),
             template.page2(0)(
-                'Fixed',
+                'Memory',
+                "Global-Attention",
+                template.div_hc(0)([
+                    html.img({ src: './img/Global-Attention.png', style: [css.w.percent(80)] }),
+
+                ]),
+            ),
+            template.page2(0)(
+                'Memory',
                 "Big Bird",
                 template.div_hc(0)([
                     html.img({ src: './img/BigBird.png', style: [css.w.percent(100)] }),
 
+                ]),
+            ),
+            template.page2(0)(
+                'Fixed',
+                "Shortcomings",
+                template.div_hc(0)([
+                    "雖然能獲得全域資訊，但會因為壓縮導致其有所缺損。",
+                    html.br(),
+                    "因為所有資訊都混和在一起，因此無法處理自回歸任務(無法遮罩)。"
                 ]),
             ),
         ]
@@ -71,11 +130,34 @@ const efficient_transformers =
                     html.img({ src: './img/Low-Rank.png', style: [css.w.percent(55)] }),
                 ]),
             ),
+            template.page2(0)(
+                html.div()(['Low Rank', html.br(), '& Kernel']),
+                "No Attention Matrix",
+                template.div_hc(0)([
+                    html.img({ src: './img/Low-Rank-1.png', style: [css.w.percent(65)] }),
+
+                ]),
+            ),
+            template.page2(0)(
+                html.div()(['Low Rank', html.br(), '& Kernel']),
+                "kernel function：σ",
+                template.div_hc(0)([
+                    html.img({ src: './img/Low-Rank-2.png', style: [css.w.percent(80)] }),
+
+                ]),
+            ),
             template.page(0)(
                 'Low Rank & Kernel',
                 template.div_hc(0)([
                     "藉由壓縮 Keys 與 Values 的全域資訊到少量向量中，來降低對大範圍注意力所消耗的資源",
                     "移除 softmax，使 K 與 V 可以先相乘"
+                ]),
+            ),
+            template.page2(0)(
+                'Fixed',
+                "Shortcomings",
+                template.div_hc(0)([
+                    "在沒有注意力矩陣的情況下，難以並行性訓練自回歸任務。"
                 ]),
             ),
         ]
@@ -96,7 +178,21 @@ const efficient_transformers =
                 'Recurrence',
                 'Transformer XL',
                 template.div_hc(0)([
-                    "將輸入分段計算，並將前一段輸入所得之 hidden vector 加入本次計算中，就能增加關注的距離",
+                    html.img({ src: './img/Recurrence-1.png', style: [css.w.percent(70)] }),
+                ]),
+            ),
+            template.page2(0)(
+                'Recurrence',
+                'Transformer XL',
+                template.div_hc(0)([
+                    html.img({ src: './img/Recurrence-2.png', style: [css.w.percent(70)] }),
+                ]),
+            ),
+            template.page2(0)(
+                'Recurrence',
+                'Transformer XL',
+                template.div_hc(0)([
+                    html.img({ src: './img/Recurrence-3.png', style: [css.w.percent(70)] }),
                 ]),
             ),
         ]
