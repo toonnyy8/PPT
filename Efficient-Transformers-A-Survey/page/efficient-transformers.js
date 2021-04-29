@@ -27,13 +27,6 @@ const efficient_transformers =
                     ]),
                 ]),
             ),
-            template.page2(0)(
-                'Fixed',
-                "Shortcomings",
-                template.div_hc(0)([
-                    "固定的關注區塊無法處理所有狀況，會有缺失的資訊"
-                ]),
-            ),
         ]
         const learnable_patterns = [
             template.page(0)(
@@ -74,13 +67,6 @@ const efficient_transformers =
                     ])
                 ]),
             ),
-            template.page2(0)(
-                'Fixed',
-                "Shortcomings",
-                template.div_hc(0)([
-                    "在分組的過程中會產生 overhead，導致計算速度無法提升。"
-                ]),
-            ),
         ]
         const memory = [
             template.page(0)(
@@ -99,7 +85,7 @@ const efficient_transformers =
             ),
             template.page2(0)(
                 'Memory',
-                "Global-Attention",
+                "Global Attention",
                 template.div_hc(0)([
                     html.img({ src: './img/Global-Attention.png', style: [css.w.percent(80)] }),
 
@@ -111,15 +97,6 @@ const efficient_transformers =
                 template.div_hc(0)([
                     html.img({ src: './img/BigBird.png', style: [css.w.percent(100)] }),
 
-                ]),
-            ),
-            template.page2(0)(
-                'Fixed',
-                "Shortcomings",
-                template.div_hc(0)([
-                    "雖然能獲得全域資訊，但會因為壓縮導致其有所缺損。",
-                    html.br(),
-                    "因為所有資訊都混和在一起，因此無法處理自回歸任務(無法遮罩)。"
                 ]),
             ),
         ]
@@ -140,24 +117,18 @@ const efficient_transformers =
             ),
             template.page2(0)(
                 html.div()(['Low Rank', html.br(), '& Kernel']),
-                "kernel function：σ",
+                "Linformer",
                 template.div_hc(0)([
-                    html.img({ src: './img/Low-Rank-2.png', style: [css.w.percent(80)] }),
+                    html.img({ src: './img/Linformer.png', style: [css.w.percent(100)] }),
 
                 ]),
             ),
-            template.page(0)(
-                'Low Rank & Kernel',
-                template.div_hc(0)([
-                    "藉由壓縮 Keys 與 Values 的全域資訊到少量向量中，來降低對大範圍注意力所消耗的資源",
-                    "移除 softmax，使 K 與 V 可以先相乘"
-                ]),
-            ),
             template.page2(0)(
-                'Fixed',
-                "Shortcomings",
+                html.div()(['Low Rank', html.br(), '& Kernel']),
+                html.div({ style: [css.tx.left(), css.p.l(70)] })(['Linear Transformer', html.br(), 'Performer']),
                 template.div_hc(0)([
-                    "在沒有注意力矩陣的情況下，難以並行性訓練自回歸任務。"
+                    html.img({ src: './img/Linear-Transformer.png', style: [css.w.percent(95)] }),
+
                 ]),
             ),
         ]
@@ -166,12 +137,6 @@ const efficient_transformers =
                 'Recurrence',
                 template.div_hc(0)([
                     html.img({ src: './img/Recurrence.png', style: [css.w.percent(55)] }),
-                ]),
-            ),
-            template.page(0)(
-                'Recurrence',
-                template.div_hc(0)([
-                    "將輸入分段計算，並將前一段輸入所得之 hidden vector 加入本次計算中，就能增加關注的距離",
                 ]),
             ),
             template.page2(0)(
@@ -196,6 +161,78 @@ const efficient_transformers =
                 ]),
             ),
         ]
+        const shortcomings = [
+            template.page(0)(
+                "Shortcomings",
+                template.div_hc(0)([
+                    html.ul({ style: [css.tx.left(), css.p.l(50)] })([
+                        html.li()([
+                            `Fixed Patterns`,
+                            html.ul()([
+                                html.li()([
+                                    html.span({ style: [css.tx.color(100, 255, 100)] })`固定的關注區塊`,
+                                    '很容易出現',
+                                    html.span({ style: [css.tx.color(255, 100, 100)] })`資訊缺失`,
+                                    '的狀況'
+                                ])
+                            ])
+                        ]),
+                        html.br(),
+                        html.li()([
+                            `Learnable Patterns`,
+                            html.ul()([
+                                html.li()([
+                                    '在',
+                                    html.span({ style: [css.tx.color(100, 255, 100)] })`分組的過程`,
+                                    '中會產生 overhead，導致',
+                                    html.span({ style: [css.tx.color(255, 100, 100)] })`計算速度`,
+                                    '無法提升。'
+                                ])
+                            ])
+                        ]),
+                        html.br(),
+                        html.li()([
+                            `Memory`,
+                            html.ul()([
+                                html.li()([
+                                    '因',
+                                    html.span({ style: [css.tx.color(100, 255, 100)] })`壓縮上下文資訊`,
+                                    '，而難以應用於',
+                                    html.span({ style: [css.tx.color(255, 100, 100)] })`自回歸任務`,
+                                ]),
+                                html.li()([
+                                    '且壓縮亦會造成',
+                                    html.span({ style: [css.tx.color(255, 100, 100)] })`資訊缺損`,
+                                ]),
+                            ])
+                        ])
+                    ])
+                ]),
+            ),
+            template.page(0)(
+                "Shortcomings",
+                template.div_hc(0)([
+                    html.ul({ style: [css.tx.left(), css.p.l(50)] })([
+                        html.li()([
+                            `Low Rank & Kernel`,
+                            html.ul()([
+                                html.li()([
+                                    '難以在自回歸任務實施平行化訓練',
+                                ]),
+                                html.br(),
+                                html.li()([
+                                    'Performer query 與 key 經過轉換後需要更大的 depth 才能維持正確率',
+                                ]),
+                                html.br(),
+                                html.li()([
+                                    'Linformer 將 keys&values 的長度 L 壓縮 k，但為了保持正確率，k 大小還是與 L 有關。',
+                                ])
+                            ])
+                        ]),
+                    ])
+                ]),
+            ),
+        ]
         return [
             html.page()([
                 template.div_hc(0)([
@@ -207,31 +244,6 @@ const efficient_transformers =
             ...memory,
             ...low_rank,
             ...recurrence,
-            template.page2(0)(
-                'Wasserstein GAN',
-                '判別器 => 評估器',
-                template.div_hc(0)([
-                    html.img({ src: './img/wrong-way-to-update.png', style: [css.w.percent(80)] }),
-                    html.p()`不做限制的話可能會導致權重無限制增長`
-                ]),
-            ),
-            template.page2(0)(
-                'Wasserstein GAN',
-                'Weight Clipping',
-                template.div_hc(0)([
-                    html.table()([
-                        html.tr()([
-                            html.td({ style: [css.w.percent(60)] })([
-                                html.img({ src: './img/weight-clipping.png', style: [css.w.percent(90)] }),
-                            ]),
-                            html.td({ class: ["text-lg"], style: [css.tx.justify()] })([
-                                html.p()`在 WGAN 原文中使用 Weight Clipping 來限制權重大小。`,
-                                html.br(),
-                                html.p()`但卻會造成梯度消失或爆炸。`,
-                            ])
-                        ]),
-                    ]),
-                ]),
-            ),
+            ...shortcomings,
         ]
     })()
