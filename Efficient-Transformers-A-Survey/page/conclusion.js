@@ -8,37 +8,29 @@ const conclusion = (() => {
             "Conclusion",
             html.div({ class: ["text-lg"] })([
                 html.ul()([
-                    // html.li({ style: [css.tx.color(100, 255, 50)] })([
-                    //     `使用 WGAN 與 Gradient Penalty`, html.br(), html.br(),
-                    // ]),
-                    // html.li({ style: [css.tx.color(255, 100, 50)] })([
-                    //     `目前的算法對於 time penalty(τ) 非常敏感，需要一個更好的方法來自動調整 time penalty。`, html.br(), html.br(),
-                    // ]),
                     html.li({})([
-                        `WGAN 利用簡單的技巧解決了辨別器造成的梯度消失問題。`
+                        `沒有銀彈。`
                     ]),
                     html.br(),
                     html.li({})([
-                        `而 Gradient Penalty 為模型帶來更高的強健性，讓 WGAN 的訓練不受模型架構影響收斂。`
+                        `結合 Local Attention 與 Global Attention 的方式，可以在降低記憶體複雜度的情況維持正確率。`
+                    ]),
+                    html.br(),
+                    html.li({})([
+                        `基於 Low Rank 的方法，在「長序列任務」上具有優異的速度與低記憶體複雜度，但卻不適合用於自回歸任務上。`
+                    ]),
+                    html.br(),
+                    html.li({})([
+                        `長序列自回歸任務適合使用基於 Recurrence 的方法。`
                     ]),
                 ]),
             ]),
         ),
-        template.page2(20)(
-            "Conclusion",
-            "Note",
-            html.div({ class: ["text-lg"] })([
-                html.ul()([
-                    html.li({})([
-                        `在 WGAN-GP 中，所有的 Batch Norm 都替換成 Layer Norm。`
-                    ]),
-                    html.li({})([
-                        `論文有提到，對雙向 Gradient Penalty 的效果比單向 Gradient Penalty(只對大於 1 的梯度懲罰)更好。`
-                    ]),
-                    html.li({})([
-                        `非線性非平滑函數(e.g. ELU if α != 1)無法訓練 WGAN-GP`
-                    ]),
-                ]),
+        template.page2(0)(
+            "Problem",
+            `為何生成任務都要用自回歸模型？`,
+            template.div_hc(0)([
+                html.img({ src: "./img/problem.png", style: [css.w.percent(65)] })
             ]),
         ),
     ]
