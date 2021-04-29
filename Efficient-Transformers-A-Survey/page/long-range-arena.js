@@ -175,18 +175,6 @@ const long_range_arena =
                     html.li()([html.del()`Pathfinder-X`]),
                 ])
             ),
-            template.page2(0)(
-                'Long Range Arena',
-                'Task',
-                html.ol({ style: [css.m.l(20)] })([
-                    html.li({ style: [css.m.b(5)] })`Long ListOpt`,
-                    html.li({ style: [css.m.b(5)] })`Byte-Level Text Classification`,
-                    html.li({ style: [css.m.b(5)] })`Byte-Level Document Retrieval`,
-                    html.li({ style: [css.m.b(5)] })`Image Classification on Sequences of Pixels`,
-                    html.li({ style: [css.m.b(5)] })`Pathfinder`,
-                    html.li()([html.del()`Pathfinder-X`]),
-                ])
-            ),
             ...long_listOpt,
             ...text_classification,
             ...document_retrieval,

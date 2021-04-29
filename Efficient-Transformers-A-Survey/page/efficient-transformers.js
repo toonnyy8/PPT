@@ -21,7 +21,7 @@ const efficient_transformers =
                                 html.img({ src: './img/Image-Transformer.png', style: [css.w.percent(80)] }),
                             ]),
                             html.td({ class: ["text-lg"], style: [css.tx.justify()] })([
-                                html.p()`Fixed Patterns 利用只計算部分位置的之間的注意力權重，來降低計算量。`,
+                                html.p()`Fixed Patterns 利用只計算部分區域間的注意力權重，來降低計算量。`,
                             ])
                         ]),
                     ]),

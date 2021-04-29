@@ -13,7 +13,7 @@ const conclusion = (() => {
                     ]),
                     html.br(),
                     html.li({})([
-                        `結合 Local Attention 與 Global Attention 的方式，可以在降低記憶體複雜度的情況維持正確率。`
+                        `結合 Local Attention 與 Global Attention 的方式，可以在降低記憶體複雜度的情況維持正確率，但速度有瓶頸。`
                     ]),
                     html.br(),
                     html.li({})([
