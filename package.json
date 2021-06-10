@@ -1,0 +1,29 @@
+{
+    "name": "ppt",
+    "version": "1.0.0",
+    "description": "ppt儲存區",
+    "main": "Music-Editor-of-Tone.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build:CLSE": "esbuild ./CLSE/dev/index.tsx --bundle --outfile=./CLSE/build/index.js --jsx-factory=h --jsx-fragment=Fragment --sourcemap --loader:.png=dataurl --loader:.svg=dataurl",
+        "build:CLSE-en": "esbuild ./CLSE/dev/index-en.tsx --bundle --outfile=./CLSE/build/index-en.js --jsx-factory=h --jsx-fragment=Fragment --sourcemap --loader:.png=dataurl --loader:.svg=dataurl"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/toonnyy8/PPT.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/toonnyy8/PPT/issues"
+    },
+    "homepage": "https://github.com/toonnyy8/PPT#readme",
+    "dependencies": {
+        "@antv/g2": "^4.1.18",
+        "vue": "^3.1.1"
+    },
+    "devDependencies": {
+        "esbuild": "^0.12.8"
+    }
+}
