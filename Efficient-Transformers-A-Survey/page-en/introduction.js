@@ -45,7 +45,7 @@ const introduction = (() => {
                 `To this end, Tay et al. proposed Long Range Arena, a benchmark composed of multiple tasks, to evaluate the effects of various X-formers on text, images, inference, and other issues.`,
                 html.br(),
                 html.br(),
-                `This report will introduce Transformer improvement methods and Long Range Arena.`,
+                `This presentation will introduce Transformer improvement methods and Long Range Arena.`,
             ])
         ),
     ]
