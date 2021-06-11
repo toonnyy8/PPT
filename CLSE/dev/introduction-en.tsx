@@ -32,8 +32,8 @@ export const introductionPages = [
                     result.
                     <br />
                     <br />
-                    This part of the idea coincides with the self-supervised method of contrastive
-                    learning.
+                    This part of the idea coincides with the contrastive learning of self-supervised
+                    method.
                     <br />
                     <br />
                     Contrastive learning hopes that the features between positive samples are as
