@@ -28,7 +28,7 @@ export const introductionPages = [
             content: () => (
                 <div style={[css.m.x(10)]}>
                     And speech enhancement means that no matter what kind of noise environment, the
-                    same speech should have the same features and can be restored to the same
+                    same speech should have the same features and can be restored to the clean
                     result.
                     <br />
                     <br />

@@ -7577,7 +7577,7 @@ Component that was made reactive: `, type);
       title: () => "Introduction",
       content: () => /* @__PURE__ */ h("div", {
         style: [css.m.x(10)]
-      }, "And speech enhancement means that no matter what kind of noise environment, the same speech should have the same features and can be restored to the same result.", /* @__PURE__ */ h("br", null), /* @__PURE__ */ h("br", null), "This part of the idea coincides with the contrastive learning of self-supervised method.", /* @__PURE__ */ h("br", null), /* @__PURE__ */ h("br", null), "Contrastive learning hopes that the features between positive samples are as similar as possible, while the feature difference between negative samples is the greater the better.")
+      }, "And speech enhancement means that no matter what kind of noise environment, the same speech should have the same features and can be restored to the clean result.", /* @__PURE__ */ h("br", null), /* @__PURE__ */ h("br", null), "This part of the idea coincides with the contrastive learning of self-supervised method.", /* @__PURE__ */ h("br", null), /* @__PURE__ */ h("br", null), "Contrastive learning hopes that the features between positive samples are as similar as possible, while the feature difference between negative samples is the greater the better.")
     }),
     /* @__PURE__ */ h(Tmpl1, null, {
       title: () => "Introduction",
