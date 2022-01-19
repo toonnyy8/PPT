@@ -145,46 +145,58 @@ const title = (() => {
       ])
     ),
     template.page(0)(
-      html.span()`優勢：vs CNN`,
+      html.span()`CNN 劣勢`,
       template.div_hc(0)([
-        html.p()`不同於 CNN 固定大小的感受野`,
-        html.br(),
-        html.p()`Self Attention 的感受野是全域級的`,
-        html.br(),
-        html.p()`不管身在何處，總能牽起與你的那條紅線(嘔`,
+        html.img({
+          src: "./img/cnn-receptive-field.png",
+          style: [css.w.percent(40)],
+        }),
+        html.p()`CNN 的感受野大小是固定的，無法動態擴增。`,
+        html.p()`（基因決定了目光短淺`,
       ])
     ),
+
     template.page(0)(
-      html.span()`優勢：vs RNN`,
+      html.span()`RNN 劣勢`,
       template.div_hc(0)([
-        html.p()`RNN 的問題有兩個`,
-        html.ol({
+        html.img({ src: "./img/rnn.png", style: [css.w.percent(80)] }),
+        html.br(),
+        html.br(),
+        html.p({
           class: ["text-lg"],
-          style: [, css.tx.justify(), css.p.l(25)],
-        })([
-          html.li()([`無法平行化處理，有 L 個輸入就相當於要通過 L 層。`]),
-          html.br(),
-          html.li()([
-            `有可能會遺忘很久以前的輸入，強行留下這些記憶又會導致梯度爆炸。`,
-          ]),
-        ]),
+        })([`缺點 1：`, `無法平行化處理，有 L 個輸入就相當於要通過 L 層。`]),
       ])
     ),
     template.page(0)(
-      html.span()`優勢：vs RNN`,
+      html.span()`RNN 劣勢`,
       template.div_hc(0)([
-        html.img({ src: "./img/rnn.png", style: [css.w.percent(90)] }),
+        html.img({ src: "./img/rnn-2.png", style: [css.w.percent(50)] }),
+        html.p({
+          class: ["text-lg"],
+          style: [css.tx.left()],
+        })([`缺點 2：`]),
+        html.p({
+          class: ["text-lg"],
+        })`有可能會遺忘很久以前的輸入，強行留下這些記憶又會導致梯度爆炸。`,
       ])
     ),
     template.page(0)(
-      html.span()`優勢：vs RNN`,
+      html.span()`Self Attention 優勢`,
       template.div_hc(0)([
-        `而 Self Attention 具有一個`,
-        html.br(),
-        `超巨大的感受野可以同時處理這些輸入，`,
+        html.img({ src: "./img/self-attn-1.png", style: [css.w.percent(50)] }),
         html.br(),
         html.br(),
-        `既可平行化處理又沒有遺忘的問題`,
+        `平行化處理所有輸入的同時也沒有了遺忘的問題。`,
+      ])
+    ),
+
+    template.page(0)(
+      html.span()`Self Attention 優勢`,
+      template.div_hc(0)([
+        html.img({ src: "./img/self-attn-2.png", style: [css.w.percent(50)] }),
+        html.br(),
+        html.br(),
+        `具有動態、全域級的感受野`,
       ])
     ),
     template.page(0)(
@@ -192,6 +204,7 @@ const title = (() => {
       template.div_hc(0)([
         html.p()`最開始應用在機器翻譯的任務上，並推出了大名鼎鼎的`,
         html.br(),
+        html.span({ class: ["text-base"] })`Attention is all you need`,
         html.p({ class: ["text-6xl"] })`Transformer`,
         html.br(),
         html.p()`效果絕佳、一戰成名`,
@@ -230,7 +243,7 @@ const title = (() => {
     template.page(0)(
       `只要你有錢，處處都能 Self Attention`,
       template.div_hc(0)([
-        html.p()`不只用在 NLP，最近在影像上也開始發展`,
+        html.p()`不只用在 NLP，在 2021 年起也開始在影像上蓬勃發展`,
         html.br(),
         html.p()([
           `影像分類可以用 `,

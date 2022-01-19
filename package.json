@@ -6,7 +6,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build:CLSE": "esbuild ./CLSE/dev/index.tsx --bundle --outfile=./CLSE/build/index.js --jsx-factory=h --jsx-fragment=Fragment --sourcemap --loader:.png=dataurl --loader:.svg=dataurl",
-        "build:CLSE-en": "esbuild ./CLSE/dev/index-en.tsx --bundle --outfile=./CLSE/build/index-en.js --jsx-factory=h --jsx-fragment=Fragment --sourcemap --loader:.png=dataurl --loader:.svg=dataurl"
+        "build:CLSE-en": "esbuild ./CLSE/dev/index-en.tsx --bundle --outfile=./CLSE/build/index-en.js --jsx-factory=h --jsx-fragment=Fragment --sourcemap --loader:.png=dataurl --loader:.svg=dataurl",
+        "build:cnn-attn": "esbuild ./cnn-attn/dev/index.tsx --bundle --outfile=./cnn-attn/build/index.js --jsx-factory=h --jsx-fragment=Fragment --sourcemap --loader:.png=dataurl --loader:.svg=dataurl"
     },
     "repository": {
         "type": "git",
