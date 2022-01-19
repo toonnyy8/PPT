@@ -255,7 +255,7 @@ const title = (() => {
       `沒錢只能 QAQ...？`,
       template.div_hc(0)([
         html.p()`便宜的替代方案`,
-        html.ol({ style: [css.tx.justify(), css.p.l(120)] })([
+        html.ol({ style: [css.tx.justify(), css.p.l(100)] })([
           html.li()`Reformer`,
           html.li()`Linformer`,
           html.li()`Performer`,
