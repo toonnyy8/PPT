@@ -1,0 +1,75 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{enumerate}
+\usepackage{graphicx}
+
+\usepackage{caption}
+\captionsetup[table]{skip=10pt}
+
+\linespread{1.15}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+
+\begin{table}[ht]
+	\centering
+	\caption{Data for Problem 1.19\label{tab:1.19}}
+	\begin{tabular}{l  l  l}
+		\toprule
+		Model                                & Steps & NLL (bits/char)($\downarrow$)
+		\\
+		\midrule
+		Discrete Flow (8 $\times$ 3 layers)  & -     & 1.23                             \\
+		Argmax Coupling Flow                 & -     & 1.80                             \\
+		IAF / SCF                            & -     & 1.88                             \\
+		Multinomial Diffusion (D3PM uniform) & 1000  & 1.72                             \\
+		\midrule
+		OA-Transformer                       & 250   & 1.64                             \\
+		D3PM-uniform                         & 1000  & 1.61 {\footnotesize $\pm 0.020$} \\
+		D3PM-absorbing                       & 1000  & 1.45 {\footnotesize $\pm 0.020$} \\
+		D3PM-absorbing                       & 256   & 1.47                             \\
+		OA-ARDM (ours)                       & 250   & 1.43 {\footnotesize $\pm0.001$}  \\
+		Transformer decoder                  & 256   & 1.18                             \\
+		Transformer XL                       & 256   & 1.08                             \\
+		\midrule
+		D3PM-absorbing                       & 20    & 1.56 {\footnotesize $\pm0.001$}  \\
+		Parallelized OA-ARDM (ours)          & 20    & 1.51 {\footnotesize $\pm0.001$}  \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\caption{Data for Problem 1.19\label{tab:1.19}}
+	\begin{tabular}{l  l  l}
+		\toprule
+		Model                   & Steps         & NLL (bits/dimension)($\downarrow$)
+		\\
+		\midrule
+		ARDM-OA                 & 3072          & 2.69 {\footnotesize $\pm0.005$}    \\
+		Parallel ARDM-OA        & 50            & 2.74                               \\
+		\midrule
+		ARDM-Upscale 4          & $4\times3072$ & 2.64 {\footnotesize $\pm 0.002$}   \\
+		Parallel ARDM-Upscale 4 & $4\times50$   & 2.68                               \\
+		\midrule
+		D3PM Absorbing          & 1000          & 4.40                               \\
+		D3PM Gaussian           & 1000          & 3.44 {\footnotesize $\pm0.007$}    \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+\end{document}
